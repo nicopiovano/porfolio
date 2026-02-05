@@ -1,0 +1,193 @@
+---
+import GitHub from "@/components/icons/GitHub.astro"
+import Quasar from "@/components/icons/Quasar.astro"
+import Vue from "@/components/icons/Vue.astro"
+import Tailwind from "@/components/icons/Tailwind.astro"
+import Link from "@/components/icons/Link.astro"
+import LinkButton from "@/modules/LinkButton/LinkButton.astro"
+
+const { t } = Astro.locals
+
+const TAGS = {
+  QUASAR: {
+    name: "Quasar",
+    class: "bg-[#7a95ff] text-white",
+    icon: Quasar,
+    url: "https://quasar.dev",
+  },
+  VUE: {
+    name: "Vue",
+    class: "bg-[#42b883] text-white",
+    icon: Vue,
+    url: "https://vuejs.org",
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+    url: "https://tailwindcss.com",
+  },
+}
+
+const PROJECTS_DATA = [
+  {
+    link: "https://chatquasar-36f6f.web.app/",
+    github: "https://github.com/NIPIO/Chat-Quasar-Firebase",
+    image: "/projects/Chat.PNG",
+    tags: [TAGS.QUASAR, TAGS.VUE, TAGS.TAILWIND],
+  },
+  {
+    link: "https://weather-app-with-vue-and-tailwind.vercel.app/",
+    github: "https://github.com/NIPIO/Weather-App-With-Vue-And-Tailwind",
+    image: "/projects/Weather.png",
+    tags: [TAGS.TAILWIND, TAGS.VUE],
+  },
+]
+
+const PROJECTS = [
+  ...PROJECTS_DATA.map((project, i) => ({
+    ...project,
+    title: t.projects.items[i]?.title || '',
+    description: t.projects.items[i]?.description || '',
+  })),
+  // Duplicar para el efecto de scroll
+  ...PROJECTS_DATA.map((project, i) => ({
+    ...project,
+    title: t.projects.items[i]?.title || '',
+    description: t.projects.items[i]?.description || '',
+  })),
+]
+---
+
+<section class="relative h-[250vh] md:h-[350vh] md:-mt-[60px]">
+  <!-- CONTENEDOR STICKY -->
+  <div class="sticky top-0 h-screen overflow-hidden">
+    <div class="relative w-full h-full flex items-center justify-center">
+      {PROJECTS.map((project, i) => (
+        <div class="card" data-index={i}>
+          <div class="box">
+            <!-- CONTENIDO DEL PROYECTO -->
+            <article class="flex flex-col md:flex-row gap-8 w-full h-full p-4 md:p-8">
+              <!-- Imagen -->
+              <div class="w-full md:w-1/2 flex items-center justify-center">
+                <div class="relative overflow-hidden rounded-xl shadow-lg">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    loading="lazy"
+                    class="object-cover w-full h-full max-h-[320px] md:max-h-full"
+                  />
+                </div>
+              </div>
+
+              <!-- Texto -->
+              <div class="w-full md:w-1/2 flex flex-col justify-center">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+                  {project.title}
+                </h3>
+
+                <ul class="flex flex-wrap gap-2 mt-3">
+                  {project.tags.map((tag) => (
+                    <li>
+                      <a
+                        href={tag.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class={`flex items-center gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 hover:opacity-80 transition-opacity`}
+                      >
+                        <tag.icon class="size-4" />
+                        {tag.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+
+                <p class="mt-4 text-gray-700 dark:text-gray-400">
+                  {project.description}
+                </p>
+
+                <footer class="flex gap-x-4 mt-6">
+                  {project.github && (
+                    <LinkButton href={project.github}>
+                      <GitHub class="size-6" />
+                      Code
+                    </LinkButton>
+                  )}
+                  {project.link && (
+                    <LinkButton href={project.link}>
+                      <Link class="size-4" />
+                      {t.projects.preview}
+                    </LinkButton>
+                  )}
+                </footer>
+              </div>
+            </article>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.card {
+  position: absolute;
+  top: 18%;
+  left: 10%;
+  width: 80%;
+  height: 62%;
+  border-radius: 2rem;
+
+  transform:
+    translateY(calc(var(--p, 0) * 140px))
+    scale(calc(1 - var(--p, 0) * 0.22));
+
+  transition: transform 0.06s linear;
+  will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .card {
+    top: 10%;
+    left: 5%;
+    width: 90%;
+    height: 75%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    top: 5%;
+    left: 2.5%;
+    width: 95%;
+    height: 85%;
+  }
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+
+  background: radial-gradient(
+    ellipse at top right,
+    rgba(120,216,115,0.35),
+    rgba(255,255,255,0.96)
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* DARK */
+:global(html.dark) .box {
+  background: radial-gradient(
+    ellipse at top right,
+    rgba(120,216,115,0.25),
+    rgba(15,23,42,0.95)
+  );
+}
+</style>
+
+<script src="./Projects.astro.js"></script>
