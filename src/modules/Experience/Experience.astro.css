@@ -1,0 +1,150 @@
+/* ===== SECTION ===== */
+
+.experience-section {
+    padding: 4rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.timeline-wrapper {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* ===== MASK (fade edges) ===== */
+
+.timeline-mask {
+    width: 110%;
+    margin-left: -5%;
+    overflow: hidden;
+
+    /* el fade posta */
+    mask-image: linear-gradient(
+            90deg,
+            transparent 0%,
+            black 3%,
+            black 97%,
+            transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+            90deg,
+            transparent 0%,
+            black 3%,
+            black 97%,
+            transparent 100%
+    );
+}
+
+@media (max-width: 768px) {
+    .timeline-mask {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* ===== TIMELINE ===== */
+
+.timeline {
+    position: relative;
+    display: flex;
+    gap: 4rem;
+    padding: 2rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.timeline::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+@media (max-width: 768px) {
+    .timeline {
+        gap: 2rem;
+        padding: 1rem;
+    }
+}
+
+.timeline.no-snap {
+    scroll-snap-type: none;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 170px;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(34, 197, 94, 0.4),
+            transparent
+    );
+    pointer-events: none;
+}
+
+/* ===== ITEM ===== */
+
+.timeline-item {
+    position: relative;
+    min-width: 380px;
+    scroll-snap-align: center;
+}
+
+@media (max-width: 768px) {
+    .timeline-item {
+        min-width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline-item {
+        min-width: calc(100vw - 2rem);
+    }
+}
+
+/* Estilos para cuando los efectos están deshabilitados (modo grid) */
+.timeline-wrapper.effects-disabled .timeline {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)) !important;
+    gap: 2rem !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    padding: 2rem 0 !important;
+    position: relative !important;
+}
+
+.timeline-wrapper.effects-disabled .timeline-mask {
+    width: 100% !important;
+    margin-left: 0 !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+    overflow: visible !important;
+}
+
+.timeline-wrapper.effects-disabled .timeline-line {
+    display: none !important;
+}
+
+.timeline-wrapper.effects-disabled .timeline-item {
+    min-width: 0 !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+}
+
+.dot {
+    position: absolute;
+    top: 163px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.15);
+    z-index: 2;
+}

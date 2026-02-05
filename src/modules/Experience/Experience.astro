@@ -1,0 +1,46 @@
+---
+import ExperienceItem from "@/modules/Experience/ExperienceItem.astro";
+import Briefcase from "@/components/icons/Briefcase.astro";
+import "./Experience.astro.css"
+
+const { t } = Astro.locals
+
+const TECH_URLS: Record<string, string> = {
+  'Vue': 'https://vuejs.org',
+  'Laravel': 'https://laravel.com',
+  'Docker': 'https://www.docker.com',
+  'MySQL': 'https://www.mysql.com',
+  'React': 'https://react.dev',
+  'Prestashop': 'https://www.prestashop.com',
+  'Symfony': 'https://symfony.com',
+  'AngularJS': 'https://angularjs.org',
+  'Angular': 'https://angular.io',
+}
+
+const EXPERIENCE = t.experience.items.map(item => ({
+    ...item,
+    actual: false
+}))
+---
+
+<section class="timeline-wrapper">
+    <h2 class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white">
+        <Briefcase class="size-8"/>
+        {t.experience.title}
+    </h2>
+
+
+    <div class="timeline-mask">
+        <div class="timeline" id="timeline">
+            <div class="timeline-line"></div>
+
+            {EXPERIENCE.map((exp: typeof EXPERIENCE[0]) => (
+                    <article class="timeline-item">
+                        <!--<span class="dot" class:list={{ actual: exp.actual }}></span>-->
+                        <ExperienceItem experience={exp} techUrls={TECH_URLS} learningLabel={t.experience.learning}/>
+                    </article>
+            ))}
+        </div>
+    </div>
+</section>
+<script src="./Experience.astro.js"></script>
