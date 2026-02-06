@@ -1,8 +1,12 @@
 ---
-import GitHub from "@/components/icons/GitHub.astro"
+import GitLab from "@/components/icons/GitLab.astro"
 import Quasar from "@/components/icons/Quasar.astro"
+import React from "@/components/icons/React.astro"
+import Vite from "@/components/icons/Vite.astro"
 import Vue from "@/components/icons/Vue.astro"
 import Tailwind from "@/components/icons/Tailwind.astro"
+import AstroIcon from "@/components/icons/Astro.astro"
+import Laravel from "@/components/icons/Laravel.astro"
 import Link from "@/components/icons/Link.astro"
 import LinkButton from "@/modules/LinkButton/LinkButton.astro"
 
@@ -14,6 +18,18 @@ const TAGS = {
     class: "bg-[#7a95ff] text-white",
     icon: Quasar,
     url: "https://quasar.dev",
+  },
+  REACT: {
+    name: "React",
+    class: "bg-[#61dafb] text-white",
+    icon: React,
+    url: "https://react.dev",
+  },
+  VITE: {
+    name: "Vite",
+    class: "bg-[#646cff] text-white",
+    icon: Vite,
+    url: "https://vitejs.dev",
   },
   VUE: {
     name: "Vue",
@@ -27,20 +43,50 @@ const TAGS = {
     icon: Tailwind,
     url: "https://tailwindcss.com",
   },
+  ASTRO: {
+    name: "Astro",
+    class: "bg-[#FF5D01] text-white",
+    icon: AstroIcon,
+    url: "https://astro.build",
+  },
+  LARAVEL: {
+    name: "Laravel",
+    class: "bg-[#FF2D20] text-white",
+    icon: Laravel,
+    url: "https://laravel.com",
+  },
 }
 
 const PROJECTS_DATA = [
   {
-    link: "https://chatquasar-36f6f.web.app/",
-    github: "https://github.com/NIPIO/Chat-Quasar-Firebase",
-    image: "/projects/Chat.PNG",
-    tags: [TAGS.QUASAR, TAGS.VUE, TAGS.TAILWIND],
+    link: null,
+    github: "https://gitlab.com/nmpiovano/login-frontend",
+    image: "/projects/panel-logueo.png",
+    tags: [TAGS.REACT, TAGS.VITE, TAGS.TAILWIND, TAGS.LARAVEL],
   },
   {
-    link: "https://weather-app-with-vue-and-tailwind.vercel.app/",
-    github: "https://github.com/NIPIO/Weather-App-With-Vue-And-Tailwind",
-    image: "/projects/Weather.png",
-    tags: [TAGS.TAILWIND, TAGS.VUE],
+    link: null,
+    github: "https://gitlab.com/nmpiovano/market-dashboard",
+    image: "/projects/market-dashboard.png",
+    tags: [TAGS.VUE, TAGS.VITE, TAGS.TAILWIND],
+  },
+  {
+    link: null,
+    github: "https://gitlab.com/nmpiovano/tech-decision",
+    image: "/projects/tech-decision.png",
+    tags: [TAGS.VUE, TAGS.VITE, TAGS.TAILWIND],
+  },
+  {
+    link: null,
+    github: null,
+    image: "/projects/chat.png",
+    tags: [TAGS.TAILWIND],
+  },
+  {
+    link: null,
+    github: "https://gitlab.com/nmpiovano/porfolio",
+    image: "/projects/porfolio.png",
+    tags: [TAGS.ASTRO, TAGS.VITE, TAGS.TAILWIND],
   },
 ]
 
@@ -59,7 +105,7 @@ const PROJECTS = [
 ]
 ---
 
-<section class="relative h-[250vh] md:h-[350vh] md:-mt-[60px]">
+<section class="relative h-[280vh] md:h-[380vh] md:-mt-[60px] projects-section">
   <!-- CONTENEDOR STICKY -->
   <div class="sticky top-0 h-screen overflow-hidden">
     <div class="relative w-full h-full flex items-center justify-center">
@@ -95,7 +141,13 @@ const PROJECTS = [
                         rel="noopener noreferrer"
                         class={`flex items-center gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 hover:opacity-80 transition-opacity`}
                       >
-                        <tag.icon class="size-4" />
+                        {tag.icon === Quasar && <Quasar class="size-4" />}
+                        {tag.icon === React && <React class="size-4" />}
+                        {tag.icon === Vite && <Vite class="size-4" />}
+                        {tag.icon === Vue && <Vue class="size-4" />}
+                        {tag.icon === Tailwind && <Tailwind class="size-4" />}
+                        {tag.icon === AstroIcon && <AstroIcon class="size-4" />}
+                        {tag.icon === Laravel && <Laravel class="size-4" />}
                         {tag.name}
                       </a>
                     </li>
@@ -109,7 +161,7 @@ const PROJECTS = [
                 <footer class="flex gap-x-4 mt-6">
                   {project.github && (
                     <LinkButton href={project.github}>
-                      <GitHub class="size-6" />
+                      <GitLab class="size-6" />
                       Code
                     </LinkButton>
                   )}
@@ -132,10 +184,10 @@ const PROJECTS = [
 <style>
 .card {
   position: absolute;
-  top: 18%;
+  top: 15%;
   left: 10%;
   width: 80%;
-  height: 62%;
+  height: 70%;
   border-radius: 2rem;
 
   transform:
@@ -148,19 +200,19 @@ const PROJECTS = [
 
 @media (max-width: 768px) {
   .card {
-    top: 10%;
+    top: 8%;
     left: 5%;
     width: 90%;
-    height: 75%;
+    height: 80%;
   }
 }
 
 @media (max-width: 480px) {
   .card {
-    top: 5%;
+    top: 3%;
     left: 2.5%;
     width: 95%;
-    height: 85%;
+    height: 88%;
   }
 }
 

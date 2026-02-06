@@ -1,10 +1,10 @@
 function initProjectsScroll() {
   // Verificar si es Firefox
   const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1
-  
+
   const cards = [...document.querySelectorAll('.card')]
   if (cards.length === 0) return
-  
+
   // Si no es Firefox, desactivar todos los efectos y mostrar cards estáticas
   // if (!isFirefox) {
   //   const section = document.querySelector('section.relative')
@@ -13,7 +13,7 @@ function initProjectsScroll() {
   //     section.style.minHeight = 'auto'
   //     section.style.marginTop = '0' // Quitar margin negativo para que el título sea visible
   //   }
-    
+
   //   cards.forEach((card, i) => {
   //     card.style.position = 'relative'
   //     card.style.top = 'auto'
@@ -25,7 +25,7 @@ function initProjectsScroll() {
   //     card.style.opacity = '1'
   //     card.style.zIndex = 'auto'
   //   })
-    
+
   //   // Cambiar el contenedor sticky a normal
   //   const stickyContainer = document.querySelector('.sticky')
   //   if (stickyContainer) {
@@ -33,7 +33,7 @@ function initProjectsScroll() {
   //     stickyContainer.style.height = 'auto'
   //     stickyContainer.style.overflow = 'visible'
   //   }
-    
+
   //   const innerContainer = document.querySelector('.sticky > div')
   //   if (innerContainer) {
   //     innerContainer.style.display = 'flex'
@@ -41,21 +41,30 @@ function initProjectsScroll() {
   //     innerContainer.style.gap = '2rem'
   //     innerContainer.style.alignItems = 'stretch'
   //   }
-    
+
   //   return
   // }
-  
+
   // Comportamiento con efectos solo para Firefox
+  const section = document.querySelector('.projects-section')
+  if (!section) return
+  
   const vh = window.innerHeight
   const total = cards.length
+  const step = vh * 0.75 // Espacio entre cada card
 
   function onScroll() {
+    const sectionRect = section.getBoundingClientRect()
+    const sectionTop = sectionRect.top + window.scrollY
     const y = window.scrollY
-    const step = vh * 0.65
+    
+    // Offset para que el título quede visible antes de que empiece el efecto
+    const titleOffset = vh * 0.25
+    const relativeY = Math.max(0, y - sectionTop + titleOffset)
 
     cards.forEach((card, i) => {
       const start = i * step
-      const p = Math.min(Math.max((y - start) / step, 0), 1)
+      const p = Math.min(Math.max((relativeY - start) / step, 0), 1)
 
       card.style.setProperty('--p', p)
 
