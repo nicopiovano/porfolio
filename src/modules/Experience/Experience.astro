@@ -17,7 +17,7 @@ const TECH_URLS: Record<string, string> = {
   'Angular': 'https://angular.io',
 }
 
-const EXPERIENCE = t.experience.items.map(item => ({
+const EXPERIENCE = t.experience.items.map((item: typeof t.experience.items[0]) => ({
     ...item,
     actual: false
 }))
