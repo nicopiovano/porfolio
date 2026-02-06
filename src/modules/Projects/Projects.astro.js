@@ -1,89 +1,75 @@
-function initProjectsScroll() {
-  // Verificar si es Firefox
-  const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1
-
-  const cards = [...document.querySelectorAll('.card')]
-  if (cards.length === 0) return
-
-  // Si no es Firefox, desactivar todos los efectos y mostrar cards estáticas
-  // if (!isFirefox) {
-  //   const section = document.querySelector('section.relative')
-  //   if (section) {
-  //     section.style.height = 'auto'
-  //     section.style.minHeight = 'auto'
-  //     section.style.marginTop = '0' // Quitar margin negativo para que el título sea visible
-  //   }
-
-  //   cards.forEach((card, i) => {
-  //     card.style.position = 'relative'
-  //     card.style.top = 'auto'
-  //     card.style.left = 'auto'
-  //     card.style.width = '100%'
-  //     card.style.height = 'auto'
-  //     card.style.transform = 'none'
-  //     card.style.marginBottom = '2rem'
-  //     card.style.opacity = '1'
-  //     card.style.zIndex = 'auto'
-  //   })
-
-  //   // Cambiar el contenedor sticky a normal
-  //   const stickyContainer = document.querySelector('.sticky')
-  //   if (stickyContainer) {
-  //     stickyContainer.style.position = 'relative'
-  //     stickyContainer.style.height = 'auto'
-  //     stickyContainer.style.overflow = 'visible'
-  //   }
-
-  //   const innerContainer = document.querySelector('.sticky > div')
-  //   if (innerContainer) {
-  //     innerContainer.style.display = 'flex'
-  //     innerContainer.style.flexDirection = 'column'
-  //     innerContainer.style.gap = '2rem'
-  //     innerContainer.style.alignItems = 'stretch'
-  //   }
-
-  //   return
-  // }
-
-  // Comportamiento con efectos solo para Firefox
-  const section = document.querySelector('.projects-section')
-  if (!section) return
+function initProjectsCarousel() {
+  const cards = [...document.querySelectorAll('.project-card')]
+  const prevBtn = document.querySelector('.carousel-btn-prev')
+  const nextBtn = document.querySelector('.carousel-btn-next')
+  const dots = [...document.querySelectorAll('.carousel-dot')]
   
-  const vh = window.innerHeight
-  const total = cards.length
-  const step = vh * 0.75 // Espacio entre cada card
-
-  function onScroll() {
-    const sectionRect = section.getBoundingClientRect()
-    const sectionTop = sectionRect.top + window.scrollY
-    const y = window.scrollY
+  if (cards.length === 0) return
+  
+  let currentIndex = 0
+  
+  function showCard(index) {
+    // Validar índice
+    if (index < 0) index = cards.length - 1
+    if (index >= cards.length) index = 0
     
-    // Offset para que el título quede visible antes de que empiece el efecto
-    const titleOffset = vh * 0.25
-    const relativeY = Math.max(0, y - sectionTop + titleOffset)
-
+    currentIndex = index
+    
+    // Actualizar cards
     cards.forEach((card, i) => {
-      const start = i * step
-      const p = Math.min(Math.max((relativeY - start) / step, 0), 1)
-
-      card.style.setProperty('--p', p)
-
-      // 🔑 el activo pasa atrás
-      const z = Math.round((1 - p) * 100) + (total - i)
-      card.style.zIndex = z
+      card.classList.remove('active', 'prev')
+      if (i === currentIndex) {
+        card.classList.add('active')
+      } else if (i < currentIndex) {
+        card.classList.add('prev')
+      }
+    })
+    
+    // Actualizar dots
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex)
     })
   }
-
-  window.addEventListener('scroll', onScroll)
-  onScroll()
+  
+  // Navegación con botones
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      showCard(currentIndex - 1)
+    })
+  }
+  
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      showCard(currentIndex + 1)
+    })
+  }
+  
+  // Navegación con dots
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      showCard(i)
+    })
+  })
+  
+  // Navegación con teclado
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      showCard(currentIndex - 1)
+    } else if (e.key === 'ArrowRight') {
+      showCard(currentIndex + 1)
+    }
+  })
+  
+  // Inicializar con la primera card
+  showCard(0)
 }
 
 // Inicializar cuando el DOM esté listo
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initProjectsScroll)
+  document.addEventListener('DOMContentLoaded', initProjectsCarousel)
 } else {
-  initProjectsScroll()
+  initProjectsCarousel()
 }
 
 // Reinicializar en transiciones de Astro
-document.addEventListener('astro:page-load', initProjectsScroll)
+document.addEventListener('astro:page-load', initProjectsCarousel)

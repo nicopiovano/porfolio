@@ -90,28 +90,20 @@ const PROJECTS_DATA = [
   },
 ]
 
-const PROJECTS = [
-  ...PROJECTS_DATA.map((project, i) => ({
-    ...project,
-    title: t.projects.items[i]?.title || '',
-    description: t.projects.items[i]?.description || '',
-  })),
-  // Duplicar para el efecto de scroll
-  ...PROJECTS_DATA.map((project, i) => ({
-    ...project,
-    title: t.projects.items[i]?.title || '',
-    description: t.projects.items[i]?.description || '',
-  })),
-]
+const PROJECTS = PROJECTS_DATA.map((project, i) => ({
+  ...project,
+  title: t.projects.items[i]?.title || '',
+  description: t.projects.items[i]?.description || '',
+}))
 ---
 
-<section class="relative h-[280vh] md:h-[380vh] md:-mt-[60px] projects-section">
-  <!-- CONTENEDOR STICKY -->
-  <div class="sticky top-0 h-screen overflow-hidden">
-    <div class="relative w-full h-full flex items-center justify-center">
+<section class="projects-section">
+  <!-- CONTENEDOR STICKY CON CARRUSEL -->
+  <div class="sticky top-0 h-[80vh] md:h-[85vh] overflow-hidden projects-carousel-container">
+    <div class="projects-wrapper relative h-full">
       {PROJECTS.map((project, i) => (
-        <div class="card" data-index={i}>
-          <div class="box">
+        <div class="project-card" data-index={i}>
+          <div class="card-box">
             <!-- CONTENIDO DEL PROYECTO -->
             <article class="flex flex-col md:flex-row gap-8 w-full h-full p-4 md:p-8">
               <!-- Imagen -->
@@ -177,50 +169,80 @@ const PROJECTS = [
           </div>
         </div>
       ))}
+      
+      <!-- Navegación del carrusel -->
+      <button class="carousel-btn carousel-btn-prev" aria-label="Proyecto anterior">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+      </button>
+      <button class="carousel-btn carousel-btn-next" aria-label="Proyecto siguiente">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m9 18 6-6-6-6"/>
+        </svg>
+      </button>
+      
+      <!-- Indicadores (dots) -->
+      <div class="carousel-dots">
+        {PROJECTS.map((_, i) => (
+          <button class="carousel-dot" data-index={i} aria-label={`Ir al proyecto ${i + 1}`}></button>
+        ))}
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-.card {
-  position: absolute;
-  top: 15%;
-  left: 10%;
-  width: 80%;
-  height: 70%;
-  border-radius: 2rem;
-
-  transform:
-    translateY(calc(var(--p, 0) * 140px))
-    scale(calc(1 - var(--p, 0) * 0.22));
-
-  transition: transform 0.06s linear;
-  will-change: transform;
+.projects-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 2rem 0;
 }
 
-@media (max-width: 768px) {
-  .card {
-    top: 8%;
-    left: 5%;
-    width: 90%;
-    height: 80%;
-  }
+.projects-carousel-container {
+  position: relative;
 }
 
-@media (max-width: 480px) {
-  .card {
-    top: 3%;
-    left: 2.5%;
-    width: 95%;
-    height: 88%;
-  }
-}
-
-.box {
+.projects-wrapper {
+  position: relative;
   width: 100%;
   height: 100%;
-  border-radius: inherit;
+}
 
+.project-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+
+.project-card.active {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.project-card.prev {
+  transform: translateX(-100%);
+}
+
+.card-box {
+  width: 90%;
+  max-width: 1200px;
+  height: 100%;
+  border-radius: 2rem;
+  padding: 2rem;
+  
   background: radial-gradient(
     ellipse at top right,
     rgba(120,216,115,0.35),
@@ -232,13 +254,131 @@ const PROJECTS = [
   justify-content: center;
 }
 
+/* Botones de navegación */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #333;
+}
+
+.carousel-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-btn-prev {
+  left: 1rem;
+}
+
+.carousel-btn-next {
+  right: 1rem;
+}
+
+:global(html.dark) .carousel-btn {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+:global(html.dark) .carousel-btn:hover {
+  background: rgba(15, 23, 42, 1);
+}
+
+/* Indicadores (dots) */
+.carousel-dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.carousel-dot.active {
+  background: rgba(120, 216, 115, 0.8);
+  transform: scale(1.2);
+}
+
+:global(html.dark) .carousel-dot {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+:global(html.dark) .carousel-dot.active {
+  background: rgba(120, 216, 115, 0.8);
+}
+
 /* DARK */
-:global(html.dark) .box {
+:global(html.dark) .card-box {
   background: radial-gradient(
     ellipse at top right,
     rgba(120,216,115,0.25),
     rgba(15,23,42,0.95)
   );
+}
+
+@media (max-width: 768px) {
+  .card-box {
+    width: 95%;
+    padding: 1.5rem;
+  }
+  
+  .project-card {
+    padding: 0.5rem;
+  }
+  
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .carousel-btn-prev {
+    left: 0.5rem;
+  }
+  
+  .carousel-btn-next {
+    right: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-box {
+    width: 98%;
+    padding: 1rem;
+  }
+  
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .carousel-dots {
+    bottom: 0.5rem;
+  }
 }
 </style>
 
