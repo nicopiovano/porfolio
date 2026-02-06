@@ -7,8 +7,8 @@ export const RESPONSES_EN: Record<string, ChatResponse> = {
       "What's your experience?",
       "What technologies do you work with?",
       "What projects have you worked on?",
-      "How do you work?",
-      "Are you available for projects?"
+      "Are you available for projects?",
+      "Have you worked with AI?"
     ]
   },
 
@@ -25,7 +25,7 @@ export const RESPONSES_EN: Record<string, ChatResponse> = {
 
   stack: {
     text:
-      "I mainly work with Vue, Astro and Tailwind on the frontend, and Laravel with MySQL on the backend. I also use Docker and APIs and have worked with React.js",
+      "I mainly work with Vue, Astro and Tailwind on the frontend, and Laravel with MySQL on the backend. I also use Docker and APIs and have worked with React.js.",
     followUps: [
       "Do you use Vue or React?",
       "Do you have fullstack experience?",
@@ -150,7 +150,7 @@ export const RESPONSES_EN: Record<string, ChatResponse> = {
 
   "projects.ecommerce.tech": {
     text:
-      "In e-commerce mainly with Prestashop, making complex websites like Smiles",
+      "In e-commerce mainly with Prestashop, making complex websites like Smiles.",
     followUps: [
       "Can you show me some projects?",
       "Have you worked on e-commerce?",
@@ -225,6 +225,13 @@ export const RESPONSES_EN: Record<string, ChatResponse> = {
     followUps: [
       "Full time or part time?",
       "What hours do you work?",
+      "⬅ Back to start"
+    ]
+  },
+
+  ai: {
+    text: "I use it quite a bit, side by side. Mainly to accelerate development: code generation, refactoring, debugging, and documentation. I also use it to explore new technologies and find solutions to complex problems. It's another tool in my stack that helps me be more productive and efficient.",
+    followUps: [
       "⬅ Back to start"
     ]
   },

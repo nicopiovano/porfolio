@@ -7,8 +7,8 @@ export const RESPONSES_ES: Record<string, ChatResponse> = {
       "¿Cuál es tu experiencia?",
       "¿En qué tecnologías trabajás?",
       "¿En qué proyectos trabajaste?",
-      "¿Cómo es tu forma de trabajo?",
-      "¿Estás disponible para proyectos?"
+      "¿Estás disponible para proyectos?",
+      "¿Has trabajado con IA?"
     ]
   },
 
@@ -25,7 +25,7 @@ export const RESPONSES_ES: Record<string, ChatResponse> = {
 
   stack: {
     text:
-      "Trabajo principalmente con Vue, Astro y Tailwind en frontend, y Laravel con MySQL en backend. También uso Docker y APIs y he trabajado con React.js",
+      "Trabajo principalmente con Vue, Astro y Tailwind en frontend, y Laravel con MySQL en backend. También uso Docker y APIs y he trabajado con React.js.",
     followUps: [
       "¿Usás Vue o React?",
       "¿Tenés experiencia fullstack?",
@@ -151,7 +151,7 @@ export const RESPONSES_ES: Record<string, ChatResponse> = {
 
   "projects.ecommerce.tech": {
     text:
-      "En e-commerce sobretodo con Prestashop, haciendo sitios web complejos como Smiles",
+      "En e-commerce sobretodo con Prestashop, haciendo sitios web complejos como Smiles.",
     followUps: [
       "¿Podés mostrarme algunos proyectos?",
       "¿Trabajaste en e-commerce?",
@@ -225,6 +225,13 @@ export const RESPONSES_ES: Record<string, ChatResponse> = {
     followUps: [
       "¿Full time o part time?",
       "¿En qué horarios trabajás?",
+      "⬅ Volver al inicio"
+    ]
+  },
+
+  ai: {
+    text: "La uso bastante, codo a codo. Principalmente para acelerar el desarrollo: generación de código, refactoring, debugging y documentación. También la uso para explorar nuevas tecnologías y encontrar soluciones a problemas complejos. Es una herramienta más en mi stack que me ayuda a ser más productivo y eficiente.",
+    followUps: [
       "⬅ Volver al inicio"
     ]
   },

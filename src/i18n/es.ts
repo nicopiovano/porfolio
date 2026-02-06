@@ -123,8 +123,8 @@ export default {
     initialBadges: [
       "¿Cuál es tu experiencia?",
       "¿En qué tecnologías trabajás?",
-      "¿Cómo es tu forma de trabajo?",
-      "¿Estás disponible para proyectos?"
+      "¿Estás disponible para proyectos?",
+      "¿Has trabajado con IA?"
     ]
   }
 }
