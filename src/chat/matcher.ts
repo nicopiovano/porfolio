@@ -1,4 +1,4 @@
-export function matchIntent(message: string): string {
+export function matchIntent(message: string, _lang: string = "es"): string {
   const text = message.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 
   // Volver al inicio siempre tiene prioridad (multiidioma)
@@ -7,6 +7,20 @@ export function matchIntent(message: string): string {
     text.includes("back to start") || text.includes("back") ||
     text.includes("voltar ao inicio") || text.includes("voltar")
   ) return "greeting"
+
+  // IA tiene prioridad antes de otros intents - debe ser específico
+  if (
+    text.includes("has trabajado con ia") || text.includes("has trabajado con ai") ||
+    text.includes("have you worked with ai") || text.includes("have you worked with ia") ||
+    text.includes("ja trabalhou com ia") || text.includes("ja trabalhou com ai") ||
+    (text.includes("trabajado") && (text.includes("ia") || text.includes("ai"))) ||
+    (text.includes("worked") && (text.includes("ai") || text.includes("ia"))) ||
+    (text.includes("trabalhou") && (text.includes("ia") || text.includes("ai"))) ||
+    text.includes("chatgpt") || text.includes("gpt") || text.includes("claude") ||
+    (text.includes("asistente") && (text.includes("ia") || text.includes("ai"))) || 
+    (text.includes("assistant") && (text.includes("ai") || text.includes("ia"))) ||
+    (text.includes("assistente") && (text.includes("ia") || text.includes("ai")))
+  ) return "ai"
 
   // Intents de segundo nivel - más específicos primero (multiidioma)
   if (

@@ -89,6 +89,8 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 0.5rem;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .badge {
@@ -101,6 +103,10 @@
   background: rgba(34, 197, 94, 0.15);
   color: #022c16;
   border: 1px solid rgba(34, 197, 94, 0.3);
+  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 :global(html.dark) .badge {

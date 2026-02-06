@@ -25,51 +25,88 @@ const { t, lang } = Astro.locals
 </section>
 
 <script>
-  const body = document.getElementById("chat-body")
-  if (!body) return
-  
-  const chatCard = document.querySelector(".chat-card")
-  const currentLang = chatCard?.getAttribute("data-lang") || "es"
-  
-  body.addEventListener("click", async (e: Event) => {
-    const target = e.target as HTMLElement
-    if (!target || !target.classList.contains("badge")) return
+  function initChat() {
+    const body = document.getElementById("chat-body")
+    if (!body) return
+    
+    const chatCard = document.querySelector(".chat-card")
+    const currentLang = chatCard?.getAttribute("data-lang") || "es"
+    
+    body.addEventListener("click", async (e: Event) => {
+      const target = e.target as HTMLElement
+      if (!target || !target.classList.contains("badge")) return
 
-    // 🔥 limpiar badges anteriores
-    body.querySelectorAll(".badges").forEach(el => el.remove())
+      // 🔥 limpiar badges anteriores
+      body.querySelectorAll(".badges").forEach(el => el.remove())
 
-    const message = target.textContent
-    if (!message) return
-
-    body.insertAdjacentHTML(
-      "beforeend",
-      `<div class="msg user">${message}</div>`
-    )
-
-    const res = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message, lang: currentLang })
-    })
-
-    const data = await res.json()
-
-    body.insertAdjacentHTML(
-      "beforeend",
-      `<div class="msg assistant">${data.reply}</div>`
-    )
-
-    if (data.followUps?.length) {
-      const badges = (data.followUps as string[])
-        .map((q: string) => `<button class="badge">${q}</button>`)
-        .join("")
+      const message = target.textContent
+      if (!message) return
 
       body.insertAdjacentHTML(
         "beforeend",
-        `<div class="badges">${badges}</div>`
+        `<div class="msg user">${message}</div>`
       )
-    }
 
-    body.scrollTop = body.scrollHeight
-  })
+      try {
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message, lang: currentLang })
+        })
+
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`)
+        }
+
+        const data = await res.json()
+
+        // Evitar duplicar la respuesta si ya existe
+        const existingMessages = body.querySelectorAll('.msg.assistant')
+        const lastMessage = existingMessages[existingMessages.length - 1]
+        if (lastMessage && lastMessage.textContent === data.reply) {
+          return // Ya existe esta respuesta, no duplicar
+        }
+
+        body.insertAdjacentHTML(
+          "beforeend",
+          `<div class="msg assistant">${data.reply}</div>`
+        )
+
+        if (data.followUps?.length) {
+          // Evitar duplicar badges si ya existen
+          const existingBadges = body.querySelectorAll('.badges')
+          if (existingBadges.length > 0) {
+            return // Ya hay badges, no duplicar
+          }
+
+          const badges = (data.followUps as string[])
+            .map((q: string) => `<button class="badge">${q}</button>`)
+            .join("")
+
+          body.insertAdjacentHTML(
+            "beforeend",
+            `<div class="badges">${badges}</div>`
+          )
+        }
+
+        body.scrollTop = body.scrollHeight
+      } catch (error) {
+        console.error("Error en el chat:", error)
+        body.insertAdjacentHTML(
+          "beforeend",
+          `<div class="msg assistant">Lo siento, hubo un error. Por favor intenta de nuevo.</div>`
+        )
+      }
+    })
+  }
+
+  // Inicializar cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initChat)
+  } else {
+    initChat()
+  }
+
+  // Reinicializar en transiciones de Astro
+  document.addEventListener('astro:page-load', initChat)
 </script>
