@@ -16,12 +16,24 @@ export default {
     preview: "Preview",
     items: [
       {
-        title: "ChatQuasar - Chat ao vivo!",
-        description: "Chat desenvolvido com o que há de mais recente em Vue (Quasar). Múltiplos usuários podem conversar no mesmo chat. Login e autenticação com Gmail e Firebase. Criado do zero com Quasar."
+        title: "Painel de Login",
+        description: "Autenticação baseada em cookies com Laravel Sanctum para maior segurança, evitando tokens no localStorage. Frontend SPA consome a API com Axios configurado automaticamente. Rotas protegidas gerenciadas com componente ProtectedRoute."
       },
       {
-        title: "App de Clima",
-        description: "Aplicação conectada a duas APIs (cidades e clima) para consultar clima atual, diário e semanal. Possui histórico de buscas. Criada do zero com Vue e Tailwind CSS."
+        title: "Market Dashboard",
+        description: "Dashboard financeiro com dados mockados para simular informações de mercado. Sistema de visualização com gráficos interativos e métricas-chave. Os mocks permitem desenvolver sem depender de APIs externas."
+      },
+      {
+        title: "Simulador de Decisões Técnicas",
+        description: "Simulador que utiliza um motor de decisões (decisionEngine) para avaliar e recomendar tecnologias. Analisa disponibilidade, complexidade e requisitos do projeto, gerando recomendações baseadas em regras programadas."
+      },
+      {
+        title: "Chat Programável",
+        description: "Chat assistente com respostas programáveis baseadas em intents. Matcher detecta a intenção do usuário e retorna respostas contextuais com follow-ups dinâmicos. Funciona completamente no cliente sem backend."
+      },
+      {
+        title: "Portfólio Multiidioma",
+        description: "Portfólio com suporte multiidioma (ES, EN, PT) usando i18n personalizado. Rotas por idioma (/es, /en, /pt) para SEO, traduções centralizadas e detecção automática a partir da URL."
       }
     ]
   },

@@ -1,11 +1,11 @@
 // src/i18n/en.ts
 export default {
-  header: [  
-      { title: "Experience", section: "experiencia", url: "#experiencia" },
-      { title: "Projects", section: "proyectos", url: "#proyectos" },
-      { title: "About Me", section: "sobre-mi", url: "#sobre-mi" },
-      { title: "Resume", url: "/CV_NICO_PIOVANO_2024.pdf", download: true }
-    ],
+  header: [
+    { title: "Experience", section: "experiencia", url: "#experiencia" },
+    { title: "Projects", section: "proyectos", url: "#proyectos" },
+    { title: "About Me", section: "sobre-mi", url: "#sobre-mi" },
+    { title: "Resume", url: "/CV_NICO_PIOVANO_2024.pdf", download: true }
+  ],
   personal: {
     title: "Fullstack Developer",
     subtitle: "+7 years of experience.",
@@ -17,12 +17,24 @@ export default {
     preview: "Preview",
     items: [
       {
-        title: "ChatQuasar - Live Chat!",
-        description: "A chat developed with the latest Vue (Quasar). Multiple users can chat in the same chat. Login and authentication with Gmail and Firebase. Created from scratch with Quasar."
+        title: "Login Panel",
+        description: "Cookie-based authentication with Laravel Sanctum for enhanced security, avoiding token storage in localStorage. SPA frontend consumes the API with Axios configured automatically. Protected routes managed with ProtectedRoute component."
       },
       {
-        title: "Weather App",
-        description: "Application connected to two APIs (one for cities, another for weather) to check current, daily and weekly weather. Developed with search history. Created from scratch with Vue and Tailwind CSS."
+        title: "Market Dashboard",
+        description: "Financial dashboard using mocked data to simulate market information. Data visualization system with interactive charts and key metrics. Mocks allow development without depending on external APIs."
+      },
+      {
+        title: "Tech Decision Simulator",
+        description: "Simulator using a decision engine (decisionEngine) to evaluate and recommend technologies. Analyzes availability, complexity, and project requirements, generating recommendations based on programmed rules."
+      },
+      {
+        title: "Programmable Chat",
+        description: "Assistant chat with programmable responses based on intents. Matcher detects user intent and returns contextual responses with dynamic follow-ups. Works completely on the client side without backend."
+      },
+      {
+        title: "Multi-language Portfolio",
+        description: "Portfolio with multi-language support (ES, EN, PT) using custom i18n system. Language routes (/es, /en, /pt) for SEO, centralized translations, and automatic detection from URL."
       }
     ]
   },
