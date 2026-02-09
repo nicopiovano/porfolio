@@ -9,4 +9,11 @@ declare global {
   }
 }
 
-export {}
+// `astro check` a veces no resuelve tipos de `three` desde <script> inline en `.astro`.
+// Declaraciones mínimas para evitar TS7016 durante build.
+declare module "three";
+declare module "three/examples/jsm/controls/OrbitControls.js" {
+  export const OrbitControls: any;
+}
+
+export { }
