@@ -30,8 +30,9 @@
     // @ts-ignore
     const THREE = await import("three");
     // @ts-ignore
-    const { OrbitControls } =
-      await import("three/examples/jsm/controls/OrbitControls.js");
+    const { OrbitControls } = await import(
+      "three/examples/jsm/controls/OrbitControls.js"
+    );
 
     const container = document.getElementById("three-container");
     if (!container) return;
