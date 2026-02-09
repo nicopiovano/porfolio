@@ -1,7 +1,4 @@
 function initExperienceScroll() {
-  // Verificar si es Firefox
-  const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1
-  
   const timeline = document.getElementById('timeline')
   const timelineWrapper = document.querySelector('.timeline-wrapper')
   
