@@ -22,7 +22,7 @@ export default {
       },
       {
         title: "Market Dashboard",
-        description: "Financial dashboard using mocked data to simulate market information. Data visualization system with interactive charts and key metrics. Mocks allow development without depending on external APIs."
+        description: "Financial dashboard using mocked data to simulate market information. Data visualization system with interactive charts and key metrics."
       },
       {
         title: "Tech Decision Simulator",
@@ -67,7 +67,7 @@ export default {
         aprendizajes: "CMS management, direct communication with US clients through daily meetings in English."
       },
       {
-        date: "Dec. 2018 - Jan. 2021",
+        date: "Dec. 2018 - Nov. 2020",
         title: "Fullstack Web Developer",
         company: "CNRT (Ministry of Transport)",
         usos: ['Symfony', 'AngularJS', 'Angular', 'MySQL'],

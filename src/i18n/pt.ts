@@ -21,7 +21,7 @@ export default {
       },
       {
         title: "Market Dashboard",
-        description: "Dashboard financeiro com dados mockados para simular informações de mercado. Sistema de visualização com gráficos interativos e métricas-chave. Os mocks permitem desenvolver sem depender de APIs externas."
+        description: "Dashboard financeiro com dados mockados para simular informações de mercado. Sistema de visualização com gráficos interativos e métricas-chave."
       },
       {
         title: "Simulador de Decisões Técnicas",
@@ -66,7 +66,7 @@ export default {
         aprendizajes: "Gerenciamento de CMS, comunicação direta com clientes dos Estados Unidos através de reuniões diárias em inglês."
       },
       {
-        date: "Dez. 2018 - Jan. 2021",
+        date: "Dez. 2018 - Nov. 2020",
         title: "Desenvolvedor Web Fullstack",
         company: "CNRT (Ministério de Transporte)",
         usos: ['Symfony', 'AngularJS', 'Angular', 'MySQL'],
