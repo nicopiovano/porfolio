@@ -3,7 +3,7 @@ export default {
     { title: "Experiência", section: "experiencia", url: "#experiencia" },
     { title: "Projetos", section: "proyectos", url: "#proyectos" },
     { title: "Sobre mim", section: "sobre-mi", url: "#sobre-mi" },
-    { title: "Currículo", url: "/CV_NICO_PIOVANO_2024.pdf", download: true }
+    { title: "Currículo", url: "/CV_NICO_PIOVANO_2026.pdf", download: true }
   ],
   personal: {
     title: "Desenvolvedor Fullstack",
@@ -100,7 +100,7 @@ export default {
       }
     ]
   },
-  
+
   footer: {
     developed: "Desenvolvido com",
     downloadCV: "Baixar CV 2026"
