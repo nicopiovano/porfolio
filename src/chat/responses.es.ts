@@ -81,9 +81,10 @@ export const RESPONSES_ES: Record<string, ChatResponse> = {
 
   "experience.remote": {
     text:
-      "Sí, trabajo principalmente de forma remota. Tengo experiencia trabajando con equipos distribuidos y gestionando mi tiempo de manera autónoma.",
+      "Sí, trabajo remoto. Me adapto bien a equipos distribuidos (comunicación async + reuniones cuando suman), organizo el trabajo por objetivos y hago entregas incrementales para que siempre haya visibilidad del progreso.",
     followUps: [
-      "¿Cómo es tu forma de trabajo remoto?",
+      "¿Cómo es tu proceso de trabajo?",
+      "¿En qué horarios trabajás?",
       "¿Trabajás en equipo?",
       "⬅ Volver al inicio"
     ]

@@ -8,6 +8,10 @@ export function matchIntent(message: string, _lang: string = "es"): string {
     text.includes("voltar ao inicio") || text.includes("voltar")
   ) return "greeting"
 
+  // Remoto: muchas preguntas vienen como "¿trabajás/trabajas remoto?" y no contienen "trabajo"/"experiencia"
+  // Resolvemos temprano para no caer en "unknown".
+  if (text.includes("remoto") || text.includes("remote")) return "experience.remote"
+
   // IA tiene prioridad antes de otros intents - debe ser específico
   if (
     text.includes("has trabajado con ia") || text.includes("has trabajado con ai") ||
