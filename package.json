@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "BROWSERSLIST_IGNORE_OLD_DATA=1 astro check && BROWSERSLIST_IGNORE_OLD_DATA=1 astro build",
     "preview": "astro preview",
     "astro": "astro"
   },

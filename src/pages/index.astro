@@ -1,14 +1,12 @@
 ---
-// src/pages/index.astro
-function detectLang(request: Request) {
-  const accept = request.headers.get("accept-language") ?? ""
-
-  if (accept.startsWith("pt")) return "pt"
-  if (accept.startsWith("en")) return "en"
-  return "es"
-}
-
-const lang = detectLang(Astro.request)
+// Static output: `Astro.request.headers` no está disponible en build.
+// Usamos fallback a /es y, en el cliente, redirigimos según el idioma del navegador.
+const fallbackLang = "es"
 ---
 
-<meta http-equiv="refresh" content={`0; url=/${lang}`} />
+<meta http-equiv="refresh" content={`0; url=/${fallbackLang}`} />
+<script is:inline>
+  const lang = (navigator.language || "").toLowerCase();
+  const target = lang.startsWith("pt") ? "pt" : lang.startsWith("en") ? "en" : "es";
+  window.location.replace(`/${target}`);
+</script>

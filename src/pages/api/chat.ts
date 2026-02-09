@@ -5,6 +5,19 @@ import { getLangFromUrl } from "@/utils/lang"
 import type { Lang } from "@/i18n"
 import { LANGS } from "@/i18n"
 
+export const GET: APIRoute = async () => {
+  return new Response(
+    JSON.stringify({ error: "Method Not Allowed", allowed: ["POST"] }),
+    {
+      status: 405,
+      headers: {
+        "Content-Type": "application/json",
+        "Allow": "POST"
+      }
+    }
+  )
+}
+
 export const POST: APIRoute = async ({ request, url }) => {
   const { message, lang: langFromBody } = await request.json()
   
