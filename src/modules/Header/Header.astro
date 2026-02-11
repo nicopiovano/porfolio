@@ -2,7 +2,7 @@
 import ThemeToggle from "@/modules/ThemeToggle/ThemeToggle.astro";
 import LanguageToggle from "@/modules/LanguageToggle/LanguageToggle.astro";
 
-const navItems = Astro.locals?.t?.header ?? [];
+const navItems = (Astro.locals as any)?.t?.header ?? [];
 ---
 
 <header class="fixed top-0 z-20 w-full flex justify-center mt-2">
