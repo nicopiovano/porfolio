@@ -10,7 +10,7 @@ const { t, lang } = Astro.locals as any;
     <p>{t.chat.subtitle}</p>
   </header>
 
-  <div class="chat-body" id="chat-body">
+  <div class="chat-body">
     <ChatMessage role="assistant" content={t.chat.greeting} />
 
     <div class="badges">
@@ -24,78 +24,65 @@ const { t, lang } = Astro.locals as any;
 </section>
 
 <script>
+  import { getChatReply } from "@/chat/client";
+
+  function appendMessage(body: HTMLElement, role: "user" | "assistant", text: string) {
+    const el = document.createElement("div");
+    el.className = `msg ${role}`;
+    el.textContent = text;
+    body.appendChild(el);
+  }
+
+  function appendBadges(body: HTMLElement, followUps: string[]) {
+    if (!followUps?.length) return;
+    const badgesWrap = document.createElement("div");
+    badgesWrap.className = "badges";
+
+    followUps.forEach((q: string) => {
+      const btn = document.createElement("button");
+      btn.className = "badge";
+      btn.type = "button";
+      btn.textContent = q;
+      badgesWrap.appendChild(btn);
+    });
+
+    body.appendChild(badgesWrap);
+  }
+
   function initChat() {
-    const body = document.getElementById("chat-body");
-    if (!body) return;
+    // Inicializar por instancia (widget + página assistant pueden coexistir)
+    document.querySelectorAll(".chat-card").forEach((chatCardEl) => {
+      const chatCard = chatCardEl as HTMLElement;
+      const body = chatCard.querySelector(".chat-body") as HTMLElement | null;
+      if (!body) return;
 
-    const chatCard = document.querySelector(".chat-card");
-    const currentLang = chatCard?.getAttribute("data-lang") || "es";
+      // Evitar listeners duplicados si Astro re-ejecuta init (page transitions)
+      if (body.dataset.chatBound === "1") return;
+      body.dataset.chatBound = "1";
 
-    body.addEventListener("click", async (e: Event) => {
-      const target = e.target as HTMLElement;
-      if (!target || !target.classList.contains("badge")) return;
+      const currentLang = (chatCard.getAttribute("data-lang") as ("es" | "en" | "pt") | null) ?? "es";
 
-      // 🔥 limpiar badges anteriores
-      body.querySelectorAll(".badges").forEach((el) => el.remove());
+      body.addEventListener("click", (e) => {
+        const target = e.target as HTMLElement | null;
+        const btn = (target?.closest?.("button.badge") as HTMLButtonElement | null) ?? null;
+        if (!btn) return;
 
-      const message = target.textContent;
-      if (!message) return;
+        // limpiar badges anteriores (solo dentro de esta instancia)
+        body.querySelectorAll(".badges").forEach((el) => el.remove());
 
-      body.insertAdjacentHTML(
-        "beforeend",
-        `<div class="msg user">${message}</div>`,
-      );
+        const message = btn.textContent?.trim();
+        if (!message) return;
 
-      try {
-        const res = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message, lang: currentLang }),
-        });
+        appendMessage(body, "user", message);
 
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
+        // Respuesta local (sin fetch) para que funcione en deploy estático
+        const data = getChatReply(message, currentLang);
 
-        const data = await res.json();
-
-        // Evitar duplicar la respuesta si ya existe
-        const existingMessages = body.querySelectorAll(".msg.assistant");
-        const lastMessage = existingMessages[existingMessages.length - 1];
-        if (lastMessage && lastMessage.textContent === data.reply) {
-          return; // Ya existe esta respuesta, no duplicar
-        }
-
-        body.insertAdjacentHTML(
-          "beforeend",
-          `<div class="msg assistant">${data.reply}</div>`,
-        );
-
-        if (data.followUps?.length) {
-          // Evitar duplicar badges si ya existen
-          const existingBadges = body.querySelectorAll(".badges");
-          if (existingBadges.length > 0) {
-            return; // Ya hay badges, no duplicar
-          }
-
-          const badges = (data.followUps as string[])
-            .map((q: string) => `<button class="badge">${q}</button>`)
-            .join("");
-
-          body.insertAdjacentHTML(
-            "beforeend",
-            `<div class="badges">${badges}</div>`,
-          );
-        }
+        appendMessage(body, "assistant", data.reply);
+        appendBadges(body, data.followUps);
 
         body.scrollTop = body.scrollHeight;
-      } catch (error) {
-        console.error("Error en el chat:", error);
-        body.insertAdjacentHTML(
-          "beforeend",
-          `<div class="msg assistant">Lo siento, hubo un error. Por favor intenta de nuevo.</div>`,
-        );
-      }
+      });
     });
   }
 
