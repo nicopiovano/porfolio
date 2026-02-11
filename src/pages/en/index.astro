@@ -14,8 +14,8 @@ import { getI18n } from "@/i18n";
 import { getLangFromUrl } from "@/utils/lang";
 
 const lang = getLangFromUrl(Astro.url);
-Astro.locals.lang = lang;
-Astro.locals.t = getI18n(lang);
+(Astro.locals as any).lang = lang;
+(Astro.locals as any).t = getI18n(lang);
 const { t } = Astro.locals;
 ---
 

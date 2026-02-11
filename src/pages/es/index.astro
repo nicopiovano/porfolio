@@ -13,10 +13,10 @@ import ThreeScene from "@/modules/ThreeScene/ThreeScene.astro"
 import { getI18n } from "@/i18n"
 import { getLangFromUrl } from "@/utils/lang"
 
-const lang = getLangFromUrl(Astro.url)
-Astro.locals.lang = lang
-Astro.locals.t = getI18n(lang)
-const { t } = Astro.locals
+const lang = getLangFromUrl(Astro.url);
+(Astro.locals as any).lang = lang;
+(Astro.locals as any).t = getI18n(lang);
+const { t } = Astro.locals;
 ---
 
 <Layout title={t.seo.title}

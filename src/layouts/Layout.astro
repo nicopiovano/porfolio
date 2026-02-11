@@ -16,8 +16,8 @@ interface Props {
 
 const { description, title } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
-Astro.locals.lang = lang;
-Astro.locals.t = getI18n(lang);
+(Astro.locals as any).lang = lang;
+(Astro.locals as any).t = getI18n(lang);
 ---
 
 <!doctype html>
