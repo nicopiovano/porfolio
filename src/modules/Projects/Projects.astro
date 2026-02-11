@@ -1,5 +1,5 @@
 ---
-import GitLab from "@/components/icons/GitLab.astro"
+import GitHub from "@/components/icons/GitHub.astro"
 import Quasar from "@/components/icons/Quasar.astro"
 import React from "@/components/icons/React.astro"
 import Vite from "@/components/icons/Vite.astro"
@@ -60,19 +60,19 @@ const TAGS = {
 const PROJECTS_DATA = [
   {
     link: "https://nipio-login.vercel.app/login",
-    github: "https://gitlab.com/nmpiovano/login-frontend",
+    github: "https://github.com/nicopiovano/login-frontend",
     image: "/projects/panel-logueo.png",
     tags: [TAGS.REACT, TAGS.VITE, TAGS.TAILWIND, TAGS.LARAVEL],
   },
   {
     link: "https://nipio-market-dashboard.vercel.app/",
-    github: "https://gitlab.com/nmpiovano/market-dashboard",
+    github: "https://github.com/nicopiovano/market-dashboard",
     image: "/projects/market-dashboard.png",
     tags: [TAGS.VUE, TAGS.VITE, TAGS.TAILWIND],
   },
   {
     link: "https://nipio-tech-decision.vercel.app/intro",
-    github: "https://gitlab.com/nmpiovano/tech-decision",
+    github: "https://github.com/nicopiovano/tech-decision",
     image: "/projects/tech-decision.png",
     tags: [TAGS.VUE, TAGS.VITE, TAGS.TAILWIND],
   },
@@ -84,7 +84,7 @@ const PROJECTS_DATA = [
   },
   {
     link: null,
-    github: "https://gitlab.com/nmpiovano/porfolio",
+    github: "https://github.com/nicopiovano/porfolio",
     image: "/projects/porfolio.png",
     tags: [TAGS.ASTRO, TAGS.VITE, TAGS.TAILWIND],
   },
@@ -153,7 +153,7 @@ const PROJECTS = PROJECTS_DATA.map((project, i) => ({
                 <footer class="flex gap-x-4 mt-6">
                   {project.github && (
                     <LinkButton href={project.github}>
-                      <GitLab class="size-6" />
+                      <GitHub class="size-6" />
                       Code
                     </LinkButton>
                   )}
