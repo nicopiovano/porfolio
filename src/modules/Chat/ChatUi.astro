@@ -1,7 +1,7 @@
 ---
-import ChatMessage from "./ChatMessage.astro"
+import ChatMessage from "./ChatMessage.astro";
 
-const { t, lang } = Astro.locals as any
+const { t, lang } = Astro.locals as any;
 ---
 
 <section class="chat-card" data-lang={lang}>
@@ -11,102 +11,101 @@ const { t, lang } = Astro.locals as any
   </header>
 
   <div class="chat-body" id="chat-body">
-    <ChatMessage
-      role="assistant"
-      content={t.chat.greeting}
-    />
+    <ChatMessage role="assistant" content={t.chat.greeting} />
 
     <div class="badges">
-      {t.chat.initialBadges.map((badge: string) => (
-        <button class="badge">{badge}</button>
-      ))}
+      {
+        t.chat.initialBadges.map((badge: string) => (
+          <button class="badge">{badge}</button>
+        ))
+      }
     </div>
   </div>
 </section>
 
 <script>
   function initChat() {
-    const body = document.getElementById("chat-body")
-    if (!body) return
-    
-    const chatCard = document.querySelector(".chat-card")
-    const currentLang = chatCard?.getAttribute("data-lang") || "es"
-    
+    const body = document.getElementById("chat-body");
+    if (!body) return;
+
+    const chatCard = document.querySelector(".chat-card");
+    const currentLang = chatCard?.getAttribute("data-lang") || "es";
+
     body.addEventListener("click", async (e: Event) => {
-      const target = e.target as HTMLElement
-      if (!target || !target.classList.contains("badge")) return
+      const target = e.target as HTMLElement;
+      if (!target || !target.classList.contains("badge")) return;
 
       // 🔥 limpiar badges anteriores
-      body.querySelectorAll(".badges").forEach(el => el.remove())
+      body.querySelectorAll(".badges").forEach((el) => el.remove());
 
-      const message = target.textContent
-      if (!message) return
+      const message = target.textContent;
+      if (!message) return;
 
       body.insertAdjacentHTML(
         "beforeend",
-        `<div class="msg user">${message}</div>`
-      )
+        `<div class="msg user">${message}</div>`,
+      );
 
       try {
         const res = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message, lang: currentLang })
-        })
+          body: JSON.stringify({ message, lang: currentLang }),
+        });
 
         if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`)
+          throw new Error(`HTTP error! status: ${res.status}`);
         }
 
-        const data = await res.json()
+        const data = await res.json();
 
         // Evitar duplicar la respuesta si ya existe
-        const existingMessages = body.querySelectorAll('.msg.assistant')
-        const lastMessage = existingMessages[existingMessages.length - 1]
+        const existingMessages = body.querySelectorAll(".msg.assistant");
+        const lastMessage = existingMessages[existingMessages.length - 1];
         if (lastMessage && lastMessage.textContent === data.reply) {
-          return // Ya existe esta respuesta, no duplicar
+          return; // Ya existe esta respuesta, no duplicar
         }
 
         body.insertAdjacentHTML(
           "beforeend",
-          `<div class="msg assistant">${data.reply}</div>`
-        )
+          `<div class="msg assistant">${data.reply}</div>`,
+        );
 
         if (data.followUps?.length) {
           // Evitar duplicar badges si ya existen
-          const existingBadges = body.querySelectorAll('.badges')
+          const existingBadges = body.querySelectorAll(".badges");
           if (existingBadges.length > 0) {
-            return // Ya hay badges, no duplicar
+            return; // Ya hay badges, no duplicar
           }
 
           const badges = (data.followUps as string[])
             .map((q: string) => `<button class="badge">${q}</button>`)
-            .join("")
+            .join("");
 
           body.insertAdjacentHTML(
             "beforeend",
-            `<div class="badges">${badges}</div>`
-          )
+            `<div class="badges">${badges}</div>`,
+          );
         }
 
-        body.scrollTop = body.scrollHeight
+        body.scrollTop = body.scrollHeight;
       } catch (error) {
-        console.error("Error en el chat:", error)
+        console.error("Error en el chat:", error);
         body.insertAdjacentHTML(
           "beforeend",
-          `<div class="msg assistant">Lo siento, hubo un error. Por favor intenta de nuevo.</div>`
-        )
+          `<div class="msg assistant">Lo siento, hubo un error. Por favor intenta de nuevo.</div>`,
+        );
       }
-    })
+    });
   }
 
   // Inicializar cuando el DOM esté listo
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initChat)
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initChat);
   } else {
-    initChat()
+    initChat();
   }
 
   // Reinicializar en transiciones de Astro
-  document.addEventListener('astro:page-load', initChat)
+  document.addEventListener("astro:page-load", initChat);
 </script>
