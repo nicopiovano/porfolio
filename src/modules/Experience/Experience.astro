@@ -3,7 +3,7 @@ import ExperienceItem from "@/modules/Experience/ExperienceItem.astro";
 import Briefcase from "@/components/icons/Briefcase.astro";
 import "./Experience.astro.css"
 
-const { t } = Astro.locals
+const { t } = Astro.locals as any
 
 const TECH_URLS: Record<string, string> = {
   'Vue': 'https://vuejs.org',

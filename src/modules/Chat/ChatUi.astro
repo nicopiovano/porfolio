@@ -1,7 +1,7 @@
 ---
 import ChatMessage from "./ChatMessage.astro"
 
-const { t, lang } = Astro.locals
+const { t, lang } = Astro.locals as any
 ---
 
 <section class="chat-card" data-lang={lang}>

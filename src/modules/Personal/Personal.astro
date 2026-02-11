@@ -3,7 +3,7 @@ const personalImageAlt = "Nico Piovano";
 import Badge from "@/modules/Badge/Badge.astro";
 import { Image } from "astro:assets";
 
-const { t } = Astro.locals;
+const { t } = Astro.locals as any;
 ---
 
 <div class="max-w-xl">

@@ -16,7 +16,7 @@ import { getLangFromUrl } from "@/utils/lang"
 const lang = getLangFromUrl(Astro.url);
 (Astro.locals as any).lang = lang;
 (Astro.locals as any).t = getI18n(lang);
-const { t } = Astro.locals;
+const { t } = Astro.locals as any;
 ---
 
 <Layout title={t.seo.title}
