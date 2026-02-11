@@ -4,7 +4,7 @@ export default {
     { title: "Experiencia", section: "experiencia", url: "#experiencia" },
     { title: "Proyectos", section: "proyectos", url: "#proyectos" },
     { title: "Sobre mí", section: "sobre-mi", url: "#sobre-mi" },
-    { title: "Curriculum", url: "/CV_NICO_PIOVANO_2026.pdf", download: true }
+    { title: "Curriculum", url: "/Nicolás_Piovano_Sr_Fullstack.pdf", download: true }
   ],
   personal: {
     title: "Desarrollador Fullstack",
