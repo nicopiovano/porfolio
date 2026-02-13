@@ -62,7 +62,7 @@ const PROJECTS_DATA = [
     link: "https://nico-piovano-login.vercel.app/",
     github: "https://github.com/nicopiovano/login-react",
     image: "/projects/panel-logueo.png",
-    tags: [TAGS.REACT, TAGS.VITE, TAGS.TAILWIND, TAGS.LARAVEL],
+    tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.LARAVEL],
   },
   {
     link: "https://nico-piovano-market-dashboard.vercel.app/",
@@ -104,67 +104,60 @@ const PROJECTS = PROJECTS_DATA.map((project, i) => ({
       {PROJECTS.map((project, i) => (
         <div class="project-card" data-index={i}>
           <div class="card-box">
-            <!-- CONTENIDO DEL PROYECTO -->
-            <article class="flex flex-col md:flex-row gap-8 w-full h-full p-4 md:p-8">
-              <!-- Imagen -->
-              <div class="w-full md:w-1/2 flex items-center justify-center">
-                <div class="relative overflow-hidden rounded-xl shadow-lg">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    loading="lazy"
-                    class="object-cover w-full h-full max-h-[320px] md:max-h-full"
-                  />
-                </div>
-              </div>
+            <!-- Fondo: imagen con opacity y blur -->
+            <div
+              class="card-box-bg"
+              style={`background-image: url(${project.image})`}
+              aria-hidden="true"
+            />
+            <!-- Overlay para legibilidad del texto -->
+            <div class="card-box-overlay" />
+            <!-- Contenido encima -->
+            <article class="project-card-article">
+              <h3 class="project-card-title">
+                {project.title}
+              </h3>
 
-              <!-- Texto -->
-              <div class="w-full md:w-1/2 flex flex-col justify-center">
-                <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-                  {project.title}
-                </h3>
+              <ul class="flex flex-wrap gap-2 mt-3">
+                {project.tags.map((tag) => (
+                  <li>
+                    <a
+                      href={tag.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class={`flex items-center gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 hover:opacity-90 transition-opacity`}
+                    >
+                      {tag.icon === Quasar && <Quasar class="size-4" />}
+                      {tag.icon === React && <React class="size-4" />}
+                      {tag.icon === Vite && <Vite class="size-4" />}
+                      {tag.icon === Vue && <Vue class="size-4" />}
+                      {tag.icon === Tailwind && <Tailwind class="size-4" />}
+                      {tag.icon === AstroIcon && <AstroIcon class="size-4" />}
+                      {tag.icon === Laravel && <Laravel class="size-4" />}
+                      {tag.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
 
-                <ul class="flex flex-wrap gap-2 mt-3">
-                  {project.tags.map((tag) => (
-                    <li>
-                      <a
-                        href={tag.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class={`flex items-center gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 hover:opacity-80 transition-opacity`}
-                      >
-                        {tag.icon === Quasar && <Quasar class="size-4" />}
-                        {tag.icon === React && <React class="size-4" />}
-                        {tag.icon === Vite && <Vite class="size-4" />}
-                        {tag.icon === Vue && <Vue class="size-4" />}
-                        {tag.icon === Tailwind && <Tailwind class="size-4" />}
-                        {tag.icon === AstroIcon && <AstroIcon class="size-4" />}
-                        {tag.icon === Laravel && <Laravel class="size-4" />}
-                        {tag.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+              <p class="project-card-description">
+                {project.description}
+              </p>
 
-                <p class="mt-4 text-gray-700 dark:text-gray-400">
-                  {project.description}
-                </p>
-
-                <footer class="flex gap-x-4 mt-6">
-                  {project.github && (
-                    <LinkButton href={project.github}>
-                      <GitHub class="size-6" />
-                      Code
-                    </LinkButton>
-                  )}
-                  {project.link && (
-                    <LinkButton href={project.link}>
-                      <Link class="size-4" />
-                      {t.projects.preview}
-                    </LinkButton>
-                  )}
-                </footer>
-              </div>
+              <footer class="flex gap-x-4 mt-6">
+                {project.github && (
+                  <LinkButton href={project.github}>
+                    <GitHub class="size-6" />
+                    Code
+                  </LinkButton>
+                )}
+                {project.link && (
+                  <LinkButton href={project.link}>
+                    <Link class="size-4" />
+                    {t.projects.preview}
+                  </LinkButton>
+                )}
+              </footer>
             </article>
           </div>
         </div>
@@ -237,21 +230,69 @@ const PROJECTS = PROJECTS_DATA.map((project, i) => ({
 }
 
 .card-box {
+  position: relative;
   width: 90%;
   max-width: 1200px;
   height: 100%;
   border-radius: 2rem;
-  padding: 2rem;
-  
-  background: radial-gradient(
-    ellipse at top right,
-    rgba(120,216,115,0.35),
-    rgba(255,255,255,0.96)
-  );
-
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Imagen de fondo con opacity y blur */
+.card-box-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  filter: blur(5px);
+  transform: scale(1.05);
+}
+
+/* Overlay para que el texto sea legible (más claro) */
+.card-box-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
+  pointer-events: none;
+}
+
+:global(html.dark) .card-box-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.project-card-article {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem 2rem;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.project-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  line-height: 1.3;
+}
+
+.project-card-description {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  line-height: 1.5;
+  font-size: 0.95rem;
 }
 
 /* Botones de navegación */
@@ -332,19 +373,21 @@ const PROJECTS = PROJECTS_DATA.map((project, i) => ({
   background: rgba(120, 216, 115, 0.8);
 }
 
-/* DARK */
-:global(html.dark) .card-box {
-  background: radial-gradient(
-    ellipse at top right,
-    rgba(120,216,115,0.25),
-    rgba(15,23,42,0.95)
-  );
-}
-
 @media (max-width: 768px) {
   .card-box {
     width: 95%;
-    padding: 1.5rem;
+    min-height: 72vh;
+    height: 72vh;
+    max-height: 72vh;
+    align-items: stretch;
+  }
+
+  .project-card-article {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .project-card-title {
+    font-size: 1.35rem;
   }
   
   .project-card {
@@ -368,7 +411,13 @@ const PROJECTS = PROJECTS_DATA.map((project, i) => ({
 @media (max-width: 480px) {
   .card-box {
     width: 98%;
-    padding: 1rem;
+    min-height: 70vh;
+    height: 70vh;
+    max-height: 70vh;
+  }
+
+  .project-card-article {
+    padding: 1rem 1.25rem;
   }
   
   .carousel-btn {
