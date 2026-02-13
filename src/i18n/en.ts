@@ -29,17 +29,17 @@ export default {
         description: "Simulator using a decision engine (decisionEngine) to evaluate and recommend technologies. Analyzes availability, complexity, and project requirements, generating recommendations based on programmed rules."
       },
       {
-        title: "Programmable Chat",
-        description: "Assistant chat with programmable responses based on intents. Matcher detects user intent and returns contextual responses with dynamic follow-ups. Works completely on the client side without backend."
+        title: "Gran Rifa",
+        description: "100% frontend raffle app: prize carousel, number grid (1–1000) to pick, floating cart and checkout modal with form. React, Vite, Motion, Tailwind and Radix UI. Argentine price format ($1,000)."
       },
       {
         title: "Multi-language Portfolio",
         description: "Portfolio with multi-language support (ES, EN, PT) using custom i18n system. Language routes (/es, /en, /pt) for SEO, centralized translations, and automatic detection from URL."
       },
       {
-        title: "Gran Rifa",
-        description: "100% frontend raffle app: prize carousel, number grid (1–1000) to pick, floating cart and checkout modal with form. React, Vite, Motion, Tailwind and Radix UI. Argentine price format ($1,000)."
-      }
+        title: "Programmable Chat",
+        description: "Assistant chat with programmable responses based on intents. Matcher detects user intent and returns contextual responses with dynamic follow-ups. Works completely on the client side without backend."
+      },
     ]
   },
   experience: {

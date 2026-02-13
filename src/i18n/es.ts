@@ -29,17 +29,17 @@ export default {
         description: "Simulador que utiliza un motor de decisiones (decisionEngine) para evaluar y recomendar tecnologías. Analiza disponibilidad, complejidad y requisitos del proyecto, generando recomendaciones basadas en reglas programadas."
       },
       {
-        title: "Chat Programable",
-        description: "Chat asistente con respuestas programables basadas en intents. Matcher detecta la intención del usuario y devuelve respuestas contextuales con follow-ups dinámicos. Funciona completamente en el cliente sin backend."
+        title: "Gran Rifa",
+        description: "App de rifas 100% frontend: carrusel de premios, grilla de números (1–1000) para elegir, carrito flotante y modal de checkout con formulario. React, Vite, Motion, Tailwind y Radix UI. Formato de precios Argentina ($1.000)."
       },
       {
         title: "Portfolio Multiidioma",
         description: "Portfolio con soporte multiidioma (ES, EN, PT) usando i18n personalizado. Rutas por idioma (/es, /en, /pt) para SEO, traducciones centralizadas y detección automática desde la URL."
       },
       {
-        title: "Gran Rifa",
-        description: "App de rifas 100% frontend: carrusel de premios, grilla de números (1–1000) para elegir, carrito flotante y modal de checkout con formulario. React, Vite, Motion, Tailwind y Radix UI. Formato de precios Argentina ($1.000)."
-      }
+        title: "Chat Programable",
+        description: "Chat asistente con respuestas programables basadas en intents. Matcher detecta la intención del usuario y devuelve respuestas contextuales con follow-ups dinámicos. Funciona completamente en el cliente sin backend."
+      },
     ]
   },
   experience: {
