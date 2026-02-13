@@ -80,24 +80,24 @@ export default {
     title: "Sobre mí 😉",
     paragraphs: [
       {
-        before: "Inicié mi carrera en programación en 2016 ",
-        strong: "desarrollando con paciencia, confianza y de manera resolutiva",
-        after: " los distintos desafíos propuestos."
+        before: "Programo desde 2016, ",
+        strong: "resolviendo problemas concretos y aprendiendo en el camino.",
+        after: ""
       },
       {
         before: "Me adapto rápidamente a nuevas tecnologías y proyectos, y siempre busco ",
-        strong: "soluciones pragmáticas",
-        after: " que permitan avanzar de manera efectiva, incluso en entornos desafiantes."
+        strong: "soluciones prácticas",
+        after: " que permitan avanzar de manera efectiva, incluso en entornos complicados."
       },
       {
-        before: "Además, he viajado y vivido por varios países de Latinoamérica mientras trabajaba en hostels, lo que fortaleció mis ",
-        strong: "habilidades sociales, la adaptabilidad y la capacidad de colaborar",
-        after: " con equipos diversos."
+        before: "Viajé y viví en varios países de Latinoamérica mientras trabajaba en hostels, lo que fortaleció mi ",
+        strong: "trato con personas, la adaptabilidad y el trabajo en equipo",
+        after: " con perfiles muy diversos."
       },
       {
-        before: "Mis metas actuales incluyen expandirme en el ámbito freelance y aplicar mi ",
-        strong: "enfoque resolutivo y adaptable",
-        after: " para generar resultados concretos en cada proyecto."
+        before: "Hoy busco crecer en el ",
+        strong: "mundo freelance",
+        after: " y aportar resultados claros en cada proyecto."
       }
     ]
   },
