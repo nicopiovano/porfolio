@@ -4,12 +4,15 @@
 
 <div
   id="three-container"
-  class="w-full h-full min-h-[400px] md:min-h-[500px] flex items-center justify-center"
+  class="hidden md:flex w-full h-full min-h-[400px] md:min-h-[500px] items-center justify-center"
 >
 </div>
 
 <script>
   async function initThreeScene() {
+    // No cargar Three en mobile (sin efecto 3D, ahorro de recursos)
+    if (window.matchMedia("(max-width: 767px)").matches) return;
+
     // Verificar si es Firefox
     // const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1
 
