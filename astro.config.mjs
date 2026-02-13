@@ -7,6 +7,7 @@ import robotsTxt from "astro-robots-txt"
 export default defineConfig({
   integrations: [tailwind(), robotsTxt()],
   site: 'https://porfolio.dev/',
+  server: { port: 5170 },
   vite: {
     build: {
       // Evita warnings ruidosos por chunks grandes (three.js) en build
