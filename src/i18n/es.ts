@@ -35,6 +35,10 @@ export default {
       {
         title: "Portfolio Multiidioma",
         description: "Portfolio con soporte multiidioma (ES, EN, PT) usando i18n personalizado. Rutas por idioma (/es, /en, /pt) para SEO, traducciones centralizadas y detección automática desde la URL."
+      },
+      {
+        title: "Gran Rifa",
+        description: "App de rifas 100% frontend: carrusel de premios, grilla de números (1–1000) para elegir, carrito flotante y modal de checkout con formulario. React, Vite, Motion, Tailwind y Radix UI. Formato de precios Argentina ($1.000)."
       }
     ]
   },

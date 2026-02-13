@@ -35,6 +35,10 @@ export default {
       {
         title: "Multi-language Portfolio",
         description: "Portfolio with multi-language support (ES, EN, PT) using custom i18n system. Language routes (/es, /en, /pt) for SEO, centralized translations, and automatic detection from URL."
+      },
+      {
+        title: "Gran Rifa",
+        description: "100% frontend raffle app: prize carousel, number grid (1–1000) to pick, floating cart and checkout modal with form. React, Vite, Motion, Tailwind and Radix UI. Argentine price format ($1,000)."
       }
     ]
   },

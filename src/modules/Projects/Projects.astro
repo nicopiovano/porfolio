@@ -18,7 +18,7 @@ const isDev = import.meta.env.DEV
 const PROJECT_LINKS = {
   login: isDev ? "http://localhost:5171/" : "https://nico-piovano-login.vercel.app/",
   marketDashboard: isDev ? "http://localhost:5172/" : "https://nico-piovano-market-dashboard.vercel.app/",
-  rifas: isDev ? "http://localhost:5173/" : "https://nico-piovano-tech-decision.vercel.app/",
+  rifas: isDev ? "http://localhost:5173/" : "https://nico-piovano-rifas.vercel.app/",
   techDecision: isDev ? "http://localhost:5174/" : "https://nico-piovano-tech-decision.vercel.app/",
 }
 
@@ -93,10 +93,10 @@ const PROJECTS_DATA = [
     tags: [TAGS.VUE, TAGS.VITE, TAGS.TAILWIND],
   },
   {
-    link: null,
-    github: null,
-    image: "/projects/chat.png",
-    tags: [TAGS.TAILWIND],
+    link: PROJECT_LINKS.rifas,
+    github: "https://github.com/nicopiovano/rifas-react",
+    image: "/projects/rifas.png",
+    tags: [TAGS.REACT, TAGS.MOTION, TAGS.TAILWIND],
   },
   {
     link: null,
@@ -105,10 +105,10 @@ const PROJECTS_DATA = [
     tags: [TAGS.ASTRO, TAGS.VITE, TAGS.TAILWIND],
   },
   {
-    link: PROJECT_LINKS.rifas,
-    github: "https://github.com/nicopiovano/rifas-react",
-    image: "/projects/rifas.png",
-    tags: [TAGS.REACT, TAGS.MOTION, TAGS.TAILWIND],
+    link: null,
+    github: null,
+    image: "/projects/chat.png",
+    tags: [TAGS.TAILWIND],
   },
 ]
 
