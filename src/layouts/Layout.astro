@@ -3,11 +3,11 @@ import "@fontsource-variable/onest";
 
 import Header from "../modules/Header/Header.astro";
 import Footer from "../modules/Footer/Footer.astro";
-import BrowserModal from "../modules/BrowserModal/BrowserModal.astro";
 import { ViewTransitions } from "astro:transitions";
 import ChatWidget from "../modules/Chat/ChatWidget.astro";
 import { getI18n } from "@/i18n";
 import { getLangFromUrl } from "@/utils/lang";
+import IntroLoader from "@/modules/IntroLoader/IntroLoader.astro";
 
 interface Props {
     title: string;
@@ -18,10 +18,11 @@ const { description, title } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 (Astro.locals as any).lang = lang;
 (Astro.locals as any).t = getI18n(lang);
+const { t } = Astro.locals as any;
 ---
 
 <!doctype html>
-<html lang="es" class="dark">
+<html lang={lang} class="dark">
     <head>
         <meta charset="UTF-8" />
         <meta name="description" content={description} />
@@ -30,6 +31,15 @@ const lang = getLangFromUrl(Astro.url);
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
         <ViewTransitions />
+        <script is:inline>
+            try {
+                const KEY = "intro-loader-shown";
+                document.documentElement.dataset.introLoader =
+                    sessionStorage.getItem(KEY) ? "hide" : "show";
+            } catch {
+                document.documentElement.dataset.introLoader = "hide";
+            }
+        </script>
     </head>
     <body class="relative text-neutral-900/90 dark:text-white">
         <div
@@ -39,8 +49,12 @@ const lang = getLangFromUrl(Astro.url);
         >
         </div>
 
+        <IntroLoader
+            messages={t.introLoader?.messages ?? []}
+            durationMs={t.introLoader?.durationMs ?? 8000}
+        />
+
         <ChatWidget />
-        <BrowserModal />
         <Header />
         <slot />
         <Footer />

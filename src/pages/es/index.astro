@@ -8,7 +8,6 @@ import ProfileCheck from "@/components/icons/ProfileCheck.astro"
 import Projects from "@/modules/Projects/Projects.astro"
 import SectionContainer from "@/modules/Section/SectionContainer.astro"
 import Personal from "@/modules/Personal/Personal.astro"
-import ThreeScene from "@/modules/ThreeScene/ThreeScene.astro"
 
 import { getI18n } from "@/i18n"
 import { getLangFromUrl } from "@/utils/lang"
@@ -23,11 +22,8 @@ const { t } = Astro.locals as any;
         description={t.seo.description}>
     <main class="px-4">
         <SectionContainer class="min-h-screen flex items-center pt-8 md:pt-0">
-            <div class="w-full flex flex-col xl:flex-row items-center justify-center gap-8 xl:gap-12">
+            <div class="w-full flex flex-col items-center justify-center gap-8">
                 <Personal/>
-                <div class="w-full xl:w-1/2 max-w-md">
-                    <ThreeScene/>
-                </div>
             </div>
         </SectionContainer>
         <div class="space-y-24">

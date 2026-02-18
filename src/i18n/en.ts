@@ -109,6 +109,14 @@ export default {
     developed: "Developed with",
     downloadCV: "Download CV 2026"
   },
+  introLoader: {
+    durationMs: 8000,
+    messages: [
+      "I build scalable web platforms for digital businesses.",
+      "I build systems that generate revenue.",
+      "Focus on performance, UX, and maintainability.",
+    ]
+  },
   browserModal: {
     title: "Browser Recommendation",
     message: "This page contains 3D visual effects that work better in Mozilla Firefox.",

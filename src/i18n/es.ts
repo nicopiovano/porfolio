@@ -109,6 +109,14 @@ export default {
     developed: "Desarrollado con",
     downloadCV: "Descarga CV 2026"
   },
+  introLoader: {
+    durationMs: 8000,
+    messages: [
+      // "Construyo plataformas web escalables para negocios digitales.",
+      "Construyo sistemas que generan ingresos",
+      "con foco en performance, UX y mantenibilidad.",
+    ]
+  },
   browserModal: {
     title: "Recomendación de Navegador",
     message: "Esta página contiene efectos visuales 3D que funcionan mejor en Mozilla Firefox.",
