@@ -57,7 +57,7 @@ export function matchIntent(message: string, _lang: string = "es"): string {
     (text.includes("worked") && (text.includes("ai") || text.includes("ia"))) ||
     (text.includes("trabalhou") && (text.includes("ia") || text.includes("ai"))) ||
     text.includes("chatgpt") || text.includes("gpt") || text.includes("claude") ||
-    (text.includes("asistente") && (text.includes("ia") || text.includes("ai"))) || 
+    (text.includes("asistente") && (text.includes("ia") || text.includes("ai"))) ||
     (text.includes("assistant") && (text.includes("ai") || text.includes("ia"))) ||
     (text.includes("assistente") && (text.includes("ia") || text.includes("ai")))
   ) return "ai"

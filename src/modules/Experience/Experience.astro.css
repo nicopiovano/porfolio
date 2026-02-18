@@ -19,20 +19,16 @@
     overflow: hidden;
 
     /* el fade posta */
-    mask-image: linear-gradient(
-            90deg,
+    mask-image: linear-gradient(90deg,
             transparent 0%,
             black 3%,
             black 97%,
-            transparent 100%
-    );
-    -webkit-mask-image: linear-gradient(
-            90deg,
+            transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg,
             transparent 0%,
             black 3%,
             black 97%,
-            transparent 100%
-    );
+            transparent 100%);
 }
 
 @media (max-width: 768px) {
@@ -54,12 +50,15 @@
     scroll-behavior: smooth;
     overscroll-behavior: contain;
     scroll-snap-type: x mandatory;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
 }
 
 .timeline::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
 }
 
 @media (max-width: 768px) {
@@ -78,12 +77,10 @@
     top: 170px;
     left: 0;
     height: 2px;
-    background: linear-gradient(
-            90deg,
+    background: linear-gradient(90deg,
             transparent,
             rgba(34, 197, 94, 0.4),
-            transparent
-    );
+            transparent);
     pointer-events: none;
 }
 
