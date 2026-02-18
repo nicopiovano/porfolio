@@ -65,7 +65,7 @@ export default {
         title: "Guided chat to qualify leads",
         problem: "Repeated questions without a flow waste time and cool down leads.",
         solution: "Intent-based replies with guided follow-ups to surface the right info.",
-        impact: "More focused conversations and better handoff to contact.",
+        impact: "More focused conversations and a clearer path to get in touch.",
       },
     ]
   },
@@ -150,14 +150,14 @@ export default {
   },
   services: {
     title: "Services",
-    subtitle: "Simple packages to grow your business: fast launch, better conversions, and orderly scale.",
+    subtitle: "Clear, non-technical services for people who just need “a website that works” and looks professional. You share the goal; I handle the rest.",
     items: [
-      { title: "SaaS MVP (idea → production)", description: "Onboarding, dashboard, and a solid base to iterate fast with clarity." },
-      { title: "High-converting landing pages", description: "Structure, copy + UI, performance and tracking for USD campaigns." },
-      { title: "Dashboards & admin panels", description: "Clear KPIs, filters, charts, and fast UX for daily operations." },
-      { title: "Business integrations", description: "Payments, email, CRMs, webhooks, automation and APIs that unblock growth." },
-      { title: "Modernization without downtime", description: "Performance upgrades, fewer bugs, and gradual refactors with minimal risk." },
-      { title: "48–72h audit", description: "Diagnosis + prioritized plan to improve conversion, performance, and reliability." },
+      { title: "Admin panels", description: "A simple dashboard to manage sales, users, inventory, content, or orders—without relying on anyone." },
+      { title: "E‑commerce / Online stores", description: "Catalog, products, variants, payments, and shipping. A store ready to sell and scale." },
+      { title: "Personal websites", description: "Portfolio, professional page, or personal landing: clear, fast, and premium-looking." },
+      { title: "Shopping cart & checkout", description: "A smoother purchase flow, less abandonment, and an experience built to complete." },
+      { title: "Finance tracking", description: "Dashboards for income/expenses, metrics, and reports to make decisions with clear numbers." },
+      { title: "Maintenance & improvements", description: "Support, updates, new sections, and optimizations (speed/SEO) without breaking what already works." },
     ]
   },
   finalCta: {

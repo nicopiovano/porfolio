@@ -64,7 +64,7 @@ export default {
         title: "Chat guiado para qualificar leads",
         problem: "Perguntas repetidas sem fluxo claro esfriam leads e consomem tempo.",
         solution: "Respostas por intenção + follow-ups para guiar até a informação certa.",
-        impact: "Conversas mais focadas e melhor handoff para contato.",
+        impact: "Conversas mais focadas e um caminho mais claro para entrar em contato.",
       },
     ]
   },
@@ -150,14 +150,14 @@ export default {
   },
   services: {
     title: "Serviços",
-    subtitle: "Pacotes simples para fazer o negócio crescer: lançamento rápido, mais conversões e escala organizada.",
+    subtitle: "Serviços claros e sem “tecniquês” para quem só precisa de “um site que funcione” e pareça profissional. Você diz o objetivo; eu cuido do resto.",
     items: [
-      { title: "MVP para SaaS (ideia → produção)", description: "Onboarding, dashboard e base sólida para iterar rápido com clareza." },
-      { title: "Landing que converte", description: "Estrutura, copy + UI, performance e tracking para campanhas em USD." },
-      { title: "Dashboards e painéis", description: "KPIs claros, filtros, gráficos e UX rápida para operação." },
-      { title: "Integrações de negócio", description: "Pagamentos, email, CRM, webhooks, automações e APIs para destravar crescimento." },
-      { title: "Modernização sem caos", description: "Melhorias de performance, menos bugs e refactors graduais com risco baixo." },
-      { title: "Auditoria 48–72h", description: "Diagnóstico + plano priorizado para melhorar conversão, performance e confiabilidade." },
+      { title: "Painéis administrativos", description: "Um painel simples para gerenciar vendas, usuários, estoque, conteúdos ou pedidos sem depender de ninguém." },
+      { title: "E‑commerce / Lojas online", description: "Catálogo, produtos, variações, pagamentos e entrega. Uma loja pronta para vender e escalar." },
+      { title: "Sites pessoais", description: "Portfólio, página profissional ou landing pessoal: clara, rápida e com visual premium." },
+      { title: "Carrinho e checkout", description: "Fluxo de compra mais simples, menos abandono e uma experiência feita para concluir." },
+      { title: "Controle financeiro", description: "Dashboards de receitas/despesas, métricas e relatórios para decidir com números claros." },
+      { title: "Manutenção e melhorias", description: "Suporte, mudanças, novas seções e otimizações (velocidade/SEO) sem quebrar o que já funciona." },
     ]
   },
   finalCta: {
