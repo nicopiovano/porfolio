@@ -14,7 +14,7 @@ export default {
   },
   hero: {
     headline: "I build web products that turn traffic into revenue.",
-    subheadline: "I help SaaS, startups, and digital businesses ship fast, improve conversion, and scale without chaos. Clear deliverables, direct communication, and business-first execution.",
+    subheadline: "I collaborate with startups, digital businesses, and individuals who want to scale professionally—clear processes, direct communication, and a focus on high-impact outcomes, while maintaining high web quality standards.",
     ctaPrimary: "Contact",
     ctaPrimaryHref: "mailto:nmpiovano@gmail.com",
     ctaSecondary: "See projects",
@@ -206,7 +206,7 @@ export default {
       { title: "Resume", url: "/Nicolás_Piovano_Sr_Fullstack.pdf", download: true }
     ],
     personal: {
-      title: "Fullstack Developer",
+      title: "End-to-End Developer",
       subtitle: "+7 years of experience.",
       badge: "Available for work"
     },

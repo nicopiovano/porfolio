@@ -14,7 +14,7 @@ export default {
   },
   hero: {
     headline: "Construyo productos web que convierten visitas en ingresos.",
-    subheadline: "Trabajo con SaaS, startups y negocios digitales para lanzar rápido, mejorar conversión y escalar sin deuda técnica. Entregas claras, comunicación directa y foco en resultados.",
+    subheadline: "Colaboro con startups, negocios digitales e individuos que quieren escalar de forma profesional, con procesos claros, comunicación directa y foco en resultados de alto impacto, manteniendo estándares altos de calidad web.",
     ctaPrimary: "LinkedIn",
     ctaPrimaryHref: "https://linkedin.com/in/nmpiovano",
     ctaSecondary: "Ver proyectos",
@@ -206,7 +206,7 @@ export default {
       { title: "Curriculum", url: "/Nicolás_Piovano_Sr_Fullstack.pdf", download: true }
     ],
     personal: {
-      title: "Desarrollador Fullstack",
+      title: "Desarrollador End-to-End",
       subtitle: "+7 años de experiencia.",
       badge: "Disponible para trabajar"
     },
