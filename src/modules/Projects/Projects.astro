@@ -191,18 +191,17 @@ const LABELS = content?.labels ?? {
                   <p>{project.description}</p>
                 )}
               </div>
-
               <footer class="flex gap-x-4 mt-6">
                 {project.github && (
                   <LinkButton href={project.github}>
                     <GitHub class="size-6" />
-                    Code
+                    {content?.code ?? t.projects.code}
                   </LinkButton>
                 )}
                 {project.link && (
                   <LinkButton href={project.link}>
                     <Link class="size-4" />
-                    {t.projects.preview}
+                    {content?.preview ?? t.projects.preview}
                   </LinkButton>
                 )}
               </footer>
