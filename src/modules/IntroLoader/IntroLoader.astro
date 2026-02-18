@@ -54,14 +54,11 @@ const segmentMs = Math.floor(durationMs / Math.max(1, safeMsgs.length));
 
         window.setTimeout(() => {
             loader.classList.add("is-hiding");
-            // Mantener scroll bloqueado: el ModeSelector se muestra justo al terminar el loader.
-            // El scroll se libera cuando el usuario elige un modo.
-
-            // Mostrar el selector inmediatamente al empezar el fade-out (queda detrás del loader).
-            window.dispatchEvent(new CustomEvent("intro-loader:done"));
+            document.body.style.overflow = "";
 
             window.setTimeout(() => {
                 root.dataset.introLoader = "hide";
+                window.dispatchEvent(new CustomEvent("intro-loader:done"));
             }, 220);
         }, durationMs);
     }

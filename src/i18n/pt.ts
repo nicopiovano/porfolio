@@ -13,7 +13,7 @@ export default {
   },
   hero: {
     headline: "Eu construo produtos web que transformam tráfego em receita.",
-    subheadline: "Ajudo SaaS, startups e negócios digitais a lançar rápido, melhorar conversão e escalar sem caos. Entregas claras, comunicação direta e foco em resultado.",
+    subheadline: "Colaboro com startups, negócios digitais e indivíduos que querem escalar de forma profissional, com processos claros, comunicação direta e foco em resultados de alto impacto, mantendo padrões altos de qualidade web.",
     ctaPrimary: "Contato",
     ctaPrimaryHref: "mailto:nmpiovano@gmail.com",
     ctaSecondary: "Ver projetos",
