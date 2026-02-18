@@ -15,15 +15,15 @@ export default {
   hero: {
     headline: "Construyo productos web que convierten visitas en ingresos.",
     subheadline: "Colaboro con startups, negocios digitales e individuos que quieren escalar de forma profesional, con procesos claros, comunicación directa y foco en resultados de alto impacto, manteniendo estándares altos de calidad web.",
-    ctaPrimary: "LinkedIn",
-    ctaPrimaryHref: "https://linkedin.com/in/nmpiovano",
-    ctaSecondary: "Ver proyectos",
-    ctaSecondaryHref: "#proyectos"
+    ctaSecondary: "LinkedIn",
+    ctaSecondaryHref: "https://linkedin.com/in/nmpiovano",
+    ctaPrimary: "Ver proyectos",
+    ctaPrimaryHref: "#proyectos"
   },
   projects: {
     title: "Proyectos",
-    code: "Code",
-    preview: "Preview",
+    code: "Código",
+    preview: "Ver",
     labels: {
       problem: "Problema",
       solution: "Solución",
@@ -141,7 +141,7 @@ export default {
     downloadCV: "Descarga CV 2026"
   },
   introLoader: {
-    durationMs: 8000,
+    durationMs: 6000,
     messages: [
       // "Construyo plataformas web escalables para negocios digitales.",
       "Construyo sistemas que generan ingresos",
@@ -150,7 +150,7 @@ export default {
   },
   services: {
     title: "Servicios",
-    subtitle: "Paquetes claros para mover el negocio: lanzar, mejorar conversión y escalar sin caos.",
+    subtitle: "Paquetes simples para hacer crecer el negocio: lanzamiento rápido, más conversiones y escala ordenada.",
     items: [
       { title: "MVP para SaaS (de idea a producción)", description: "Onboarding, dashboard y base lista para iterar. Entregas rápidas y medibles." },
       { title: "Landing que convierte", description: "Estructura, copy + UI, performance y tracking para campañas en USD." },
@@ -217,8 +217,8 @@ export default {
     },
     projects: {
       title: "Proyectos",
-      code: "Code",
-      preview: "Preview",
+      code: "Código",
+      preview: "Ver",
       items: [
         {
           title: "Panel de Logueo",

@@ -141,7 +141,7 @@ export default {
     downloadCV: "Download CV 2026"
   },
   introLoader: {
-    durationMs: 8000,
+    durationMs: 6000,
     messages: [
       // "I build scalable web platforms for digital businesses.",
       "I build systems that generate revenue",
@@ -150,7 +150,7 @@ export default {
   },
   services: {
     title: "Services",
-    subtitle: "Clear packages to move the business forward: ship, convert better, and scale without chaos.",
+    subtitle: "Simple packages to grow your business: fast launch, better conversions, and orderly scale.",
     items: [
       { title: "SaaS MVP (idea → production)", description: "Onboarding, dashboard, and a solid base to iterate fast with clarity." },
       { title: "High-converting landing pages", description: "Structure, copy + UI, performance and tracking for USD campaigns." },

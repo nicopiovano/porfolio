@@ -22,7 +22,7 @@ export default {
   projects: {
     title: "Projetos",
     code: "Código",
-    preview: "Preview",
+    preview: "Ver",
     labels: {
       problem: "Problema",
       solution: "Solução",
@@ -141,7 +141,7 @@ export default {
     downloadCV: "Baixar CV 2026"
   },
   introLoader: {
-    durationMs: 8000,
+    durationMs: 6000,
     messages: [
       // "Construo plataformas web escaláveis para negócios digitais.",
       "Construo sistemas que geram receita",
@@ -150,7 +150,7 @@ export default {
   },
   services: {
     title: "Serviços",
-    subtitle: "Pacotes claros para mover o negócio: lançar, converter melhor e escalar sem caos.",
+    subtitle: "Pacotes simples para fazer o negócio crescer: lançamento rápido, mais conversões e escala organizada.",
     items: [
       { title: "MVP para SaaS (ideia → produção)", description: "Onboarding, dashboard e base sólida para iterar rápido com clareza." },
       { title: "Landing que converte", description: "Estrutura, copy + UI, performance e tracking para campanhas em USD." },
@@ -218,7 +218,7 @@ export default {
     projects: {
       title: "Projetos",
       code: "Código",
-      preview: "Preview",
+      preview: "Ver",
       items: [
         {
           title: "Painel de Login",
