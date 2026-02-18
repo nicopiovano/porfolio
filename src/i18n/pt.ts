@@ -162,7 +162,7 @@ export default {
   },
   finalCta: {
     title: "Quer lançar ou melhorar seu produto este mês?",
-    text: "Se você tem uma ideia, eu levo para um website premium que converte: UX clara, performance, SEO e tracking. Me envie o que você quer lançar, para quem é e seu timeline; eu respondo com proposta + estimativa em 24–48h.",
+    text: "Se você tem uma ideia, eu levo para um website premium que converte: UX clara, performance, SEO e tracking. Me envie o que você quer lançar, para quem é e seu timeline; eu respondo com proposta + estimativa em 24h.",
     primaryLabel: "Contato por LinkedIn",
     primaryHref: "https://linkedin.com/in/nmpiovano",
     // secondaryLabel: "LinkedIn",
@@ -197,6 +197,11 @@ export default {
     subtitle: "Escolha uma opção para ver a versão mais relevante do meu portfólio.",
     employment: "Contrato Fijo",
     freelance: "Freelance / Contractor"
+  },
+  modeToggle: {
+    ariaLabel: "Trocar modo do site",
+    toEmployment: "Trocar para Contrato fixo",
+    toFreelance: "Trocar para Freelance / Contractor"
   },
   employment: {
     header: [
