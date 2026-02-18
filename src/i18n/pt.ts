@@ -206,7 +206,7 @@ export default {
       { title: "Currículo", url: "/Nicolás_Piovano_Sr_Fullstack.pdf", download: true }
     ],
     personal: {
-      title: "Desenvolvedor Fullstack",
+      title: "Desenvolvedor End-to-End",
       subtitle: "+7 anos de experiência.",
       badge: "Disponível para trabalhar"
     },
