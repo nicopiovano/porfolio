@@ -1,0 +1,42 @@
+---
+const { t } = Astro.locals as any;
+const items = t.services?.items ?? [];
+
+const GREEN_HOVER =
+  "hover:border-emerald-500/40 dark:hover:border-emerald-400/35 hover:bg-emerald-50/70 dark:hover:bg-emerald-500/10 hover:shadow-emerald-500/10";
+const GREEN_DOT = "bg-emerald-500";
+---
+
+<section class="w-full">
+  <div class="flex items-center justify-between gap-6 mb-6">
+    <div>
+      <h2 class="text-3xl font-semibold text-black/80 dark:text-white">
+        {t.services?.title ?? "Servicios"}
+      </h2>
+      {t.services?.subtitle && (
+        <p class="mt-2 text-gray-700 dark:text-gray-300 max-w-2xl">
+          {t.services.subtitle}
+        </p>
+      )}
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    {items.map((s: { title: string; description: string }) => (
+        <article
+          class={`group rounded-2xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-slate-900/40 backdrop-blur p-5 shadow-sm transition-all duration-200 hover:shadow-lg ${GREEN_HOVER}`}
+        >
+          <div class="flex items-center gap-3">
+            <span class={`h-2 w-2 rounded-full ${GREEN_DOT} opacity-70 group-hover:opacity-100 transition-opacity`} />
+            <h3 class="text-lg font-semibold text-black/90 dark:text-white">
+              {s.title}
+            </h3>
+          </div>
+          <p class="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+            {s.description}
+          </p>
+        </article>
+    ))}
+  </div>
+</section>
+

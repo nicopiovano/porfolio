@@ -4,6 +4,7 @@ import Briefcase from "@/components/icons/Briefcase.astro";
 import "./Experience.astro.css"
 
 const { t } = Astro.locals as any
+const content = (Astro.props as any)?.content ?? t.experience
 
 const TECH_URLS: Record<string, string> = {
   'Vue': 'https://vuejs.org',
@@ -17,7 +18,7 @@ const TECH_URLS: Record<string, string> = {
   'Angular': 'https://angular.io',
 }
 
-const EXPERIENCE = t.experience.items.map((item: typeof t.experience.items[0]) => ({
+const EXPERIENCE = content.items.map((item: typeof content.items[0]) => ({
     ...item,
     actual: false
 }))
@@ -26,7 +27,7 @@ const EXPERIENCE = t.experience.items.map((item: typeof t.experience.items[0]) =
 <section class="timeline-wrapper">
     <h2 class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white">
         <Briefcase class="size-8"/>
-        {t.experience.title}
+        {content.title}
     </h2>
 
 
@@ -37,7 +38,7 @@ const EXPERIENCE = t.experience.items.map((item: typeof t.experience.items[0]) =
             {EXPERIENCE.map((exp: typeof EXPERIENCE[0]) => (
                     <article class="timeline-item">
                         <!--<span class="dot" class:list={{ actual: exp.actual }}></span>-->
-                        <ExperienceItem experience={exp} techUrls={TECH_URLS} learningLabel={t.experience.learning}/>
+                        <ExperienceItem experience={exp} techUrls={TECH_URLS} learningLabel={content.learning}/>
                     </article>
             ))}
         </div>

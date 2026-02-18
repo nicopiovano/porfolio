@@ -10,13 +10,19 @@ const { t } = Astro.locals as any
         id="aboutMe">
     <!-- Texto -->
     <div class="text-section order-2 md:order-1 flex-1 [&>p]:mb-4">
-        {t.aboutMe.paragraphs.map((p: { before: string; strong: string; after: string }) => (
-          <p>
-            {p.before}
-            <strong>{p.strong}</strong>
-            {p.after}
-          </p>
-        ))}
+        {
+            (t.aboutMe?.text?.length ? t.aboutMe.text : null)
+                ? t.aboutMe.text.map((p: string) => <p>{p}</p>)
+                : t.aboutMe.paragraphs.map(
+                    (p: { before: string; strong: string; after: string }) => (
+                        <p>
+                            {p.before}
+                            <strong>{p.strong}</strong>
+                            {p.after}
+                        </p>
+                    ),
+                )
+        }
     </div>
 
 

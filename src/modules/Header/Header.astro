@@ -2,7 +2,9 @@
 import ThemeToggle from "@/modules/ThemeToggle/ThemeToggle.astro";
 import LanguageToggle from "@/modules/LanguageToggle/LanguageToggle.astro";
 
-const navItems = (Astro.locals as any)?.t?.header ?? [];
+const t = (Astro.locals as any)?.t ?? {};
+const navFreelance = t.header ?? [];
+const navEmployment = t.employment?.header ?? t.header ?? [];
 ---
 
 <header class="fixed top-0 z-20 w-full flex justify-center mt-2">
@@ -12,26 +14,50 @@ const navItems = (Astro.locals as any)?.t?.header ?? [];
            bg-gray-300 dark:bg-gray-600
            text-gray-600 dark:text-gray-200"
     >
-        {
-            navItems.map(
-                (link: {
-                    url: string | URL | null | undefined;
-                    section: any;
-                    download: any;
-                    title: unknown;
-                }) => (
-                    <a
-                        href={link.url}
-                        data-section={link.section}
-                        {...(link.download ? { download: "" } : {})}
-                        class="nav-link relative px-2 py-2 transition
-                        hover:text-green-600 dark:hover:text-custom-green"
-                    >
-                        {link.title}
-                    </a>
-                ),
-            )
-        }
+        <div data-mode-display="freelance">
+            {
+                navFreelance.map(
+                    (link: {
+                        url: string | URL | null | undefined;
+                        section: any;
+                        download: any;
+                        title: unknown;
+                    }) => (
+                        <a
+                            href={link.url}
+                            data-section={link.section}
+                            {...(link.download ? { download: "" } : {})}
+                            class="nav-link relative px-2 py-2 transition
+                            hover:text-green-600 dark:hover:text-custom-green"
+                        >
+                            {link.title}
+                        </a>
+                    ),
+                )
+            }
+        </div>
+        <div data-mode-display="employment">
+            {
+                navEmployment.map(
+                    (link: {
+                        url: string | URL | null | undefined;
+                        section: any;
+                        download: any;
+                        title: unknown;
+                    }) => (
+                        <a
+                            href={link.url}
+                            data-section={link.section}
+                            {...(link.download ? { download: "" } : {})}
+                            class="nav-link relative px-2 py-2 transition
+                            hover:text-green-600 dark:hover:text-custom-green"
+                        >
+                            {link.title}
+                        </a>
+                    ),
+                )
+            }
+        </div>
         <LanguageToggle />
         <ThemeToggle />
     </nav>
@@ -55,24 +81,46 @@ const navItems = (Astro.locals as any)?.t?.header ?? [];
              shadow-lg ring-1 ring-black/5"
         >
             <nav class="flex flex-col p-2 text-sm">
-                {
-                    navItems.map(
-                        (link: {
-                            url: string | URL | null | undefined;
-                            section: any;
-                            title: unknown;
-                        }) => (
-                            <a
-                                href={link.url}
-                                data-section={link.section}
-                                class="nav-link px-3 py-2 rounded-lg transition
-                     hover:bg-green-500/10 dark:hover:bg-green-500/10"
-                            >
-                                {link.title}
-                            </a>
-                        ),
-                    )
-                }
+                <div data-mode-display="freelance">
+                    {
+                        navFreelance.map(
+                            (link: {
+                                url: string | URL | null | undefined;
+                                section: any;
+                                title: unknown;
+                            }) => (
+                                <a
+                                    href={link.url}
+                                    data-section={link.section}
+                                    class="nav-link px-3 py-2 rounded-lg transition
+                         hover:bg-green-500/10 dark:hover:bg-green-500/10"
+                                >
+                                    {link.title}
+                                </a>
+                            ),
+                        )
+                    }
+                </div>
+                <div data-mode-display="employment">
+                    {
+                        navEmployment.map(
+                            (link: {
+                                url: string | URL | null | undefined;
+                                section: any;
+                                title: unknown;
+                            }) => (
+                                <a
+                                    href={link.url}
+                                    data-section={link.section}
+                                    class="nav-link px-3 py-2 rounded-lg transition
+                         hover:bg-green-500/10 dark:hover:bg-green-500/10"
+                                >
+                                    {link.title}
+                                </a>
+                            ),
+                        )
+                    }
+                </div>
                 <div class="px-3 py-2">
                     <ThemeToggle />
                 </div>

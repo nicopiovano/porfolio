@@ -1,0 +1,46 @@
+---
+const { t } = Astro.locals as any;
+---
+
+<section id="contacto" class="w-full">
+  <div
+    class="rounded-3xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-slate-900/40 backdrop-blur p-6 md:p-10 shadow-sm"
+  >
+    <h2
+      class="text-3xl md:text-4xl font-semibold tracking-tight text-black/90 dark:text-white"
+    >
+      {t.finalCta?.title ?? "¿Hablamos?"}
+    </h2>
+    <p class="mt-3 text-gray-700 dark:text-gray-300 max-w-3xl leading-relaxed">
+      {
+        t.finalCta?.text ??
+          "Contame qué estás construyendo y cuál es el objetivo. Te respondo con un plan simple y una estimación."
+      }
+    </p>
+
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a
+        href={t.finalCta?.secondaryHref ?? "https://linkedin.com/in/nmpiovano"}
+        class="inline-flex items-center justify-center rounded-xl bg-green-600 hover:bg-green-700 text-white font-medium px-5 py-3 transition-colors"
+      >
+        {t.finalCta?.primaryLabel ?? "Contactar"}
+      </a>
+      <!-- <a
+        href={t.finalCta?.primaryHref ?? "mailto:nmpiovano@gmail.com"}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center rounded-xl border border-black/10 dark:border-white/10 bg-white/60 dark:bg-slate-950/30 hover:bg-white/80 dark:hover:bg-slate-950/45 text-black/80 dark:text-white font-medium px-5 py-3 transition-colors"
+      >
+        {t.finalCta?.secondaryLabel ?? "LinkedIn"}
+      </a> -->
+    </div>
+
+    {
+      t.finalCta?.hint && (
+        <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">
+          {t.finalCta.hint}
+        </p>
+      )
+    }
+  </div>
+</section>

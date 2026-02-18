@@ -2,11 +2,47 @@ export function matchIntent(message: string, _lang: string = "es"): string {
   const text = message.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 
   // Volver al inicio siempre tiene prioridad (multiidioma)
-  if (
-    text.includes("volver al inicio") || text.includes("volver") ||
-    text.includes("back to start") || text.includes("back") ||
-    text.includes("voltar ao inicio") || text.includes("voltar")
-  ) return "greeting"
+  // IMPORTANTE: evitar matches demasiado amplios (ej: "backend" contiene "back")
+  // Match estricto a la acción de volver, ya sea con el label exacto o con la flecha del botón.
+  const isBackToStart =
+    text === "volver al inicio" ||
+    text === "back to start" ||
+    text === "voltar ao inicio" ||
+    (text.startsWith("⬅") && (
+      text.includes("volver al inicio") ||
+      text.includes("back to start") ||
+      text.includes("voltar ao inicio")
+    ))
+
+  if (isBackToStart) return "greeting"
+
+  // Disponibilidad: resolver temprano para que no caiga en "projects" (por "proyecto")
+  // ni en "experience" (por "time" en "full time / part time").
+  const mentionsAvailability =
+    text.includes("dispon") || text.includes("available") || text.includes("disponivel") ||
+    text.includes("freelance") || text.includes("freelancer") ||
+    text.includes("contractor") || text.includes("contrato") ||
+    text.includes("full time") || text.includes("fulltime") || text.includes("tempo integral") ||
+    text.includes("part time") || text.includes("parttime") || text.includes("meio periodo") ||
+    text.includes("horario") || text.includes("hours") || text.includes("horarios") || text.includes("schedules") ||
+    text.includes("jornada") || text.includes("schedule") ||
+    text.includes("colaborar") || text.includes("collaborate")
+
+  if (mentionsAvailability) {
+    if (
+      text.includes("full time") || text.includes("fulltime") || text.includes("tempo integral") ||
+      text.includes("part time") || text.includes("parttime") || text.includes("meio periodo")
+    ) return "availability.fulltime"
+    if (
+      text.includes("horario") || text.includes("hours") ||
+      text.includes("horarios") || text.includes("schedules") ||
+      text.includes("jornada") || text.includes("schedule")
+    ) return "availability.hours"
+    if (
+      text.includes("freelance") || text.includes("freelancer")
+    ) return "availability.freelance"
+    return "availability"
+  }
 
   // Remoto: muchas preguntas vienen como "¿trabajás/trabajas remoto?" y no contienen "trabajo"/"experiencia"
   // Resolvemos temprano para no caer en "unknown".
@@ -21,7 +57,7 @@ export function matchIntent(message: string, _lang: string = "es"): string {
     (text.includes("worked") && (text.includes("ai") || text.includes("ia"))) ||
     (text.includes("trabalhou") && (text.includes("ia") || text.includes("ai"))) ||
     text.includes("chatgpt") || text.includes("gpt") || text.includes("claude") ||
-    (text.includes("asistente") && (text.includes("ia") || text.includes("ai"))) || 
+    (text.includes("asistente") && (text.includes("ia") || text.includes("ai"))) ||
     (text.includes("assistant") && (text.includes("ai") || text.includes("ia"))) ||
     (text.includes("assistente") && (text.includes("ia") || text.includes("ai")))
   ) return "ai"
@@ -119,29 +155,7 @@ export function matchIntent(message: string, _lang: string = "es"): string {
     return "way_of_working"
   }
 
-  if (
-    text.includes("dispon") || text.includes("available") || text.includes("disponivel") ||
-    text.includes("freelance") || text.includes("freelancer") ||
-    text.includes("contractor") || text.includes("contrato") || text.includes("contrato") ||
-    text.includes("full time") || text.includes("fulltime") || text.includes("tempo integral") ||
-    text.includes("part time") || text.includes("parttime") || text.includes("meio periodo") ||
-    text.includes("horario") || text.includes("hours") || text.includes("horario") ||
-    text.includes("jornada") || text.includes("schedule") || text.includes("jornada") ||
-    text.includes("colaborar") || text.includes("collaborate") || text.includes("colaborar")
-  ) {
-    if (
-      text.includes("full time") || text.includes("fulltime") || text.includes("tempo integral") ||
-      text.includes("part time") || text.includes("parttime") || text.includes("meio periodo")
-    ) return "availability.fulltime"
-    if (
-      text.includes("horario") || text.includes("hours") || text.includes("horario") ||
-      text.includes("horarios") || text.includes("schedules") || text.includes("horarios")
-    ) return "availability.hours"
-    if (
-      text.includes("freelance") || text.includes("freelancer")
-    ) return "availability.freelance"
-    return "availability"
-  }
+  // (availability se resuelve temprano)
 
   // Si no se encontró ningún match específico, intentar detectar por palabras clave comunes
   if (

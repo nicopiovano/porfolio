@@ -1,0 +1,227 @@
+---
+interface Props {
+    messages: string[];
+    durationMs?: number;
+}
+
+const { messages, durationMs = 8000 } = Astro.props;
+const safeMsgs =
+    Array.isArray(messages) && messages.length ? messages : ["Cargando..."];
+const segmentMs = Math.floor(durationMs / Math.max(1, safeMsgs.length));
+---
+
+<div id="intro-loader" aria-hidden="true">
+    <div class="loader-panel" role="status" aria-label="Cargando">
+        <div class="message-stack" aria-live="polite">
+            {
+                safeMsgs.map((m, i) => (
+                    <p
+                        class="message-item"
+                        style={`animation-duration: ${segmentMs}ms; animation-delay: ${i * segmentMs}ms;`}
+                    >
+                        {m}
+                    </p>
+                ))
+            }
+        </div>
+        <div class="loading-row">
+            <div class="bar" aria-hidden="true">
+                <div
+                    class="bar-fill"
+                    style={`animation-duration: ${durationMs}ms;`}
+                >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script is:inline define:vars={{ messages, durationMs }}>
+    // @ts-nocheck
+    function runIntroLoader() {
+        const root = document.documentElement;
+        const loader = document.getElementById("intro-loader");
+        if (!loader) return;
+
+        // Siempre mostrar (sin storage)
+        root.dataset.introLoader = "show";
+
+        // Reset state visual por si venimos de una transición
+        loader.classList.remove("is-hiding");
+
+        // Bloquear scroll mientras está activo
+        document.body.style.overflow = "hidden";
+
+        window.setTimeout(() => {
+            loader.classList.add("is-hiding");
+            document.body.style.overflow = "";
+
+            window.setTimeout(() => {
+                root.dataset.introLoader = "hide";
+                window.dispatchEvent(new CustomEvent("intro-loader:done"));
+            }, 220);
+        }, durationMs);
+    }
+
+    // Primera carga
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", runIntroLoader);
+    } else {
+        runIntroLoader();
+    }
+    // Transiciones Astro
+    document.addEventListener("astro:page-load", runIntroLoader);
+</script>
+
+<style>
+    /* Por defecto oculto; se muestra si el Layout setea data-intro-loader="show" */
+    #intro-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: #000;
+    }
+
+    :global(html.dark) #intro-loader {
+        background: #000;
+    }
+
+    :global(html[data-intro-loader="show"]) #intro-loader {
+        display: flex;
+    }
+
+    #intro-loader.is-hiding {
+        opacity: 0;
+        transition: opacity 220ms ease;
+    }
+
+    .loader-panel {
+        width: 100%;
+        max-width: 920px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    :global(html.dark) .loader-panel {
+        /* mantiene el negro; nada atrás */
+    }
+
+    .loading-row {
+        margin-top: 18px;
+        width: 100%;
+        max-width: 560px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        justify-content: center;
+    }
+
+    .message-stack {
+        position: relative;
+        width: min(920px, 100%);
+        padding: 0 12px;
+        min-height: clamp(88px, 18vh, 140px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .message-item {
+        position: absolute;
+        inset: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: clamp(22px, 4.2vw, 44px);
+        line-height: 1.12;
+        color: rgba(255, 255, 255, 0.92);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        opacity: 0;
+        transform: translateY(22px);
+        will-change: transform, opacity;
+        animation-name: msg-vertical;
+        animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+        animation-fill-mode: both;
+    }
+
+    .bar {
+        position: relative;
+        height: 10px;
+        border-radius: 9999px;
+        overflow: hidden;
+        width: min(520px, 100%);
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .bar-fill {
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        width: 0%;
+        background: linear-gradient(
+            90deg,
+            rgba(34, 197, 94, 0.55),
+            rgba(34, 197, 94, 0.95)
+        );
+        animation-name: load-progress;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes msg-vertical {
+        0% {
+            opacity: 0;
+            transform: translateY(22px);
+        }
+        18% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        78% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-22px);
+        }
+    }
+
+    @keyframes load-progress {
+        from {
+            width: 0%;
+        }
+        to {
+            width: 100%;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .bar-fill {
+            animation: none !important;
+            width: 70%;
+            opacity: 0.95;
+        }
+        #intro-loader.is-hiding {
+            transition: none;
+        }
+    }
+</style>

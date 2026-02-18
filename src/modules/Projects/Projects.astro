@@ -12,6 +12,7 @@ import Link from "@/components/icons/Link.astro"
 import LinkButton from "@/modules/LinkButton/LinkButton.astro"
 
 const { t } = Astro.locals as any
+const content = (Astro.props as any)?.content ?? t.projects
 
 // En local (npm run dev) los links apuntan a localhost; en producción a las URLs desplegadas
 const isDev = import.meta.env.DEV
@@ -114,9 +115,19 @@ const PROJECTS_DATA = [
 
 const PROJECTS = PROJECTS_DATA.map((project, i) => ({
   ...project,
-  title: t.projects.items[i]?.title || '',
-  description: t.projects.items[i]?.description || '',
+  title: content.items[i]?.title || '',
+  description: content.items[i]?.description || '',
+  problem: content.items[i]?.problem || '',
+  solution: content.items[i]?.solution || '',
+  impact: content.items[i]?.impact || '',
 }))
+
+const LABELS = content?.labels ?? {
+  problem: "Problema",
+  solution: "Solución",
+  impact: "Impacto",
+  stack: "Stack",
+}
 ---
 
 <section class="projects-section">
@@ -163,9 +174,23 @@ const PROJECTS = PROJECTS_DATA.map((project, i) => ({
                 ))}
               </ul>
 
-              <p class="project-card-description">
-                {project.description}
-              </p>
+              <div class="project-card-description">
+                {project.problem || project.solution || project.impact ? (
+                  <div class="space-y-3">
+                    {project.problem && (
+                      <p><span class="font-semibold">{LABELS.problem}:</span> {project.problem}</p>
+                    )}
+                    {project.solution && (
+                      <p><span class="font-semibold">{LABELS.solution}:</span> {project.solution}</p>
+                    )}
+                    {project.impact && (
+                      <p><span class="font-semibold">{LABELS.impact}:</span> {project.impact}</p>
+                    )}
+                  </div>
+                ) : (
+                  <p>{project.description}</p>
+                )}
+              </div>
 
               <footer class="flex gap-x-4 mt-6">
                 {project.github && (
