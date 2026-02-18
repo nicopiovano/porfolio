@@ -22,7 +22,7 @@ export default {
   projects: {
     title: "Projetos",
     code: "Código",
-    preview: "Preview",
+    preview: "Ver",
     labels: {
       problem: "Problema",
       solution: "Solução",
@@ -64,7 +64,7 @@ export default {
         title: "Chat guiado para qualificar leads",
         problem: "Perguntas repetidas sem fluxo claro esfriam leads e consomem tempo.",
         solution: "Respostas por intenção + follow-ups para guiar até a informação certa.",
-        impact: "Conversas mais focadas e melhor handoff para contato.",
+        impact: "Conversas mais focadas e um caminho mais claro para entrar em contato.",
       },
     ]
   },
@@ -141,7 +141,7 @@ export default {
     downloadCV: "Baixar CV 2026"
   },
   introLoader: {
-    durationMs: 8000,
+    durationMs: 6000,
     messages: [
       // "Construo plataformas web escaláveis para negócios digitais.",
       "Construo sistemas que geram receita",
@@ -150,19 +150,19 @@ export default {
   },
   services: {
     title: "Serviços",
-    subtitle: "Pacotes claros para mover o negócio: lançar, converter melhor e escalar sem caos.",
+    subtitle: "Serviços claros e sem “tecniquês” para quem só precisa de “um site que funcione” e pareça profissional. Você diz o objetivo; eu cuido do resto.",
     items: [
-      { title: "MVP para SaaS (ideia → produção)", description: "Onboarding, dashboard e base sólida para iterar rápido com clareza." },
-      { title: "Landing que converte", description: "Estrutura, copy + UI, performance e tracking para campanhas em USD." },
-      { title: "Dashboards e painéis", description: "KPIs claros, filtros, gráficos e UX rápida para operação." },
-      { title: "Integrações de negócio", description: "Pagamentos, email, CRM, webhooks, automações e APIs para destravar crescimento." },
-      { title: "Modernização sem caos", description: "Melhorias de performance, menos bugs e refactors graduais com risco baixo." },
-      { title: "Auditoria 48–72h", description: "Diagnóstico + plano priorizado para melhorar conversão, performance e confiabilidade." },
+      { title: "Painéis administrativos", description: "Um painel simples para gerenciar vendas, usuários, estoque, conteúdos ou pedidos sem depender de ninguém." },
+      { title: "E‑commerce / Lojas online", description: "Catálogo, produtos, variações, pagamentos e entrega. Uma loja pronta para vender e escalar." },
+      { title: "Sites pessoais", description: "Portfólio, página profissional ou landing pessoal: clara, rápida e com visual premium." },
+      { title: "Carrinho e checkout", description: "Fluxo de compra mais simples, menos abandono e uma experiência feita para concluir." },
+      { title: "Controle financeiro", description: "Dashboards de receitas/despesas, métricas e relatórios para decidir com números claros." },
+      { title: "Manutenção e melhorias", description: "Suporte, mudanças, novas seções e otimizações (velocidade/SEO) sem quebrar o que já funciona." },
     ]
   },
   finalCta: {
     title: "Quer lançar ou melhorar seu produto este mês?",
-    text: "Se você tem uma ideia, eu levo para um website premium que converte: UX clara, performance, SEO e tracking. Me envie o que você quer lançar, para quem é e seu timeline; eu respondo com proposta + estimativa em 24–48h.",
+    text: "Se você tem uma ideia, eu levo para um website premium que converte: UX clara, performance, SEO e tracking. Me envie o que você quer lançar, para quem é e seu timeline; eu respondo com proposta + estimativa em 24h.",
     primaryLabel: "Contato por LinkedIn",
     primaryHref: "https://linkedin.com/in/nmpiovano",
     // secondaryLabel: "LinkedIn",
@@ -198,6 +198,11 @@ export default {
     employment: "Contrato Fijo",
     freelance: "Freelance / Contractor"
   },
+  modeToggle: {
+    ariaLabel: "Trocar modo do site",
+    toEmployment: "Trocar para Contrato fixo",
+    toFreelance: "Trocar para Freelance / Contractor"
+  },
   employment: {
     header: [
       { title: "Experiência", section: "experiencia", url: "#experiencia" },
@@ -213,7 +218,7 @@ export default {
     projects: {
       title: "Projetos",
       code: "Código",
-      preview: "Preview",
+      preview: "Ver",
       items: [
         {
           title: "Painel de Login",

@@ -9,6 +9,7 @@ import { getI18n } from "@/i18n";
 import { getLangFromUrl } from "@/utils/lang";
 import IntroLoader from "@/modules/IntroLoader/IntroLoader.astro";
 import ModeSelector from "@/modules/ModeSelector/ModeSelector.astro";
+import ModeToggle from "@/modules/ModeToggle/ModeToggle.astro";
 
 interface Props {
     title: string;
@@ -54,9 +55,10 @@ const { t } = Astro.locals as any;
 
         <IntroLoader
             messages={t.introLoader?.messages ?? []}
-            durationMs={t.introLoader?.durationMs ?? 8000}
+            durationMs={t.introLoader?.durationMs ?? 6000}
         />
         <ModeSelector />
+        <ModeToggle />
 
         <ChatWidget />
         <Header />

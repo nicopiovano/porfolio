@@ -15,15 +15,15 @@ export default {
   hero: {
     headline: "Construyo productos web que convierten visitas en ingresos.",
     subheadline: "Colaboro con startups, negocios digitales e individuos que quieren escalar de forma profesional, con procesos claros, comunicación directa y foco en resultados de alto impacto, manteniendo estándares altos de calidad web.",
-    ctaPrimary: "LinkedIn",
-    ctaPrimaryHref: "https://linkedin.com/in/nmpiovano",
-    ctaSecondary: "Ver proyectos",
-    ctaSecondaryHref: "#proyectos"
+    ctaSecondary: "LinkedIn",
+    ctaSecondaryHref: "https://linkedin.com/in/nmpiovano",
+    ctaPrimary: "Ver proyectos",
+    ctaPrimaryHref: "#proyectos"
   },
   projects: {
     title: "Proyectos",
-    code: "Code",
-    preview: "Preview",
+    code: "Código",
+    preview: "Ver",
     labels: {
       problem: "Problema",
       solution: "Solución",
@@ -65,7 +65,7 @@ export default {
         title: "Chat guiado para calificar leads",
         problem: "Preguntas repetidas sin un flujo claro → pérdida de tiempo y leads fríos.",
         solution: "Sistema de intents + respuestas guiadas con follow-ups para llevar a la info clave.",
-        impact: "Conversación más enfocada y mejor handoff a contacto.",
+        impact: "Conversación más enfocada y derivación directa a contacto.",
       },
     ]
   },
@@ -141,7 +141,7 @@ export default {
     downloadCV: "Descarga CV 2026"
   },
   introLoader: {
-    durationMs: 8000,
+    durationMs: 6000,
     messages: [
       // "Construyo plataformas web escalables para negocios digitales.",
       "Construyo sistemas que generan ingresos",
@@ -150,19 +150,19 @@ export default {
   },
   services: {
     title: "Servicios",
-    subtitle: "Paquetes claros para mover el negocio: lanzar, mejorar conversión y escalar sin caos.",
+    subtitle: "Servicios claros y cercanos para quienes solo necesitan “que el sitio funcione” y se vea profesional. Vos me contás el objetivo; yo me encargo del resto.",
     items: [
-      { title: "MVP para SaaS (de idea a producción)", description: "Onboarding, dashboard y base lista para iterar. Entregas rápidas y medibles." },
-      { title: "Landing que convierte", description: "Estructura, copy + UI, performance y tracking para campañas en USD." },
-      { title: "Dashboards y paneles de control", description: "KPIs claros, filtros, gráficos y experiencia rápida (sin fricción)." },
-      { title: "Integraciones que destraban negocio", description: "Pagos, emails, CRMs, webhooks, automatizaciones y APIs." },
-      { title: "Modernización sin caos", description: "Mejoras de performance, reducción de bugs y migraciones graduales." },
-      { title: "Auditoría express (48–72h)", description: "Diagnóstico + plan priorizado para mejorar conversión, performance y confiabilidad." },
+      { title: "Paneles de administración", description: "Un panel simple para gestionar ventas, usuarios, stock, contenidos o pedidos sin depender de nadie." },
+      { title: "E‑commerce / Tiendas online", description: "Catálogo, productos, variantes, pagos y envíos. Una tienda lista para vender y escalar." },
+      { title: "Sitios web personales", description: "Portfolio, página profesional o landing personal: clara, rápida y que se vea premium." },
+      { title: "Carrito de compra y checkout", description: "Flujo de compra más simple, menos abandono y una experiencia que invita a finalizar." },
+      { title: "Control de finanzas", description: "Tableros para ingresos/gastos, métricas y reportes para tomar decisiones con números claros." },
+      { title: "Mantenimiento y mejoras", description: "Soporte, cambios, nuevas secciones y optimizaciones (velocidad/SEO) sin romper lo que ya funciona." },
     ]
   },
   finalCta: {
     title: "¿Querés lanzar o mejorar tu producto este mes?",
-    text: "Si tenés una idea, la llevo a un website que se vea premium y convierta: UX clara, performance, SEO y tracking. Contame qué querés lanzar, para quién y tu timeline; te respondo con propuesta + estimación en 24–48h.",
+    text: "Si tenés una idea, la llevo a un website que se vea premium y convierta: UX clara, performance, SEO y tracking. Contame qué querés lanzar, para quién y tu timeline; te respondo con propuesta + estimación en 24h.",
     primaryLabel: "Contactar por LinkedIn",
     primaryHref: "https://linkedin.com/in/nmpiovano",
     // secondaryLabel: "LinkedIn",
@@ -198,6 +198,11 @@ export default {
     employment: "Contrato Fijo",
     freelance: "Freelance / Contractor"
   },
+  modeToggle: {
+    ariaLabel: "Cambiar modo del sitio",
+    toEmployment: "Cambiar a Contrato Fijo",
+    toFreelance: "Cambiar a Freelance / Contractor"
+  },
   employment: {
     header: [
       { title: "Experiencia", section: "experiencia", url: "#experiencia" },
@@ -212,8 +217,8 @@ export default {
     },
     projects: {
       title: "Proyectos",
-      code: "Code",
-      preview: "Preview",
+      code: "Código",
+      preview: "Ver",
       items: [
         {
           title: "Panel de Logueo",

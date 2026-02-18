@@ -4,7 +4,7 @@ interface Props {
     durationMs?: number;
 }
 
-const { messages, durationMs = 8000 } = Astro.props;
+const { messages, durationMs = 6000 } = Astro.props;
 const safeMsgs =
     Array.isArray(messages) && messages.length ? messages : ["Cargando..."];
 const segmentMs = Math.floor(durationMs / Math.max(1, safeMsgs.length));

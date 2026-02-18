@@ -1,0 +1,123 @@
+---
+const { t } = Astro.locals as any;
+
+const toEmployment = t.modeToggle?.toEmployment ?? "Cambiar a Contrato Fijo";
+const toFreelance = t.modeToggle?.toFreelance ?? "Cambiar a Freelance / Contractor";
+const ariaLabel = t.modeToggle?.ariaLabel ?? "Cambiar modo del sitio";
+---
+
+<div id="mode-toggle-wrap" aria-hidden="true">
+  <button
+    id="mode-toggle"
+    type="button"
+    aria-label={ariaLabel}
+    data-to-employment={toEmployment}
+    data-to-freelance={toFreelance}
+  >
+  </button>
+</div>
+
+<script is:inline>
+  (function () {
+    const root = document.documentElement;
+    const btn = document.getElementById("mode-toggle");
+    const wrap = document.getElementById("mode-toggle-wrap");
+    if (!btn || !wrap) return;
+
+    const getMode = () => root.dataset.siteMode;
+
+    const setLabel = (mode) => {
+      const toEmployment = btn.getAttribute("data-to-employment") || "Cambiar a Contrato Fijo";
+      const toFreelance = btn.getAttribute("data-to-freelance") || "Cambiar a Freelance / Contractor";
+
+      if (mode === "freelance") btn.textContent = toEmployment;
+      else if (mode === "employment") btn.textContent = toFreelance;
+      else btn.textContent = "";
+    };
+
+    const update = () => {
+      const mode = getMode();
+      setLabel(mode);
+    };
+
+    btn.addEventListener("click", () => {
+      const current = getMode();
+      if (current !== "freelance" && current !== "employment") return;
+      const next = current === "freelance" ? "employment" : "freelance";
+      window.dispatchEvent(new CustomEvent("site-mode:request", { detail: { mode: next } }));
+    });
+
+    window.addEventListener("site-mode:changed", update);
+    update();
+  })();
+</script>
+
+<style>
+  #mode-toggle-wrap {
+    position: fixed;
+    left: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 60;
+    pointer-events: auto;
+  }
+
+  :global(html[data-site-mode="unset"]) #mode-toggle-wrap,
+  :global(html[data-intro-loader="show"]) #mode-toggle-wrap {
+    display: none !important;
+  }
+
+  #mode-toggle {
+    appearance: none;
+    border: 1px solid rgba(34, 197, 94, 0.28);
+    background: rgba(255, 255, 255, 0.92);
+    color: rgba(2, 44, 22, 0.95);
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    line-height: 1;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 14px 45px rgba(0, 0, 0, 0.18);
+    transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+  }
+
+  #mode-toggle:hover {
+    transform: translateY(-1px);
+    background: rgba(34, 197, 94, 0.1);
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.22);
+  }
+
+  #mode-toggle:active {
+    transform: translateY(0px);
+  }
+
+  :global(html.dark) #mode-toggle {
+    background: rgba(0, 0, 0, 0.45);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(34, 197, 94, 0.28);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  :global(html.dark) #mode-toggle:hover {
+    background: rgba(34, 197, 94, 0.14);
+  }
+
+  @media (max-width: 640px) {
+    #mode-toggle-wrap {
+      left: 1rem;
+      bottom: 1rem;
+    }
+    #mode-toggle {
+      font-size: 0.85rem;
+      padding: 10px 12px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #mode-toggle {
+      transition: none;
+    }
+  }
+</style>
+

@@ -53,11 +53,20 @@ const freelanceLabel = t.modeSelector?.freelance ?? "Proyectos (freelance)";
     const applyMode = (mode) => {
       root.dataset.siteMode = mode;
       syncSectionIds(mode);
-      window.dispatchEvent(new CustomEvent("site-mode:changed", { detail: { mode } }));
+      window.dispatchEvent(
+        new CustomEvent("site-mode:changed", { detail: { mode } }),
+      );
       modal.classList.add("hidden");
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
     };
+
+    // Permitir cambiar de modo luego de seleccionar (sin storage)
+    window.addEventListener("site-mode:request", (ev) => {
+      const requested = /** @type {any} */ (ev)?.detail?.mode;
+      if (requested === "employment" || requested === "freelance")
+        applyMode(requested);
+    });
 
     const showModal = () => {
       root.dataset.siteMode = "unset";
@@ -148,7 +157,10 @@ const freelanceLabel = t.modeSelector?.freelance ?? "Proyectos (freelance)";
     padding: 14px 14px;
     font-weight: 700;
     cursor: pointer;
-    transition: transform 140ms ease, opacity 140ms ease, background 140ms ease;
+    transition:
+      transform 140ms ease,
+      opacity 140ms ease,
+      background 140ms ease;
   }
 
   .btn:hover {
@@ -182,4 +194,3 @@ const freelanceLabel = t.modeSelector?.freelance ?? "Proyectos (freelance)";
     }
   }
 </style>
-
