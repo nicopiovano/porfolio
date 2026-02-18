@@ -15,8 +15,8 @@ export default {
   hero: {
     headline: "Construyo productos web que convierten visitas en ingresos.",
     subheadline: "Trabajo con SaaS, startups y negocios digitales para lanzar rápido, mejorar conversión y escalar sin deuda técnica. Entregas claras, comunicación directa y foco en resultados.",
-    ctaPrimary: "Contactar",
-    ctaPrimaryHref: "mailto:nmpiovano@gmail.com",
+    ctaPrimary: "LinkedIn",
+    ctaPrimaryHref: "https://linkedin.com/in/nmpiovano",
     ctaSecondary: "Ver proyectos",
     ctaSecondaryHref: "#proyectos"
   },
@@ -33,9 +33,9 @@ export default {
     items: [
       {
         title: "Login & Dashboard seguro (auth sin fricción)",
-        problem: "Sesiones inestables y logins inseguros terminan en soporte, abandono y riesgo.",
+        problem: "Sesiones inestables y logins inseguros terminan en soporte y riesgo.",
         solution: "Autenticación con cookies seguras (Sanctum), rutas protegidas y flujo de sesión consistente.",
-        impact: "Menos superficie de ataque y una base lista para producto con usuarios reales.",
+        impact: "Menos superficie de ataque y una base lista con usuarios reales.",
       },
       {
         title: "Market Dashboard para decisiones rápidas",
@@ -169,13 +169,13 @@ export default {
     // secondaryHref: "mailto:nmpiovano@gmail.com",
     hint: "Respuesta en 24–48h. Trabajo en USD con clientes internacionales."
   },
-  browserModal: {
-    title: "Recomendación de Navegador",
-    message: "Esta página contiene efectos visuales 3D que funcionan mejor en Mozilla Firefox.",
-    recommendation: "Para una experiencia óptima, te recomiendo usar Firefox.",
-    downloadFirefox: "Descargar Firefox",
-    continue: "Continuar"
-  },
+  // browserModal: {
+  //   title: "Recomendación de Navegador",
+  //   message: "Esta página contiene efectos visuales 3D que funcionan mejor en Mozilla Firefox.",
+  //   recommendation: "Para una experiencia óptima, te recomiendo usar Firefox.",
+  //   downloadFirefox: "Descargar Firefox",
+  //   continue: "Continuar"
+  // },
   seo: {
     title: "Porfolio de Nico Piovano - Desarrollador Web con +7 años de experiencia",
     description: "Contrata a Nico para crear tu aplicación web o móvil. Desarrollador Web."

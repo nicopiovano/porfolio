@@ -143,9 +143,9 @@ export default {
   introLoader: {
     durationMs: 8000,
     messages: [
-      "I build scalable web platforms for digital businesses.",
-      "I build systems that generate revenue.",
-      "Focus on performance, UX, and maintainability.",
+      // "I build scalable web platforms for digital businesses.",
+      "I build systems that generate revenue",
+      "with focus on performance, UX, and maintainability.",
     ]
   },
   services: {
@@ -169,13 +169,13 @@ export default {
     // secodaryHref: "mailto:nmpiovano@gmail.com",
     hint: "Reply in 24–48h. I work in USD with international clients."
   },
-  browserModal: {
-    title: "Browser Recommendation",
-    message: "This page contains 3D visual effects that work better in Mozilla Firefox.",
-    recommendation: "For an optimal experience, I recommend using Firefox.",
-    downloadFirefox: "Download Firefox",
-    continue: "Continue"
-  },
+  // browserModal: {
+  //   title: "Browser Recommendation",
+  //   message: "This page contains 3D visual effects that work better in Mozilla Firefox.",
+  //   recommendation: "For an optimal experience, I recommend using Firefox.",
+  //   downloadFirefox: "Download Firefox",
+  //   continue: "Continue"
+  // },
   seo: {
     title: "Nico Piovano Portfolio - Web Developer with +7 years of experience",
     description: "Hire Nico to create your web or mobile application. Web Developer."
@@ -195,8 +195,8 @@ export default {
   modeSelector: {
     title: "What are you looking for?",
     subtitle: "Choose an option to see the most relevant version of my portfolio.",
-    employment: "Full-time role",
-    freelance: "Projects (freelance)"
+    employment: "Fixed-term contract",
+    freelance: "Freelance / Contractor"
   },
   employment: {
     header: [

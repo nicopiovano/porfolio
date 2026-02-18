@@ -143,9 +143,9 @@ export default {
   introLoader: {
     durationMs: 8000,
     messages: [
-      "Construo plataformas web escaláveis para negócios digitais.",
-      "Construo sistemas que geram receita.",
-      "Foco em performance, UX e manutenibilidade.",
+      // "Construo plataformas web escaláveis para negócios digitais.",
+      "Construo sistemas que geram receita",
+      "com foco em performance, UX e manutenibilidade.",
     ]
   },
   services: {
@@ -169,13 +169,13 @@ export default {
     // secondaryHref: "https://linkedin.com/in/nmpiovano",
     hint: "Resposta em 24–48h. Trabalho em USD com clientes internacionais."
   },
-  browserModal: {
-    title: "Recomendação de Navegador",
-    message: "Esta página contém efeitos visuais 3D que funcionam melhor no Mozilla Firefox.",
-    recommendation: "Para uma experiência ideal, recomendo usar o Firefox.",
-    downloadFirefox: "Baixar Firefox",
-    continue: "Continuar"
-  },
+  // browserModal: {
+  //   title: "Recomendação de Navegador",
+  //   message: "Esta página contém efeitos visuais 3D que funcionam melhor no Mozilla Firefox.",
+  //   recommendation: "Para uma experiência ideal, recomendo usar o Firefox.",
+  //   downloadFirefox: "Baixar Firefox",
+  //   continue: "Continuar"
+  // },
   seo: {
     title: "Portfólio de Nico Piovano - Desenvolvedor Web com +7 anos de experiência",
     description: "Contrate Nico para criar sua aplicação web ou mobile."
@@ -195,8 +195,8 @@ export default {
   modeSelector: {
     title: "O que você está buscando?",
     subtitle: "Escolha uma opção para ver a versão mais relevante do meu portfólio.",
-    employment: "CLT / contrato fixo",
-    freelance: "Projetos (freelance)"
+    employment: "Contrato Fijo",
+    freelance: "Freelance / Contractor"
   },
   employment: {
     header: [

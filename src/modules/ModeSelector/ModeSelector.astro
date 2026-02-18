@@ -53,6 +53,7 @@ const freelanceLabel = t.modeSelector?.freelance ?? "Proyectos (freelance)";
     const applyMode = (mode) => {
       root.dataset.siteMode = mode;
       syncSectionIds(mode);
+      window.dispatchEvent(new CustomEvent("site-mode:changed", { detail: { mode } }));
       modal.classList.add("hidden");
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
