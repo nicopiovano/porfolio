@@ -102,8 +102,18 @@
 }
 
 @media (max-width: 480px) {
+    .timeline {
+        /* Dejar “peek” del siguiente card para sugerir scroll lateral */
+        scroll-padding-left: 1rem;
+        scroll-padding-right: 4rem;
+        padding-right: 4rem;
+    }
+
     .timeline-item {
-        min-width: calc(100vw - 2rem);
+        /* Menos que el viewport para que asome el próximo item */
+        min-width: calc(100vw - 5rem);
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
     }
 }
 
