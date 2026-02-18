@@ -8,6 +8,7 @@ import ChatWidget from "../modules/Chat/ChatWidget.astro";
 import { getI18n } from "@/i18n";
 import { getLangFromUrl } from "@/utils/lang";
 import IntroLoader from "@/modules/IntroLoader/IntroLoader.astro";
+import ModeSelector from "@/modules/ModeSelector/ModeSelector.astro";
 
 interface Props {
     title: string;
@@ -32,13 +33,15 @@ const { t } = Astro.locals as any;
         <title>{title}</title>
         <ViewTransitions />
         <script is:inline>
-            try {
-                const KEY = "intro-loader-shown";
-                document.documentElement.dataset.introLoader =
-                    sessionStorage.getItem(KEY) ? "hide" : "show";
-            } catch {
-                document.documentElement.dataset.introLoader = "hide";
-            }
+            // Mostrar el intro loader siempre (sin storage)
+            document.documentElement.dataset.introLoader = "show";
+            // En transiciones internas de Astro, volver a mostrarlo
+            document.addEventListener("astro:page-load", () => {
+                document.documentElement.dataset.introLoader = "show";
+            });
+        </script>
+        <script is:inline>
+            document.documentElement.dataset.siteMode = "unset";
         </script>
     </head>
     <body class="relative text-neutral-900/90 dark:text-white">
@@ -53,6 +56,7 @@ const { t } = Astro.locals as any;
             messages={t.introLoader?.messages ?? []}
             durationMs={t.introLoader?.durationMs ?? 8000}
         />
+        <ModeSelector />
 
         <ChatWidget />
         <Header />
@@ -66,6 +70,31 @@ const { t } = Astro.locals as any;
             html {
                 font-family: "Onest Variable", system-ui, sans-serif;
                 scroll-behavior: smooth;
+            }
+
+            /* Mostrar solo la versión correspondiente */
+            html[data-site-mode="freelance"] [data-mode="employment"],
+            html[data-site-mode="employment"] [data-mode="freelance"] {
+                display: none !important;
+            }
+
+            html[data-site-mode="unset"] [data-mode] {
+                display: none !important;
+            }
+
+            html[data-site-mode="freelance"] [data-mode="freelance"],
+            html[data-site-mode="employment"] [data-mode="employment"] {
+                display: block;
+            }
+
+            html[data-site-mode="freelance"] [data-mode-display="freelance"],
+            html[data-site-mode="employment"] [data-mode-display="employment"] {
+                display: contents;
+            }
+
+            html[data-site-mode="freelance"] [data-mode-display="employment"],
+            html[data-site-mode="employment"] [data-mode-display="freelance"] {
+                display: none !important;
             }
 
             body {

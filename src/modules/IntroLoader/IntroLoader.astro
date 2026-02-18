@@ -38,20 +38,16 @@ const segmentMs = Math.floor(durationMs / Math.max(1, safeMsgs.length));
 
 <script is:inline define:vars={{ messages, durationMs }}>
     // @ts-nocheck
-    (function () {
-        const KEY = "intro-loader-shown";
-
+    function runIntroLoader() {
         const root = document.documentElement;
         const loader = document.getElementById("intro-loader");
         if (!loader) return;
 
-        // Solo mostrar si el Layout marcó que corresponde
-        const shouldShow = root?.dataset?.introLoader === "show";
-        if (!shouldShow) return;
+        // Siempre mostrar (sin storage)
+        root.dataset.introLoader = "show";
 
-        try {
-            sessionStorage.setItem(KEY, "1");
-        } catch {}
+        // Reset state visual por si venimos de una transición
+        loader.classList.remove("is-hiding");
 
         // Bloquear scroll mientras está activo
         document.body.style.overflow = "hidden";
@@ -62,9 +58,19 @@ const segmentMs = Math.floor(durationMs / Math.max(1, safeMsgs.length));
 
             window.setTimeout(() => {
                 root.dataset.introLoader = "hide";
+                window.dispatchEvent(new CustomEvent("intro-loader:done"));
             }, 220);
         }, durationMs);
-    })();
+    }
+
+    // Primera carga
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", runIntroLoader);
+    } else {
+        runIntroLoader();
+    }
+    // Transiciones Astro
+    document.addEventListener("astro:page-load", runIntroLoader);
 </script>
 
 <style>
