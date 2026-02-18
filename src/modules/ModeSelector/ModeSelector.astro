@@ -54,7 +54,7 @@ const freelanceLabel = t.modeSelector?.freelance ?? "Proyectos (freelance)";
       root.dataset.siteMode = mode;
       syncSectionIds(mode);
       window.dispatchEvent(new CustomEvent("site-mode:changed", { detail: { mode } }));
-      modal.classList.add("hidden");
+      modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
     };
@@ -65,7 +65,7 @@ const freelanceLabel = t.modeSelector?.freelance ?? "Proyectos (freelance)";
       document.querySelectorAll("[data-section-key]").forEach((el) => {
         el.removeAttribute("id");
       });
-      modal.classList.remove("hidden");
+      modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
     };
@@ -73,15 +73,15 @@ const freelanceLabel = t.modeSelector?.freelance ?? "Proyectos (freelance)";
     btnEmployment.addEventListener("click", () => applyMode("employment"));
     btnFreelance.addEventListener("click", () => applyMode("freelance"));
 
-    // Mostrar cuando termina el intro loader
-    const maybeShowAfterLoader = () => {
-      if (root.dataset.introLoader === "hide") showModal();
-    };
-
+    // Mostrar inmediatamente cuando termina el loading del intro loader
     window.addEventListener("intro-loader:done", showModal, { once: true });
-    document.addEventListener("astro:page-load", maybeShowAfterLoader);
-    // fallback inmediato
-    maybeShowAfterLoader();
+
+    // Fallback: si por algún motivo el loader no corre, mostrar igual.
+    document.addEventListener("astro:page-load", () => {
+      if (root.dataset.siteMode === "unset" && root.dataset.introLoader !== "show") {
+        showModal();
+      }
+    });
   })();
 </script>
 
@@ -90,23 +90,21 @@ const freelanceLabel = t.modeSelector?.freelance ?? "Proyectos (freelance)";
     position: fixed;
     inset: 0;
     z-index: 9998;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     padding: 24px;
-    background: rgba(0, 0, 0, 0.92);
+    background: #000;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 200ms ease;
   }
 
-  :global(html[data-intro-loader="show"]) #mode-selector {
-    display: none !important;
-  }
-
-  :global(html[data-intro-loader="hide"]) #mode-selector {
-    display: flex;
-  }
-
-  #mode-selector.hidden {
-    display: none !important;
+  #mode-selector.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .panel {
@@ -177,6 +175,9 @@ const freelanceLabel = t.modeSelector?.freelance ?? "Proyectos (freelance)";
     }
   }
   @media (prefers-reduced-motion: reduce) {
+    #mode-selector {
+      transition: none;
+    }
     .btn {
       transition: none;
     }
