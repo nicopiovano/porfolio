@@ -162,12 +162,12 @@ export default {
   },
   finalCta: {
     title: "¿Querés lanzar o mejorar tu producto este mes?",
-    text: "Mandame un mensaje con qué estás construyendo, el objetivo (ventas/retención/operación), timeline y links. Te respondo con un plan simple + estimación.",
+    text: "Si tenés una idea, la llevo a un website que se vea premium y convierta: UX clara, performance, SEO y tracking. Contame qué querés lanzar, para quién y tu timeline; te respondo con propuesta + estimación en 24–48h.",
     primaryLabel: "Contactar por LinkedIn",
     primaryHref: "https://linkedin.com/in/nmpiovano",
     // secondaryLabel: "LinkedIn",
     // secondaryHref: "mailto:nmpiovano@gmail.com",
-    hint: "Respuesta en 24–48h. Trabajo en USD con clientes internacionales."
+    hint: "Trabajo en USD con clientes internacionales y nacionales."
   },
   // browserModal: {
   //   title: "Recomendación de Navegador",

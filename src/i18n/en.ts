@@ -162,12 +162,12 @@ export default {
   },
   finalCta: {
     title: "Want to ship or improve your product this month?",
-    text: "Send what you’re building, the goal (sales/retention/ops), timeline, and links. I’ll reply with a simple plan + estimate.",
+    text: "If you have an idea, I’ll turn it into a premium website that converts: clear UX, performance, SEO, and tracking. Send what you want to ship, who it’s for, and your timeline; I’ll reply with a proposal + estimate in 24–48h.",
     primaryLabel: "Contact by LinkedIn",
     primaryHref: "https://linkedin.com/in/nmpiovano",
     // secondaryLabel: "",
     // secodaryHref: "mailto:nmpiovano@gmail.com",
-    hint: "Reply in 24–48h. I work in USD with international clients."
+    hint: "I work in USD with international and national clients."
   },
   // browserModal: {
   //   title: "Browser Recommendation",
