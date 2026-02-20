@@ -1,20 +1,18 @@
 ---
-import Layout from "@/layouts/Layout.astro"
+import Layout from "@/layouts/Layout.astro";
 
-import AboutMe from "@/modules/AboutMe/AboutMe.astro"
-import AboutMeEmployment from "@/modules/AboutMeEmployment/AboutMeEmployment.astro"
-import CodeIcon from "@/components/icons/Code.astro"
-import Experience from "@/modules/Experience/Experience.astro"
-import ProfileCheck from "@/components/icons/ProfileCheck.astro"
-import Projects from "@/modules/Projects/Projects.astro"
-import Services from "@/modules/Services/Services.astro"
-import SectionContainer from "@/modules/Section/SectionContainer.astro"
-import Personal from "@/modules/Personal/Personal.astro"
-import FinalCta from "@/modules/FinalCta/FinalCta.astro"
-import EmploymentHero from "@/modules/EmploymentHero/EmploymentHero.astro"
+import AboutMe from "@/modules/AboutMe/AboutMe.astro";
+import CodeIcon from "@/components/icons/Code.astro";
+import Experience from "@/modules/Experience/Experience.astro";
+import ProfileCheck from "@/components/icons/ProfileCheck.astro";
+import Projects from "@/modules/Projects/Projects.astro";
+import Services from "@/modules/Services/Services.astro";
+import SectionContainer from "@/modules/Section/SectionContainer.astro";
+import Personal from "@/modules/Personal/Personal.astro";
+import FinalCta from "@/modules/FinalCta/FinalCta.astro";
 
-import { getI18n } from "@/i18n"
-import { getLangFromUrl } from "@/utils/lang"
+import { getI18n } from "@/i18n";
+import { getLangFromUrl } from "@/utils/lang";
 
 const lang = getLangFromUrl(Astro.url);
 (Astro.locals as any).lang = lang;
@@ -22,81 +20,55 @@ const lang = getLangFromUrl(Astro.url);
 const { t } = Astro.locals as any;
 ---
 
-<Layout title={t.seo.title}
-        description={t.seo.description}>
+<Layout title={t.seo.title} description={t.seo.description}>
     <main class="px-4">
-        <!-- Freelance mode -->
-        <div data-mode="freelance">
-            <SectionContainer class="min-h-screen flex items-center pt-8 md:pt-0">
-                <div class="w-full flex flex-col items-center justify-center gap-8">
-                    <Personal/>
-                </div>
-            </SectionContainer>
-            <div class="space-y-24">
-                <SectionContainer sectionKey="proyectos">
-                    <h2 class="flex items-center mb-2 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white">
-                        <CodeIcon class="size-7"/>
-                        {t.projects.title}
-                    </h2>
-                    <Projects />
-                </SectionContainer>
-
-                <SectionContainer sectionKey="servicios">
-                    <Services />
-                </SectionContainer>
-
-                <SectionContainer sectionKey="sobre-mi">
-                    <h2 class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white">
-                        <ProfileCheck class="size-8"/>
-                        {t.aboutMe.title}
-                    </h2>
-                    <AboutMe/>
-                </SectionContainer>
-
-                <SectionContainer>
-                    <FinalCta />
-                </SectionContainer>
+        <SectionContainer class="min-h-screen flex items-center pt-8 md:pt-0">
+            <div class="w-full flex flex-col items-center justify-center gap-8">
+                <Personal />
             </div>
-        </div>
-
-        <!-- Employment mode (legacy / CV-style) -->
-        <div data-mode="employment">
-            <SectionContainer class="min-h-screen flex items-center pt-8 md:pt-0">
-                <div class="w-full flex flex-col items-center justify-center gap-8">
-                    <EmploymentHero />
-                </div>
+        </SectionContainer>
+        <div class="space-y-24">
+            <SectionContainer id="proyectos" sectionKey="proyectos">
+                <h2
+                    class="flex items-center mb-2 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+                >
+                    <CodeIcon class="size-7" />
+                    {t.projects.title}
+                </h2>
+                <Projects />
             </SectionContainer>
 
-            <div class="space-y-24">
-                <SectionContainer sectionKey="experiencia">
-                    <Experience content={t.employment.experience} />
-                </SectionContainer>
+            <SectionContainer id="servicios" sectionKey="servicios">
+                <Services />
+            </SectionContainer>
 
-                <SectionContainer sectionKey="proyectos">
-                    <h2 class="flex items-center mb-2 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white">
-                        <CodeIcon class="size-7"/>
-                        {t.employment.projects.title}
-                    </h2>
-                    <Projects />
-                </SectionContainer>
+            <SectionContainer id="experiencia" sectionKey="experiencia">
+                <Experience content={t.employment.experience} />
+            </SectionContainer>
 
-                <SectionContainer sectionKey="sobre-mi">
-                    <h2 class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white">
-                        <ProfileCheck class="size-8"/>
-                        {t.employment.aboutMe.title}
-                    </h2>
-                    <AboutMeEmployment />
-                </SectionContainer>
-            </div>
+            <SectionContainer id="sobre-mi" sectionKey="sobre-mi">
+                <h2
+                    class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
+                >
+                    <ProfileCheck class="size-8" />
+                    {t.aboutMe.title}
+                </h2>
+                <AboutMe />
+            </SectionContainer>
+
+            <SectionContainer>
+                <div class="grid grid-cols-1 md:grid-cols-auto gap-4">
+                    <FinalCta content={t.finalCta} />
+                </div>
+            </SectionContainer>
         </div>
     </main>
 </Layout>
 
 <script>
-     function initAnchorScroll() {
+    function initAnchorScroll() {
         document.querySelectorAll('a[href^="#"]').forEach((link) => {
             (link as HTMLElement).onclick = (e: Event) => {
-            
                 const id = link.getAttribute("href")?.slice(1);
                 const target = document.getElementById(id ?? "");
                 if (!target) return;
@@ -107,6 +79,6 @@ const { t } = Astro.locals as any;
             };
         });
     }
-  
-    document.addEventListener('astro:page-load', initAnchorScroll)
-  </script>
+
+    document.addEventListener("astro:page-load", initAnchorScroll);
+</script>

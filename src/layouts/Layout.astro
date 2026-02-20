@@ -8,8 +8,6 @@ import ChatWidget from "../modules/Chat/ChatWidget.astro";
 import { getI18n } from "@/i18n";
 import { getLangFromUrl } from "@/utils/lang";
 import IntroLoader from "@/modules/IntroLoader/IntroLoader.astro";
-import ModeSelector from "@/modules/ModeSelector/ModeSelector.astro";
-import ModeToggle from "@/modules/ModeToggle/ModeToggle.astro";
 
 interface Props {
     title: string;
@@ -42,7 +40,10 @@ const { t } = Astro.locals as any;
             });
         </script>
         <script is:inline>
-            document.documentElement.dataset.siteMode = "unset";
+            document.documentElement.dataset.siteMode = "freelance";
+            document.addEventListener("astro:page-load", () => {
+                document.documentElement.dataset.siteMode = "freelance";
+            });
         </script>
     </head>
     <body class="relative text-neutral-900/90 dark:text-white">
@@ -57,8 +58,6 @@ const { t } = Astro.locals as any;
             messages={t.introLoader?.messages ?? []}
             durationMs={t.introLoader?.durationMs ?? 6000}
         />
-        <ModeSelector />
-        <ModeToggle />
 
         <ChatWidget />
         <Header />
