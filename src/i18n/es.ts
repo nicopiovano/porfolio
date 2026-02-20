@@ -3,6 +3,7 @@ export default {
   header: [
     { title: "Proyectos", section: "proyectos", url: "#proyectos" },
     { title: "Servicios", section: "servicios", url: "#servicios" },
+    { title: "Experiencia", section: "experiencia", url: "#experiencia" },
     { title: "Sobre mí", section: "sobre-mi", url: "#sobre-mi" },
     { title: "Contacto", section: "contacto", url: "#contacto" },
     { title: "Curriculum", url: "/Nicolás_Piovano_Sr_Fullstack.pdf", download: true }
@@ -13,8 +14,8 @@ export default {
     badge: "Disponible para trabajar",
   },
   hero: {
-    headline: "Construyo productos web que convierten visitas en ingresos.",
-    subheadline: "Colaboro con startups, negocios digitales e individuos que quieren escalar de forma profesional, con procesos claros, comunicación directa y foco en resultados de alto impacto, manteniendo estándares altos de calidad web.",
+    headline: "Vos sabés lo que necesitás, yo sé cómo construirlo.",
+    subheadline: "7 años de experiencia end-to-end. Trabajo con startups, empresas y comercios que quieren crecer online. Sin vueltas.",
     ctaSecondary: "LinkedIn",
     ctaSecondaryHref: "https://linkedin.com/in/nmpiovano",
     ctaPrimary: "Ver proyectos",
@@ -150,32 +151,35 @@ export default {
   },
   services: {
     title: "Servicios",
-    subtitle: "Servicios claros y cercanos para quienes solo necesitan “que el sitio funcione” y se vea profesional. Vos me contás el objetivo; yo me encargo del resto.",
+    subtitle: "Servicios probados en proyectos reales. Nada experimental, nada a medias. Entrás, pedís, funciona.",
     items: [
       { title: "Paneles de administración", description: "Un panel simple para gestionar ventas, usuarios, stock, contenidos o pedidos sin depender de nadie." },
-      { title: "E‑commerce / Tiendas online", description: "Catálogo, productos, variantes, pagos y envíos. Una tienda lista para vender y escalar." },
+      { title: "Tiendas online", description: "Catálogo, productos, pagos y checkout optimizado. Una tienda lista para vender, con flujo de compra que reduce el abandono." },
       { title: "Sitios web personales", description: "Portfolio, página profesional o landing personal: clara, rápida y que se vea premium." },
-      { title: "Carrito de compra y checkout", description: "Flujo de compra más simple, menos abandono y una experiencia que invita a finalizar." },
       { title: "Control de finanzas", description: "Tableros para ingresos/gastos, métricas y reportes para tomar decisiones con números claros." },
-      { title: "Mantenimiento y mejoras", description: "Soporte, cambios, nuevas secciones y optimizaciones (velocidad/SEO) sin romper lo que ya funciona." },
+      { title: "Tu vidriera online", description: "Diseñada para que el que entra, compre, reserve o te contacte." },
+      { title: "Tu web en piloto automático", description: "Turnos, pagos, consultas y notificaciones en automático." },
     ]
   },
   finalCta: {
-    title: "¿Querés lanzar o mejorar tu producto este mes?",
-    text: "Si tenés una idea, la llevo a un website que se vea premium y convierta: UX clara, performance, SEO y tracking. Contame qué querés lanzar, para quién y tu timeline; te respondo con propuesta + estimación en 24h.",
-    primaryLabel: "Contactar por LinkedIn",
-    primaryHref: "https://linkedin.com/in/nmpiovano",
-    // secondaryLabel: "LinkedIn",
-    // secondaryHref: "mailto:nmpiovano@gmail.com",
-    hint: "Trabajo en USD con clientes internacionales y nacionales."
+    divs: [
+      {
+        title: "¿Querés lanzar o mejorar tu producto este mes?",
+        text: "Contame qué querés lanzar, para quién y tu timeline; te respondo con propuesta + estimación en 24h.",
+        primaryLabel: "Contactar por LinkedIn",
+        primaryHref: "https://linkedin.com/in/nmpiovano",
+        hint: "Trabajo en USD con clientes internacionales y nacionales."
+      },
+      {
+        title: "¿Buscás sumar un desarrollador a tu equipo?",
+        text: "Podés ver mi trayectoria completa o contactarme directamente.",
+        primaryLabel: "Descargar CV",
+        primaryHref: "/Nicolás_Piovano_Sr_Fullstack.pdf",
+        secondaryLabel: "Contactar",
+        secondaryHref: "https://linkedin.com/in/nmpiovano",
+      }
+    ]
   },
-  // browserModal: {
-  //   title: "Recomendación de Navegador",
-  //   message: "Esta página contiene efectos visuales 3D que funcionan mejor en Mozilla Firefox.",
-  //   recommendation: "Para una experiencia óptima, te recomiendo usar Firefox.",
-  //   downloadFirefox: "Descargar Firefox",
-  //   continue: "Continuar"
-  // },
   seo: {
     title: "Porfolio de Nico Piovano - Desarrollador Web con +7 años de experiencia",
     description: "Contrata a Nico para crear tu aplicación web o móvil. Desarrollador Web."
