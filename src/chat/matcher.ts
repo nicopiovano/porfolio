@@ -65,7 +65,7 @@ export function matchIntent(message: string, _lang: string = "es"): string {
   // Intents de segundo nivel - más específicos primero (multiidioma)
   if (
     text.includes("proyecto") || text.includes("project") || text.includes("projeto") ||
-    text.includes("portfolio") || text.includes("portafolio") || text.includes("portfólio") ||
+    text.includes("porfolio") || text.includes("portafolio") || text.includes("porfólio") ||
     text.includes("casos") || text.includes("cases") || text.includes("casos") ||
     text.includes("clientes") || text.includes("clients") || text.includes("clientes") ||
     text.includes("sistemas") || text.includes("systems") || text.includes("sistemas") ||

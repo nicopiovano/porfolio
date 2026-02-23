@@ -1,6 +1,6 @@
-# 🌐 Website — Portfolio Nico Piovano
+# 🌐 Website — Porfolio Nico Piovano
 
-Portfolio personal desarrollado con **Astro**, multiidioma (ES / EN / PT), chat asistente y efectos visuales.
+Porfolio personal desarrollado con **Astro**, multiidioma (ES / EN / PT), chat asistente y efectos visuales.
 
 ---
 
