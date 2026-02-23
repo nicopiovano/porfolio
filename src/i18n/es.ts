@@ -39,6 +39,12 @@ export default {
         impact: "Menos superficie de ataque y una base lista con usuarios reales.",
       },
       {
+        title: "Portfolio de Romina Fiorentino",
+        problem: "CV y Linkedin no permitían explicar toda la experiencia de la Licenciada en Recursos Humanos.",
+        solution: "Desarrollo de un portfolio personalizado para que el cliente pueda mostrar su experiencia y habilidades de manera clara y profesional.",
+        impact: "Recurso nuevo para un cliente que quería mejorar su presencia en el mercado laboral.",
+      },
+      {
         title: "Market Dashboard para decisiones rápidas",
         problem: "Datos difíciles de leer → decisiones lentas y baja claridad operativa.",
         solution: "Panel con componentes reutilizables, vistas por categoría y gráficos comparativos.",
