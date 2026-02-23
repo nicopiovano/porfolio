@@ -39,9 +39,9 @@ export default {
         impact: "Lower attack surface and a solid base ready for real users.",
       },
       {
-        title: "Romina Fiorentino Portfolio",
+        title: "Romina Fiorentino Porfolio",
         problem: "CV and LinkedIn couldn't explain the entire experience of the Licenciada en Recursos Humanos.",
-        solution: "Development of a personalized portfolio for the client to show their experience and skills in a clear and professional way.",
+        solution: "Development of a personalized porfolio for the client to show their experience and skills in a clear and professional way.",
         impact: "New resource for a client who wanted to improve their presence in the labor market.",
       },
       {
@@ -63,7 +63,7 @@ export default {
         impact: "A smoother purchase experience designed for quick completion.",
       },
       {
-        title: "Multi-language portfolio to win global clients",
+        title: "Multi-language porfolio to win global clients",
         problem: "Single-language sites limit reach and SEO → fewer international leads.",
         solution: "Language routes, centralized translations, SEO-friendly structure.",
         impact: "Stronger international presence and clearer positioning for USD clients.",
@@ -161,7 +161,7 @@ export default {
     items: [
       { title: "Admin panels", description: "A simple dashboard to manage sales, users, inventory, content, or orders—without relying on anyone." },
       { title: "Online stores", description: "Catalog, products, variants, payments, and shipping. A store ready to sell and scale." },
-      { title: "Personal websites", description: "Portfolio, professional page, or personal landing: clear, fast, and premium-looking." },
+      { title: "Personal websites", description: "Porfolio, professional page, or personal landing: clear, fast, and premium-looking." },
       { title: "Finance tracking", description: "Dashboards for income/expenses, metrics, and reports to make decisions with clear numbers." },
       { title: "Your online showroom", description: "Designed to make the one who enters, buys, reserves or contacts you." },
       { title: "Your web in autopilot", description: "Turns, payments, consultations, and notifications in automatic." },
@@ -187,7 +187,7 @@ export default {
     ]
   },
   seo: {
-    title: "Nico Piovano Portfolio - Web Developer with +7 years of experience",
+    title: "Nico Piovano Porfolio - Web Developer with +7 years of experience",
     description: "Hire Nico to create your web or mobile application. Web Developer."
   },
   chat: {
@@ -204,7 +204,7 @@ export default {
   ,
   modeSelector: {
     title: "What are you looking for?",
-    subtitle: "Choose an option to see the most relevant version of my portfolio.",
+    subtitle: "Choose an option to see the most relevant version of my porfolio.",
     employment: "Fixed-term contract",
     freelance: "Freelance / Contractor"
   },
@@ -247,8 +247,8 @@ export default {
           description: "100% frontend raffle app: prize carousel, number grid (1–1000) to pick, floating cart and checkout modal with form. React, Vite, Motion, Tailwind and Radix UI. Argentine price format ($1,000)."
         },
         {
-          title: "Multi-language Portfolio",
-          description: "Portfolio with multi-language support (ES, EN, PT) using custom i18n system. Language routes (/es, /en, /pt) for SEO, centralized translations, and automatic detection from URL."
+          title: "Multi-language Porfolio",
+          description: "Porfolio with multi-language support (ES, EN, PT) using custom i18n system. Language routes (/es, /en, /pt) for SEO, centralized translations, and automatic detection from URL."
         },
         {
           title: "Programmable Chat",

@@ -36,7 +36,7 @@ export const RESPONSES_EN: Record<string, ChatResponse> = {
 
   projects: {
     text:
-      "I've worked on various projects: management systems, e-commerce, administrative dashboards and complex web applications. Some projects are in my portfolio.",
+      "I've worked on various projects: management systems, e-commerce, administrative dashboards and complex web applications. Some projects are in my porfolio.",
     followUps: [
       "Can you show me some projects?",
       "Have you worked on e-commerce?",
@@ -130,7 +130,7 @@ export const RESPONSES_EN: Record<string, ChatResponse> = {
 
   "projects.show": {
     text:
-      "You can see some of my projects in the projects section of my portfolio. They include management systems, e-commerce and complex web applications.",
+      "You can see some of my projects in the projects section of my porfolio. They include management systems, e-commerce and complex web applications.",
     followUps: [
       "What type of systems have you developed?",
       "Have you worked on e-commerce?",
