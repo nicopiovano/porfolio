@@ -1,4 +1,7 @@
 ---
+import ServicesProjectsModal from "@/modules/Services/ServicesProjectsModal.astro"
+import { serviceKeyFromIndex } from "@/utils/serviceKeys"
+
 const { t } = Astro.locals as any;
 const items = t.services?.items ?? [];
 
@@ -25,23 +28,35 @@ const GREEN_DOT = "bg-emerald-500";
 
   <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
     {
-      items.map((s: { title: string; description: string }) => (
-        <article
-          class={`group rounded-2xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-slate-900/40 backdrop-blur p-5 shadow-sm transition-all duration-200 hover:shadow-lg ${GREEN_HOVER}`}
-        >
-          <div class="flex items-center gap-3">
-            <span
-              class={`h-2 w-2 rounded-full ${GREEN_DOT} opacity-70 group-hover:opacity-100 transition-opacity`}
-            />
-            <h3 class="text-lg font-semibold text-black/90 dark:text-white">
-              {s.title}
-            </h3>
-          </div>
-          <p class="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-            {s.description}
-          </p>
-        </article>
-      ))
+      items.map((s: { title: string; description: string }, i: number) => {
+        const key = serviceKeyFromIndex(i)
+        return (
+          <button
+            type="button"
+            data-open-services-modal="1"
+            data-service-key={key}
+            data-service-title={s.title}
+            class={`group text-left rounded-2xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-slate-900/40 backdrop-blur p-5 shadow-sm transition-all duration-200 hover:shadow-lg ${GREEN_HOVER}`}
+          >
+            <div class="flex items-center gap-3">
+              <span
+                class={`h-2 w-2 rounded-full ${GREEN_DOT} opacity-70 group-hover:opacity-100 transition-opacity`}
+              />
+              <h3 class="text-lg font-semibold text-black/90 dark:text-white">
+                {s.title}
+              </h3>
+            </div>
+            <p class="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+              {s.description}
+            </p>
+            <p class="mt-4 text-sm font-semibold text-emerald-700/90 dark:text-emerald-300/90">
+              Ver ejemplos →
+            </p>
+          </button>
+        )
+      })
     }
   </div>
+
+  <ServicesProjectsModal items={items} />
 </section>

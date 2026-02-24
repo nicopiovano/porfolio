@@ -14,7 +14,7 @@ export default {
     badge: "Disponible para trabajar",
   },
   hero: {
-    headline: "Vos sabés lo que necesitás, yo sé cómo construirlo.",
+    headline: "Vos sabés lo que querés. Yo sé cómo construirlo.",
     subheadline: "7 años de experiencia end-to-end. Trabajo con startups, empresas y comercios que quieren crecer online. Sin vueltas.",
     ctaSecondary: "LinkedIn",
     ctaSecondaryHref: "https://linkedin.com/in/nmpiovano",
@@ -24,7 +24,7 @@ export default {
   projects: {
     title: "Proyectos",
     code: "Código",
-    preview: "Ver",
+    preview: "Visitar",
     labels: {
       problem: "Problema",
       solution: "Solución",
@@ -148,11 +148,13 @@ export default {
     downloadCV: "Descarga CV 2026"
   },
   introLoader: {
-    durationMs: 6000,
+    durationMs: 4000,
     messages: [
       // "Construyo plataformas web escalables para negocios digitales.",
-      "Construyo sistemas que generan ingresos",
-      "con foco en performance, UX y mantenibilidad.",
+      // "Construyo sistemas que generan ingresos",
+      // "con foco en performance, UX y mantenibilidad.",
+      "Construyo soluciones digitales",
+      "para problemas cotidianos.",
     ]
   },
   services: {

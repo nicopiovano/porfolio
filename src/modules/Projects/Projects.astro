@@ -10,9 +10,12 @@ import AstroIcon from "@/components/icons/AstroIcon.astro"
 import Laravel from "@/components/icons/Laravel.astro"
 import Link from "@/components/icons/Link.astro"
 import LinkButton from "@/modules/LinkButton/LinkButton.astro"
+import type { ServiceKey } from "@/utils/serviceKeys"
 
 const { t } = Astro.locals as any
 const content = (Astro.props as any)?.content ?? t.projects
+const variant = (Astro.props as any)?.variant ?? "page"
+const serviceKey = (Astro.props as any)?.serviceKey as ServiceKey | undefined
 
 // En local (npm run dev) los links apuntan a localhost; en producción a las URLs desplegadas
 const isDev = import.meta.env.DEV
@@ -82,42 +85,49 @@ const PROJECTS_DATA = [
     github: "https://github.com/nicopiovano/login-react",
     image: "/projects/panel-logueo.png",
     tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.LARAVEL],
+    serviceKeys: ["admin-panels"] as ServiceKey[],
   },
     {
     link: PROJECT_LINKS.porfolio_romi,
     github: "https://github.com/nicopiovano/porfolio-romina-fiorentino",
     image: "/projects/porfolio-romina-fiorentino.png",
     tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.VITE],
+    serviceKeys: ["personal-websites"] as ServiceKey[],
   },
   {
     link: PROJECT_LINKS.marketDashboard,
     github: "https://github.com/nicopiovano/market-dashboard",
     image: "/projects/market-dashboard.png",
     tags: [TAGS.VUE, TAGS.VITE, TAGS.TAILWIND],
+    serviceKeys: ["finance-tracking", "admin-panels"] as ServiceKey[],
   },
   {
     link: PROJECT_LINKS.techDecision,
     github: "https://github.com/nicopiovano/tech-decision",
     image: "/projects/tech-decision.png",
     tags: [TAGS.VUE, TAGS.VITE, TAGS.TAILWIND],
+    serviceKeys: ["online-showroom"] as ServiceKey[],
   },
   {
     link: PROJECT_LINKS.rifas,
     github: "https://github.com/nicopiovano/rifas-react",
     image: "/projects/rifas.png",
     tags: [TAGS.REACT, TAGS.MOTION, TAGS.TAILWIND],
+    serviceKeys: ["online-stores"] as ServiceKey[],
   },
   {
     link: null,
     github: "https://github.com/nicopiovano/porfolio",
     image: "/projects/porfolio.png",
     tags: [TAGS.ASTRO, TAGS.VITE, TAGS.TAILWIND],
+    serviceKeys: ["personal-websites"] as ServiceKey[],
   },
   {
     link: null,
     github: null,
     image: "/projects/chat.png",
     tags: [TAGS.TAILWIND],
+    serviceKeys: ["autopilot-web"] as ServiceKey[],
   },
 ]
 
@@ -130,6 +140,10 @@ const PROJECTS = PROJECTS_DATA.map((project, i) => ({
   impact: content.items[i]?.impact || '',
 }))
 
+const VISIBLE_PROJECTS = serviceKey
+  ? PROJECTS.filter((p: any) => (p.serviceKeys ?? []).includes(serviceKey))
+  : PROJECTS
+
 const LABELS = content?.labels ?? {
   problem: "Problema",
   solution: "Solución",
@@ -138,11 +152,19 @@ const LABELS = content?.labels ?? {
 }
 ---
 
-<section class="projects-section">
+<section class={`projects-section ${variant === "modal" ? "projects-section--modal" : ""}`}>
   <!-- CONTENEDOR STICKY CON CARRUSEL -->
-  <div class="sticky top-0 h-[80vh] md:h-[85vh] overflow-hidden projects-carousel-container">
+  <div class={`${variant === "modal" ? "h-[70vh] md:h-[72vh]" : "sticky top-0 h-[80vh] md:h-[85vh]"} overflow-hidden projects-carousel-container`}>
     <div class="projects-wrapper relative h-full">
-      {PROJECTS.map((project, i) => (
+      {VISIBLE_PROJECTS.length === 0 && (
+        <div class="h-full w-full flex items-center justify-center p-6">
+          <div class="max-w-xl text-center rounded-2xl border border-white/10 bg-black/40 text-white px-6 py-10">
+            <p class="text-lg font-semibold">Todavía no hay ejemplos para este servicio.</p>
+            <p class="mt-2 text-sm opacity-90">Si querés, te muestro casos similares por mensaje.</p>
+          </div>
+        </div>
+      )}
+      {VISIBLE_PROJECTS.map((project, i) => (
         <div class="project-card" data-index={i}>
           <div class="card-box">
             <!-- Fondo: imagen con opacity y blur -->
@@ -219,23 +241,29 @@ const LABELS = content?.labels ?? {
       ))}
       
       <!-- Navegación del carrusel -->
-      <button class="carousel-btn carousel-btn-prev" aria-label="Proyecto anterior">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m15 18-6-6 6-6"/>
-        </svg>
-      </button>
-      <button class="carousel-btn carousel-btn-next" aria-label="Proyecto siguiente">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m9 18 6-6-6-6"/>
-        </svg>
-      </button>
+      {VISIBLE_PROJECTS.length > 1 && (
+        <>
+          <button class="carousel-btn carousel-btn-prev" aria-label="Proyecto anterior">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+          </button>
+          <button class="carousel-btn carousel-btn-next" aria-label="Proyecto siguiente">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </button>
+        </>
+      )}
       
       <!-- Indicadores (dots) -->
-      <div class="carousel-dots">
-        {PROJECTS.map((_, i) => (
-          <button class="carousel-dot" data-index={i} aria-label={`Ir al proyecto ${i + 1}`}></button>
-        ))}
-      </div>
+      {VISIBLE_PROJECTS.length > 1 && (
+        <div class="carousel-dots">
+          {VISIBLE_PROJECTS.map((_, i) => (
+            <button class="carousel-dot" data-index={i} aria-label={`Ir al proyecto ${i + 1}`}></button>
+          ))}
+        </div>
+      )}
     </div>
   </div>
 </section>
@@ -245,6 +273,11 @@ const LABELS = content?.labels ?? {
   position: relative;
   min-height: 100vh;
   padding: 2rem 0;
+}
+
+.projects-section--modal {
+  min-height: auto;
+  padding: 0;
 }
 
 .projects-carousel-container {
@@ -486,4 +519,4 @@ const LABELS = content?.labels ?? {
 }
 </style>
 
-<script src="./Projects.astro.js"></script>
+

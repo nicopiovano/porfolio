@@ -63,6 +63,8 @@ const { t } = Astro.locals as any;
         <Header />
         <slot />
         <Footer />
+        <!-- Script que abre el modal de Servicios (no precisa que esté el modulo Proyectos activo) -->
+        <script is:inline src="/scripts/projects-carousel.js" defer></script>
         <style is:global>
             :root {
                 color-scheme: light dark;

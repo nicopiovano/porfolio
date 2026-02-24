@@ -1,0 +1,123 @@
+---
+import Projects from "@/modules/Projects/Projects.astro"
+import { SERVICE_KEYS } from "@/utils/serviceKeys"
+
+const { t } = Astro.locals as any
+const items = (Astro.props as any)?.items ?? t.services?.items ?? []
+
+const modalKicker = t?.services?.modalKicker ?? "Ejemplos reales"
+const modalAriaLabel = t?.services?.modalAriaLabel ?? "Proyectos por servicio"
+const closeLabel = t?.services?.modalCloseLabel ?? "Cerrar"
+---
+
+<div
+  id="services-projects-modal"
+  class="fixed inset-0 z-[9999] hidden items-center justify-center bg-black/60 backdrop-blur-sm px-4"
+  role="dialog"
+  aria-modal="true"
+  aria-label={modalAriaLabel}
+>
+  <div class="relative w-full max-w-6xl max-h-[92vh] overflow-hidden rounded-3xl border border-white/10 bg-slate-950/90 shadow-2xl">
+    <button
+      type="button"
+      data-close-services-modal
+      class="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white/90 transition hover:bg-white/15"
+      aria-label={closeLabel}
+    >
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <header class="px-6 pt-6 pb-3">
+      <p class="text-xs font-semibold tracking-widest uppercase text-emerald-300/90">
+        {modalKicker}
+      </p>
+      <h3 id="services-projects-modal-title" class="mt-1 text-2xl md:text-3xl font-extrabold text-white">
+        {/* se setea por JS */}
+      </h3>
+    </header>
+
+    <div class="px-4 pb-6">
+      {items.map((_s: any, i: number) => {
+        const key = SERVICE_KEYS[i]
+        if (!key) return null
+        return (
+          <div class="services-modal-panel hidden" data-service-key={key}>
+            <Projects variant="modal" serviceKey={key} includeScript={false} />
+          </div>
+        )
+      })}
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  function initServicesProjectsModal() {
+    const modal = document.getElementById("services-projects-modal");
+    if (!modal) return;
+
+    const titleEl = document.getElementById("services-projects-modal-title");
+    const closeBtn = modal.querySelector("[data-close-services-modal]");
+    const panels = [...modal.querySelectorAll(".services-modal-panel")];
+
+    const openers = [...document.querySelectorAll("[data-open-services-modal]")];
+
+    const show = (serviceKey, serviceTitle) => {
+      // mostrar modal
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.style.overflow = "hidden";
+
+      if (titleEl) titleEl.textContent = serviceTitle || "Proyectos";
+
+      // mostrar panel correspondiente
+      panels.forEach((p) => p.classList.add("hidden"));
+      const panel = modal.querySelector(`.services-modal-panel[data-service-key="${serviceKey}"]`);
+      if (panel) panel.classList.remove("hidden");
+
+      // resetear carrusel al primer slide (si existe)
+      const firstDot = panel?.querySelector?.('.carousel-dot[data-index="0"]');
+      if (firstDot) firstDot.click();
+    };
+
+    const hide = () => {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      document.body.style.overflow = "";
+    };
+
+    // Evitar doble bind con transiciones de Astro
+    if (modal.dataset.bound === "1") return;
+    modal.dataset.bound = "1";
+
+    openers.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const serviceKey = btn.getAttribute("data-service-key");
+        const serviceTitle = btn.getAttribute("data-service-title");
+        if (!serviceKey) return;
+        show(serviceKey, serviceTitle);
+      });
+    });
+
+    closeBtn?.addEventListener("click", hide);
+
+    // click fuera
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) hide();
+    });
+
+    // ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal.classList.contains("hidden")) hide();
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initServicesProjectsModal);
+  } else {
+    initServicesProjectsModal();
+  }
+  document.addEventListener("astro:page-load", initServicesProjectsModal);
+</script>
+

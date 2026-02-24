@@ -14,7 +14,7 @@ export default {
     badge: "Available for work",
   },
   hero: {
-    headline: "You know what you need — I know how to build it.",
+    headline: "You know what you want. I know how to build it.",
     subheadline: "7 years of end-to-end experience. I work with startups, companies, and local businesses that want to grow online. No fluff.",
     ctaSecondary: "LinkedIn",
     ctaSecondaryHref: "https://linkedin.com/in/nmpiovano",
@@ -24,7 +24,7 @@ export default {
   projects: {
     title: "Projects",
     code: "Code",
-    preview: "Preview",
+    preview: "Visit",
     labels: {
       problem: "Business problem",
       solution: "Solution",
@@ -148,11 +148,13 @@ export default {
     downloadCV: "Download CV 2026"
   },
   introLoader: {
-    durationMs: 6000,
+    durationMs: 4000,
     messages: [
       // "I build scalable web platforms for digital businesses.",
-      "I build systems that generate revenue",
-      "with focus on performance, UX, and maintainability.",
+      // "I build systems that generate revenue",
+      // "with focus on performance, UX, and maintainability.",
+      "I build digital solutions",
+      "for everyday problems.",
     ]
   },
   services: {

@@ -15,11 +15,11 @@ const { t } = Astro.locals as any
                 ? t.aboutMe.text.map((p: string) => <p>{p}</p>)
                 : t.aboutMe.paragraphs.map(
                     (p: { before: string; strong: string; after: string }) => (
-                        <p>
-                            {p.before}
-                            <strong>{p.strong}</strong>
-                            {p.after}
-                        </p>
+          <p>
+            {p.before}
+            <strong>{p.strong}</strong>
+            {p.after}
+          </p>
                     ),
                 )
         }
