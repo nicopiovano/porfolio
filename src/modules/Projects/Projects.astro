@@ -18,12 +18,11 @@ const content = (Astro.props as any)?.content ?? t.projects
 // En local (npm run dev) los links apuntan a localhost; en producción a las URLs desplegadas
 const isDev = import.meta.env.DEV
 const PROJECT_LINKS = {
-  login: isDev ? "http://localhost:5171/" : "https://nico-piovano-login.vercel.app/",
-  marketDashboard: isDev ? "http://localhost:5172/" : "https://nico-piovano-market-dashboard.vercel.app/",
+  finanzas_app: isDev ? "http://localhost:5172/" : "https://nico-piovano-finanzas-app.vercel.app",
   rifas: isDev ? "http://localhost:5173/" : "https://nico-piovano-rifas.vercel.app/",
   techDecision: isDev ? "http://localhost:5174/" : "https://nico-piovano-tech-decision.vercel.app/",
   porfolio_romi: isDev ? "http://localhost:5175/" : "https://porfolio-romina-fiorentino.vercel.app/",
-
+  login: isDev ? "http://localhost:5176/" : "https://nico-piovano-login.vercel.app/",
 }
 
 const TAGS = {
@@ -85,8 +84,8 @@ const PROJECTS_DATA: Array<{
   tags: any[]
 }> = [
   {
-    link: PROJECT_LINKS.marketDashboard,
-    github: "https://github.com/nicopiovano/market-dashboard",
+    link: PROJECT_LINKS.finanzas_app,
+    github: "https://github.com/nicopiovano/finanzas-app",
     image: "/projects/market-dashboard.png",
     typeKey: "finance-tracking",
     tags: [TAGS.VUE, TAGS.VITE, TAGS.TAILWIND],
