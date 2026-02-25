@@ -14,8 +14,8 @@ export default {
     badge: "Disponible para trabajar",
   },
   hero: {
-    headline: "Vos sabés lo que necesitás, yo sé cómo construirlo.",
-    subheadline: "7 años de experiencia end-to-end. Trabajo con startups, empresas y comercios que quieren crecer online. Sin vueltas.",
+    headline: "Entendés tu proyecto. Yo lo convierto en producto.",
+    subheadline: "7 años de experiencia end-to-end. Trabajo con startups, empresas y comercios que quieren crecer online.",
     ctaSecondary: "LinkedIn",
     ctaSecondaryHref: "https://linkedin.com/in/nmpiovano",
     ctaPrimary: "Ver proyectos",
@@ -33,10 +33,23 @@ export default {
     },
     items: [
       {
+        title: "Market Dashboard para decisiones rápidas",
+        problem: "Datos difíciles de leer → decisiones lentas y baja claridad operativa.",
+        solution: "Panel con componentes reutilizables, vistas por categoría y gráficos comparativos.",
+        impact: "Lectura inmediata de KPIs y UI lista para enchufar datos reales sin rehacer la app.",
+      },
+      {
         title: "Login & Dashboard seguro (auth sin fricción)",
         problem: "Sesiones inestables y logins inseguros terminan en soporte y riesgo.",
         solution: "Autenticación con cookies seguras (Sanctum), rutas protegidas y flujo de sesión consistente.",
         impact: "Menos superficie de ataque y una base lista con usuarios reales.",
+      },
+
+      {
+        title: "Checkout rápido para rifas / preventa",
+        problem: "Flujos confusos → caída de conversiones y carritos abandonados.",
+        solution: "Selección clara, carrito persistente, checkout modal y feedback inmediato.",
+        impact: "Experiencia simple para comprar en pocos pasos.",
       },
       {
         title: "Porfolio de Romina Fiorentino",
@@ -45,10 +58,10 @@ export default {
         impact: "Recurso nuevo para una cliente que quería mejorar su presencia en el mercado laboral.",
       },
       {
-        title: "Market Dashboard para decisiones rápidas",
-        problem: "Datos difíciles de leer → decisiones lentas y baja claridad operativa.",
-        solution: "Panel con componentes reutilizables, vistas por categoría y gráficos comparativos.",
-        impact: "Lectura inmediata de KPIs y UI lista para enchufar datos reales sin rehacer la app.",
+        title: "Porfolio multi‑idioma para captar clientes globales",
+        problem: "Un solo idioma limita alcance y SEO → menos leads internacionales.",
+        solution: "Rutas por idioma, traducciones centralizadas y estructura optimizada para indexación.",
+        impact: "Mejor alcance internacional y presentación sólida para vender en USD.",
       },
       {
         title: "Simulador de decisiones (elegir bien y ahorrar tiempo)",
@@ -56,18 +69,7 @@ export default {
         solution: "Motor de reglas que evalúa contexto y devuelve recomendaciones justificadas.",
         impact: "Acelera alineación y deja un criterio repetible para decisiones futuras.",
       },
-      {
-        title: "Checkout rápido para rifas / preventa",
-        problem: "Flujos confusos → caída de conversiones y carritos abandonados.",
-        solution: "Selección clara, carrito persistente, checkout modal y feedback inmediato.",
-        impact: "Experiencia simple para comprar en pocos pasos.",
-      },
-      {
-        title: "Porfolio multi‑idioma para captar clientes globales",
-        problem: "Un solo idioma limita alcance y SEO → menos leads internacionales.",
-        solution: "Rutas por idioma, traducciones centralizadas y estructura optimizada para indexación.",
-        impact: "Mejor alcance internacional y presentación sólida para vender en USD.",
-      },
+
       {
         title: "Chat guiado para calificar leads",
         problem: "Preguntas repetidas sin un flujo claro → pérdida de tiempo y leads fríos.",
@@ -157,7 +159,7 @@ export default {
   },
   services: {
     title: "Servicios",
-    subtitle: "Servicios probados en proyectos reales. Nada experimental, nada a medias. Entrás, pedís, funciona.",
+    subtitle: "Servicios probados en proyectos reales. Claros, completos y listos para usar.",
     items: [
       { title: "Paneles de administración", description: "Un panel simple para gestionar ventas, usuarios, stock, contenidos o pedidos sin depender de nadie." },
       { title: "Tiendas online", description: "Catálogo, productos, pagos y checkout optimizado. Una tienda lista para vender, con flujo de compra que reduce el abandono." },
