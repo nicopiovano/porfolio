@@ -68,10 +68,10 @@ export default {
         impact: "Alinha mais rápido e cria um critério repetível para decisões futuras.",
       },
       {
-        title: "Chat guiado para qualificar leads",
-        problem: "Perguntas repetidas sem fluxo claro esfriam leads e consomem tempo.",
-        solution: "Respostas por intenção + follow-ups para guiar até a informação certa.",
-        impact: "Conversas mais focadas e um caminho mais claro para entrar em contato.",
+        title: "ChatBox",
+        problem: "Clientes com intenção de compra sem resposta imediata → vendas perdidas.",
+        solution: "Chatbox 24/7 com respostas guiadas que levam à ação.",
+        impact: "Conversas mais focadas e encaminhamento direto para contato.",
       },
     ]
   },
