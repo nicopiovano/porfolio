@@ -1,4 +1,6 @@
 ---
+import { serviceKeyFromIndex } from "@/utils/serviceKeys";
+
 const { t } = Astro.locals as any;
 const items = t.services?.items ?? [];
 
@@ -25,23 +27,77 @@ const GREEN_DOT = "bg-emerald-500";
 
   <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
     {
-      items.map((s: { title: string; description: string }) => (
-        <article
-          class={`group rounded-2xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-slate-900/40 backdrop-blur p-5 shadow-sm transition-all duration-200 hover:shadow-lg ${GREEN_HOVER}`}
-        >
-          <div class="flex items-center gap-3">
-            <span
-              class={`h-2 w-2 rounded-full ${GREEN_DOT} opacity-70 group-hover:opacity-100 transition-opacity`}
-            />
-            <h3 class="text-lg font-semibold text-black/90 dark:text-white">
-              {s.title}
-            </h3>
-          </div>
-          <p class="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-            {s.description}
-          </p>
-        </article>
-      ))
+      items.map((s: { title: string; description: string }, i: number) => {
+        const key = serviceKeyFromIndex(i);
+        return (
+          <button
+            type="button"
+            data-service-key={key}
+            class={`group text-left rounded-2xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-slate-900/40 backdrop-blur p-5 shadow-sm transition-all duration-200 hover:shadow-lg ${GREEN_HOVER}`}
+          >
+            <div class="flex items-center gap-3">
+              <span
+                class={`h-2 w-2 rounded-full ${GREEN_DOT} opacity-70 group-hover:opacity-100 transition-opacity`}
+              />
+              <h3 class="text-lg font-semibold text-black/90 dark:text-white">
+                {s.title}
+              </h3>
+            </div>
+            <p class="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+              {s.description}
+            </p>
+            <p class="mt-4 text-sm font-semibold text-emerald-700/90 dark:text-emerald-300/90">
+              {t.services?.ctaExamples ?? "Ver ejemplos →"}
+            </p>
+          </button>
+        );
+      })
     }
   </div>
 </section>
+
+<script is:inline>
+  function initServicesJumpToProjects() {
+    const buttons = [...document.querySelectorAll("button[data-service-key]")];
+    if (buttons.length === 0) return;
+
+    // Evitar doble bind en transiciones
+    if (document.documentElement.dataset.servicesJumpBound === "1") return;
+    document.documentElement.dataset.servicesJumpBound = "1";
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const key = btn.getAttribute("data-service-key");
+        if (!key) return;
+
+        // Scroll a la sección proyectos
+        const projectsSection = document.getElementById("proyectos");
+        projectsSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        // Buscar primer card de ese tipo y navegar al índice
+        const container = projectsSection?.querySelector?.(
+          ".projects-carousel-container",
+        );
+        if (!container) return;
+
+        const first = container.querySelector(
+          `.project-card[data-service-key="${key}"]`,
+        );
+        const index = first?.getAttribute?.("data-index");
+        if (index == null) return;
+
+        const dot = container.querySelector(
+          `.carousel-dot[data-index="${index}"]`,
+        );
+        if (dot) dot.click();
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initServicesJumpToProjects);
+  } else {
+    initServicesJumpToProjects();
+  }
+  document.addEventListener("astro:page-load", initServicesJumpToProjects);
+</script>

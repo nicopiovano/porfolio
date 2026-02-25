@@ -14,8 +14,8 @@ export default {
     badge: "Available for work",
   },
   hero: {
-    headline: "You know what you need — I know how to build it.",
-    subheadline: "7 years of end-to-end experience. I work with startups, companies, and local businesses that want to grow online. No fluff.",
+    headline: "You understand your project. I turn it into a product.",
+    subheadline: "7 years of end-to-end experience. I work with startups, companies, and local businesses that want to grow online.",
     ctaSecondary: "LinkedIn",
     ctaSecondaryHref: "https://linkedin.com/in/nmpiovano",
     ctaPrimary: "See projects",
@@ -33,28 +33,16 @@ export default {
     },
     items: [
       {
-        title: "Secure Login & Dashboard (frictionless auth)",
-        problem: "Unreliable sessions and insecure logins lead to support, drop-off, and risk.",
-        solution: "Secure cookie-based auth (Sanctum), protected routes, and a consistent session flow.",
-        impact: "Lower attack surface and a solid base ready for real users.",
-      },
-      {
-        title: "Romina Fiorentino Porfolio",
-        problem: "CV and LinkedIn couldn't explain the entire experience of the Licenciada en Recursos Humanos.",
-        solution: "Development of a personalized porfolio for the client to show their experience and skills in a clear and professional way.",
-        impact: "New resource for a client who wanted to improve their presence in the labor market.",
-      },
-      {
         title: "Market Dashboard for faster decisions",
         problem: "Hard-to-read data slows decisions and reduces operational clarity.",
         solution: "Reusable UI, category views, and comparative charts for key metrics.",
         impact: "Instant KPI visibility and a UI ready to plug real data into.",
       },
       {
-        title: "Decision Simulator (choose right, save time)",
-        problem: "Choosing tech “by hype” causes extra cost and delays.",
-        solution: "Rules engine that evaluates context and returns justified recommendations.",
-        impact: "Faster alignment and a repeatable decision process for future projects.",
+        title: "Secure Login & Dashboard (frictionless auth)",
+        problem: "Unreliable sessions and insecure logins lead to support, drop-off, and risk.",
+        solution: "Secure cookie-based auth (Sanctum), protected routes, and a consistent session flow.",
+        impact: "Lower attack surface and a solid base ready for real users.",
       },
       {
         title: "Fast Checkout for raffles / pre-orders",
@@ -63,10 +51,19 @@ export default {
         impact: "A smoother purchase experience designed for quick completion.",
       },
       {
-        title: "Multi-language porfolio to win global clients",
-        problem: "Single-language sites limit reach and SEO → fewer international leads.",
-        solution: "Language routes, centralized translations, SEO-friendly structure.",
-        impact: "Stronger international presence and clearer positioning for USD clients.",
+        title: "Romina Fiorentino Porfolio",
+        problem: "CV and LinkedIn couldn't explain the entire experience of the Licenciada en Recursos Humanos.",
+        solution: "Development of a personalized porfolio for the client to show their experience and skills in a clear and professional way.",
+        impact: "New resource for a client who wanted to improve their presence in the labor market.",
+      },
+      {
+        title: "Multi-language porfolio to win global clients", problem: "Single-language sites limit reach and SEO → fewer international leads.", solution: "Language routes, centralized translations, SEO-friendly structure.", impact: "Stronger international presence and clearer positioning for USD clients."
+      },
+      {
+        title: "Decision Simulator (choose right, save time)",
+        problem: "Choosing tech “by hype” causes extra cost and delays.",
+        solution: "Rules engine that evaluates context and returns justified recommendations.",
+        impact: "Faster alignment and a repeatable decision process for future projects.",
       },
       {
         title: "Guided chat to qualify leads",
@@ -157,7 +154,7 @@ export default {
   },
   services: {
     title: "Services",
-    subtitle: "Proven services from real projects. Nothing experimental, nothing half-done. You ask for it, it works.",
+    subtitle: "Services proven in real projects. Clear, complete, and ready to use.",
     items: [
       { title: "Admin panels", description: "A simple dashboard to manage sales, users, inventory, content, or orders—without relying on anyone." },
       { title: "Online stores", description: "Catalog, products, variants, payments, and shipping. A store ready to sell and scale." },

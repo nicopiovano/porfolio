@@ -13,8 +13,8 @@ export default {
     badge: "Disponível para trabalhar",
   },
   hero: {
-    headline: "Você sabe o que precisa — eu sei como construir.",
-    subheadline: "7 anos de experiência end-to-end. Trabalho com startups, empresas e negócios locais que querem crescer online. Sem enrolação.",
+    headline: "Você entende seu projeto. Eu transformo em produto.",
+    subheadline: "7 anos de experiência end-to-end. Trabalho com startups, empresas e negócios locais que querem crescer online.",
     ctaSecondary: "LinkedIn",
     ctaSecondaryHref: "https://linkedin.com/in/nmpiovano",
     ctaPrimary: "Ver projetos",
@@ -32,10 +32,22 @@ export default {
     },
     items: [
       {
+        title: "Market Dashboard",
+        problem: "Dados difíceis de ler → decisões mais lentas e pouca clareza operacional.",
+        solution: "Painel com UI reutilizável, visões por categoria e gráficos comparativos.",
+        impact: "KPIs mais claros e UI pronta para conectar dados reais.",
+      },
+      {
         title: "Login & Dashboard seguro (auth sem fricção)",
         problem: "Sessões instáveis e logins inseguros geram suporte, abandono e risco.",
         solution: "Autenticação por cookie seguro (Sanctum), rotas protegidas e fluxo consistente.",
         impact: "Menos superfície de ataque e base sólida pronta para usuários reais.",
+      },
+      {
+        title: "Checkout rápido para rifas / preventa",
+        problem: "Fluxos confusos derrubam conversão e aumentam abandono.",
+        solution: "Seleção clara, carrinho persistente, checkout modal e feedback imediato.",
+        impact: "Compra mais simples e rápida, pensada para finalizar em poucos passos.",
       },
       {
         title: "porfólio de Romina Fiorentino",
@@ -44,28 +56,16 @@ export default {
         impact: "Recurso novo para um cliente que queria melhorar sua presença no mercado de trabalho.",
       },
       {
-        title: "Market Dashboard",
-        problem: "Dados difíceis de ler → decisões mais lentas e pouca clareza operacional.",
-        solution: "Painel com UI reutilizável, visões por categoria e gráficos comparativos.",
-        impact: "KPIs mais claros e UI pronta para conectar dados reais.",
+        title: "porfólio multi‑idioma para clientes globais",
+        problem: "Um único idioma limita alcance e SEO → menos leads internacionais.",
+        solution: "Rotas por idioma, traduções centralizadas e estrutura amigável para SEO.",
+        impact: "Presença internacional mais forte e posicionamento mais claro em USD.",
       },
       {
         title: "Simulador de decisões (escolher bem e economizar tempo)",
         problem: "Escolher tecnologia “pela moda” vira custo extra e atrasos.",
         solution: "Motor de regras que avalia contexto e recomenda com justificativa.",
         impact: "Alinha mais rápido e cria um critério repetível para decisões futuras.",
-      },
-      {
-        title: "Gran Rifa",
-        problem: "Fluxos confusos derrubam conversão e aumentam abandono.",
-        solution: "Seleção clara, carrinho persistente, checkout modal e feedback imediato.",
-        impact: "Compra mais simples e rápida, pensada para finalizar em poucos passos.",
-      },
-      {
-        title: "porfólio multi‑idioma para clientes globais",
-        problem: "Um único idioma limita alcance e SEO → menos leads internacionais.",
-        solution: "Rotas por idioma, traduções centralizadas e estrutura amigável para SEO.",
-        impact: "Presença internacional mais forte e posicionamento mais claro em USD.",
       },
       {
         title: "Chat guiado para qualificar leads",
@@ -157,7 +157,7 @@ export default {
   },
   services: {
     title: "Serviços",
-    subtitle: "Serviços testados em projetos reais. Nada experimental, nada pela metade. Você pede, funciona.",
+    subtitle: "Serviços testados em projetos reais. Claros, completos e prontos para usar.",
     items: [
       { title: "Painéis administrativos", description: "Um painel simples para gerenciar vendas, usuários, estoque, conteúdos ou pedidos sem depender de ninguém." },
       { title: "Lojas online", description: "Catálogo, produtos, variações, pagamentos e entrega. Uma loja pronta para vender e escalar." },
