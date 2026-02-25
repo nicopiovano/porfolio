@@ -69,11 +69,10 @@ export default {
         solution: "Motor de reglas que evalúa contexto y devuelve recomendaciones justificadas.",
         impact: "Acelera alineación y deja un criterio repetible para decisiones futuras.",
       },
-
       {
-        title: "Chat guiado para calificar leads",
-        problem: "Preguntas repetidas sin un flujo claro → pérdida de tiempo y leads fríos.",
-        solution: "Sistema de intents + respuestas guiadas con follow-ups para llevar a la info clave.",
+        title: "ChatBox",
+        problem: "Clientes con intención de compra sin respuesta inmediata → ventas perdidas.",
+        solution: "Chatbox 24/7 con respuestas guiadas que empujan a la acción.",
         impact: "Conversación más enfocada y derivación directa a contacto.",
       },
     ]

@@ -66,10 +66,10 @@ export default {
         impact: "Faster alignment and a repeatable decision process for future projects.",
       },
       {
-        title: "Guided chat to qualify leads",
-        problem: "Repeated questions without a flow waste time and cool down leads.",
-        solution: "Intent-based replies with guided follow-ups to surface the right info.",
-        impact: "More focused conversations and a clearer path to get in touch.",
+        title: "ChatBox",
+        problem: "Customers with purchase intent without an immediate response → lost sales.",
+        solution: "24/7 chatbox with guided answers that drive users to take action.",
+        impact: "More focused conversations and a direct handoff to contact.",
       },
     ]
   },
