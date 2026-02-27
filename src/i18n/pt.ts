@@ -60,7 +60,7 @@ export default {
         problem:
           "Venda de rifas sem controle de disponibilidade ou pagamentos integrados causa sobrevenda, fricção e perda de conversões.",
         solution:
-          "Ecommerce integrado ao Mercado Pago com reserva temporária de rifas: seleção de quantidade, bloqueio automático por 10 minutos e prazo de 15 minutos para pagamento.",
+          "Ecommerce integrado ao Mercado Pago com reserva temporária de rifas: seleção de quantidade, bloqueio automático por 10 minutos e 15 minutos para completar o pagamento.",
         impact:
           "Zero sobrevenda, controle de estoque em tempo real e um fluxo de compra claro que maximiza a conversão.",
       },
