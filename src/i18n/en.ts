@@ -61,7 +61,7 @@ export default {
         problem:
           "Raffle sales without availability control or integrated payments lead to overselling, friction, and lost conversions.",
         solution:
-          "Ecommerce integrated with Mercado Pago, including temporary raffle reservation: quantity selection, automatic 10-minute lock, and a 15-minute payment window.",
+          "Ecommerce integrated with Mercado Pago, including temporary raffle reservation: quantity selection, automatic 10-minute lock, and 15 minutes to complete the payment.",
         impact:
           "Zero overselling, real-time stock control, and a clear purchase flow that maximizes conversion.",
       },
