@@ -18,7 +18,8 @@ export default {
     badge: "Available for work",
   },
   hero: {
-    headline: "You have a project. I'll turn it into a product.",
+    headline1: "You have a project.",
+    headline2: "I'll turn it into a product.",
     subheadline:
       "7 years of end-to-end experience. I work with startups, companies, and local businesses that want to grow online.",
     ctaSecondary: "LinkedIn",

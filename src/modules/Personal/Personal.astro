@@ -7,66 +7,101 @@ const { t } = Astro.locals as any;
 ---
 
 <div class="max-w-xl">
-    <div class="flex gap-4 mb-4">
-        <Image
-            src="/NicoPhotoMini.png"
-            alt={personalImageAlt}
-            width={64}
-            height={64}
-            class="rounded-full shadow-lg size-16"
-            loading="eager"
-        />
-        <a
-            href="https://linkedin.com/in/nmpiovano"
-            target="_blank"
-            rel="noopener"
-            class="flex items-center transitiondark:text-gray-300 md:justify-center md:hover:scale-105"
-        >
-            <Badge>{t.personal.badge}</Badge>
-        </a>
-    </div>
-    <h1
-        class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+  <div class="flex gap-4 mb-4">
+    <Image
+      src="/NicoPhotoMini.png"
+      alt={personalImageAlt}
+      width={64}
+      height={64}
+      class="rounded-full shadow-lg size-16"
+      loading="eager"
+    />
+    <a
+      href="https://linkedin.com/in/nmpiovano"
+      target="_blank"
+      rel="noopener"
+      class="flex items-center md:justify-center md:hover:scale-105 transition"
     >
-        Nicolás Piovano
-    </h1>
-    <div class="mt-6">
-        <p class="text-2xl sm:text-3xl font-semibold leading-tight tracking-tight text-black/90 dark:text-white">
-            {t.hero?.headline ?? t.personal?.title ?? "Construyo productos web que convierten."}
-        </p>
-        <p class="mt-4 text-base sm:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            {t.hero?.subheadline ?? t.personal?.subtitle ?? ""}
-        </p>
+      <Badge>{t.personal.badge}</Badge>
+    </a>
+  </div>
 
-        <div class="mt-6 flex flex-wrap gap-3">
-            <a
-                href={t.hero?.ctaPrimaryHref ?? "mailto:nmpiovano@gmail.com"}
-                class="inline-flex items-center justify-center rounded-xl bg-green-600 hover:bg-green-700 text-white font-medium px-5 py-3 transition-colors"
-            >
-                {t.hero?.ctaPrimary ?? "Contactar"}
-            </a>
-            <a
-                href={t.hero?.ctaSecondaryHref ?? "#proyectos"}
-                class="inline-flex items-center justify-center rounded-xl border border-black/10 dark:border-white/10 bg-white/60 dark:bg-slate-950/30 hover:bg-white/80 dark:hover:bg-slate-950/45 text-black/80 dark:text-white font-medium px-5 py-3 transition-colors"
-            >
-                {t.hero?.ctaSecondary ?? "Ver proyectos"}
-            </a>
-        </div>
-    </div>
-    <nav class="flex flex-wrap gap-4 mt-8">
-        <!-- <SocialPill href="mailto:nmpiovano@gmail.com">
-            <MailIcon class="size-4"/>
-            Hablemos
-        </SocialPill> -->
+  <h1
+    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+  >
+    Nicolás Piovano
+  </h1>
 
-        <!-- <SocialPill href="https://linkedin.com/in/nmpiovano">
-            <LinkedInIcon class="size-4"/>
-            LinkedIn
-        </SocialPill>
+  <div class="mt-6 relative h-[3.5rem] sm:h-[4rem]">
+    <!-- HEADLINE 1 -->
+    <p
+      id="headline-1"
+      class="absolute inset-0 text-2xl sm:text-3xl font-semibold
+            transition-all duration-700
+            opacity-100 blur-0"
+    >
+      {t.hero?.headline1}
+    </p>
 
-        <SocialPill href="/Nicolás_Piovano_Sr_Fullstack.pdf" download>
-            <CvIcon class="size-4"/>
-            Cv 2026
-        </SocialPill> -->
-    </nav>
+    <p
+      id="headline-2"
+      class="absolute inset-0 text-2xl sm:text-3xl font-semibold
+            transition-all duration-700
+            opacity-0 blur-sm"
+    >
+      {t.hero?.headline2}
+    </p>
+  </div>
+
+  <p
+    class="mt-4 text-base sm:text-lg leading-relaxed text-gray-700 dark:text-gray-300"
+  >
+    {t.hero?.subheadline}
+  </p>
+
+  <div class="mt-6 flex flex-wrap gap-3">
+    <a
+      href={t.hero?.ctaPrimaryHref}
+      class="inline-flex items-center justify-center rounded-xl bg-green-600 hover:bg-green-700 text-white font-medium px-5 py-3 transition-colors"
+    >
+      {t.hero?.ctaPrimary}
+    </a>
+
+    <a
+      href={t.hero?.ctaSecondaryHref}
+      class="inline-flex items-center justify-center rounded-xl border border-black/10 dark:border-white/10
+             bg-white/60 dark:bg-slate-950/30 hover:bg-white/80 dark:hover:bg-slate-950/45
+             text-black/80 dark:text-white font-medium px-5 py-3 transition-colors"
+    >
+      {t.hero?.ctaSecondary}
+    </a>
+  </div>
+
+  <nav class="flex flex-wrap gap-4 mt-8"></nav>
 </div>
+<script>
+  const h1 = document.getElementById("headline-1");
+  const h2 = document.getElementById("headline-2");
+
+  if (h1 && h2) {
+    let showingFirst = true;
+
+    setInterval(() => {
+      if (showingFirst) {
+        h1.classList.replace("opacity-100", "opacity-0");
+        h1.classList.replace("blur-0", "blur-sm");
+
+        h2.classList.replace("opacity-0", "opacity-100");
+        h2.classList.replace("blur-sm", "blur-0");
+      } else {
+        h2.classList.replace("opacity-100", "opacity-0");
+        h2.classList.replace("blur-0", "blur-sm");
+
+        h1.classList.replace("opacity-0", "opacity-100");
+        h1.classList.replace("blur-sm", "blur-0");
+      }
+
+      showingFirst = !showingFirst;
+    }, 2800);
+  }
+</script>
