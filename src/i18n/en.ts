@@ -47,15 +47,15 @@ export default {
         impact:
           "Immediate visibility into portfolio performance, faster decision-making, and a scalable base without reworking logic or UI.",
       },
-      {
-        title: "Authentication Panel",
-        problem:
-          "Systems without solid access control create security risks and increase support overhead.",
-        solution:
-          "Custom login panel across all systems, using secure cookie-based authentication (Sanctum), protected routes, and consistent session management.",
-        impact:
-          "Controlled access from day one, reduced attack surface, and a foundation ready for real users.",
-      },
+      // {
+      //   title: "Authentication Panel",
+      //   problem:
+      //     "Systems without solid access control create security risks and increase support overhead.",
+      //   solution:
+      //     "Custom login panel across all systems, using secure cookie-based authentication (Sanctum), protected routes, and consistent session management.",
+      //   impact:
+      //     "Controlled access from day one, reduced attack surface, and a foundation ready for real users.",
+      // },
       {
         title: "Raffle Ecommerce",
         problem:

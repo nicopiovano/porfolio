@@ -47,15 +47,15 @@ export default {
         impact:
           "Visibilidad inmediata del rendimiento de la cartera, decisiones más rápidas y una base lista para escalar sin rehacer lógica ni UI.",
       },
-      {
-        title: "Panel de Autenticación",
-        problem:
-          "Sistemas sin control de acceso sólido generan riesgos de seguridad y sobrecarga de soporte.",
-        solution:
-          "Panel de logueo personalizado en todos los sistemas, con autenticación mediante cookies seguras (Sanctum), rutas protegidas y gestión consistente de sesiones.",
-        impact:
-          "Acceso controlado desde el día uno, menor superficie de ataque y una base lista para operar con usuarios reales.",
-      },
+      // {
+      //   title: "Panel de Autenticación",
+      //   problem:
+      //     "Sistemas sin control de acceso sólido generan riesgos de seguridad y sobrecarga de soporte.",
+      //   solution:
+      //     "Panel de logueo personalizado en todos los sistemas, con autenticación mediante cookies seguras (Sanctum), rutas protegidas y gestión consistente de sesiones.",
+      //   impact:
+      //     "Acceso controlado desde el día uno, menor superficie de ataque y una base lista para operar con usuarios reales.",
+      // },
       {
         title: "Ecommerce de Rifas",
         problem:
