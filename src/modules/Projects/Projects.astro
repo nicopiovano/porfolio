@@ -18,12 +18,12 @@ const content = (Astro.props as any)?.content ?? t.projects
 // En local (npm run dev) los links apuntan a localhost; en producción a las URLs desplegadas
 const isDev = import.meta.env.DEV
 const PROJECT_LINKS = {
-  finanzas_app: isDev ? "http://localhost:5172/" : "https://nico-piovano-finanzas-app.vercel.app",
-  rifas: isDev ? "http://localhost:5174/" : "https://nico-piovano-rifas.vercel.app/",
-  techDecision: isDev ? "http://localhost:5175/" : "https://nico-piovano-tech-decision.vercel.app/",
+  finanzas_app: isDev ? "http://localhost:5172/" : "https://nicolas-piovano-finanzas-app.vercel.app",
+  rifas: isDev ? "http://localhost:5174/" : "https://nicolas-piovano-rifas.vercel.app/",
+  techDecision: isDev ? "http://localhost:5175/" : "https://nicolas-piovano-tech-decision.vercel.app/",
   porfolio_romi: isDev ? "http://localhost:5176/" : "https://porfolio-romina-fiorentino.vercel.app/",
-  login: isDev ? "http://localhost:5173/" : "https://nico-piovano-login.vercel.app/",
-  porfolio: isDev ? "http://localhost:5170/" : "https://nico-piovano-porfolio.vercel.app",
+  login: isDev ? "http://localhost:5173/" : "https://nicolas-piovano-login.vercel.app/",
+  porfolio: isDev ? "http://localhost:5170/" : "https://nicolas-piovano-porfolio.vercel.app",
 }
 
 const TAGS = {
